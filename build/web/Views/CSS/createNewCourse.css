@@ -1,0 +1,38 @@
+/*.content{
+    position: relative;
+}*/
+
+.content_wrap{
+    position: absolute;
+    top: 200px;
+    left: 30%;
+    font-size: 15pt;
+}
+
+.label_title{
+    margin-top:20px;
+    display: inline-block;
+    width: 150px;
+    float: top;
+}
+
+.text_input{
+    width: 600px;
+    font-size: 15pt;
+    margin-top:20px;
+    vertical-align: top;
+}
+
+.content_wrap textarea{
+    height: 100px;
+}
+
+#create_button{
+    float: right;
+    font-size: 20pt;
+    font-weight: bold;
+    background-color: #2E64FE;
+    color: white;
+    border-radius: 10px;
+    margin-top: 30px;
+}
