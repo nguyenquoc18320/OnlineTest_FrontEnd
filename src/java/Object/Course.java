@@ -58,9 +58,9 @@ public class Course extends BaseObject{
         return status;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
+//    public void setStatus(boolean status) {
+//        this.status = status;
+//    }
 
     public User getUser() {
         return user;
