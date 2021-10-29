@@ -68,9 +68,51 @@ public class APIUtils {
         con.setRequestProperty("Accept", "application/json");
         con.setRequestProperty("content-type", "application/json");
         con.setRequestProperty("Accept-Charset", "UTF-8");
-        
-         con.setDoOutput(true);
 
+        con.setDoOutput(true);
+
+        try (OutputStream os = con.getOutputStream()) {
+            byte[] input = stringBodyRequest.getBytes("utf-8");
+            os.write(input, 0, input.length);
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+        }
+
+        int code = con.getResponseCode();
+
+        if (code != 200) {
+            System.out.println("Error: " + code);
+            return "error";
+        } else {
+            System.out.println("Sucessfull");
+
+            try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
+                String response;
+                while ((response = bufferedReader.readLine()) != null) {
+                    return response;
+                }
+            } catch (Exception ex) {
+                System.out.println(ex.toString());
+            }
+        }
+        return null;
+    }
+
+    /*
+    send PUT request
+     */
+    public static String sendPUTRequest(String api_url, String stringBodyRequest) throws MalformedURLException, IOException {
+        URL url = new URL(api_url);
+
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("PUT");
+
+        con.setRequestProperty("Accept", "application/json");
+        con.setRequestProperty("content-type", "application/json");
+        con.setRequestProperty("Accept-Charset", "UTF-8");
+
+        con.setDoOutput(true);
+        
         try (OutputStream os = con.getOutputStream()) {
             byte[] input = stringBodyRequest.getBytes("utf-8");
             os.write(input, 0, input.length);

@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import Object.CoursePagination;
 import Object.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
@@ -20,50 +21,65 @@ import javax.servlet.http.HttpSession;
  *
  * @author nguye
  */
-@WebServlet(name = "Login", urlPatterns = {"/log-in"})
-public class Login extends HttpServlet {
+@WebServlet(name = "ManageCourse", urlPatterns = {"/manage-course"})
+public class ManageCourse extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Views/Pages/User/Login.jsp";
+        String url = "/Views/Pages/Course/CourseManager.jsp";
 
         HttpSession session = request.getSession();
 
-        //from SignUp 
-        String checkSignUp = request.getParameter("start");
-        if (checkSignUp == null) {
-//            try {
-                String email = (String) request.getParameter("email");
-                request.setAttribute("email", email);
-                String password = (String) request.getParameter("password");
-                request.setAttribute("password", password);
+        User user = (User) session.getAttribute("user");
 
-                String api_request = "http://localhost:8081/user/" + email + "/" + password;
+        //check whether logining
+        if (user == null) {
+            url = "/log-in?start=1";
+//            System.out.println("Not found user");
+        } else {
+            try {
+//                System.out.println("Page: " + request.getParameter("page") + "\nMax: " + request.getParameter("maxPageItems"));
+//                page for showing
+                int page = 1;
+                int maxPageItems = 5;
+                try {
+                    page = Integer.parseInt(request.getParameter("page"));
+                    maxPageItems = Integer.parseInt(request.getParameter("maxPageItems")); //number of items per a page
+                    request.setAttribute("maxPageItems", maxPageItems);
+                }
+                catch(Exception ex){};
 
-                //get response from api
-                String result = APIUtils.sendGetRequest(api_request, true);
+                String api_url = APIUtils.getBaseURLAPi() + "user-course/" + user.getId() + "?page=" + page
+                        + "&limit=" + maxPageItems;
 
-                ObjectMapper mapper = new ObjectMapper();
+                String result = APIUtils.sendGetRequest(api_url, true);
+
+//                System.out.println(result);
 
                 if (result != null) {
-                    //login successfully
-                    User user = mapper.readValue(result, User.class);
-                    session.setAttribute("user", user);
-                    System.out.println("Login successfully");
-                    url = "/manage-course?page=1&maxPageItems=5";
-                } else {
-                    request.setAttribute("errorMessage", "Email or password is not correct!");
+                    ObjectMapper mapper = new ObjectMapper();
+                    CoursePagination coursePagination = mapper.readValue(result, CoursePagination.class);
+                    request.setAttribute("coursePagination", coursePagination);
                 }
 
-//        } catch (NullPointerException ex) {
-//            //from other jsp pages
-//            getServletContext().getRequestDispatcher(url).forward(request, response);
-//            return;
-//            
+            } catch (Exception ex) {
+//                System.out.println("Manage course: " + ex.toString());
+            }
         }
+
         getServletContext().getRequestDispatcher(url).forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

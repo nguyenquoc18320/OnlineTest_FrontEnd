@@ -33,6 +33,11 @@
                     </div>
                 </div>
                 <div class='content'>
+                    <div class ="path_div">
+                        <a href="manage-course?page=1&maxPageItems=5">My Course></a>
+                        <a href="create-course?start=1">Create Course></a>
+                    </div>
+                    
                     <div class='content_wrap'>
                         <form action="create-course" method="POST">
                             <label class='label_title'>Course name:</label>
@@ -47,11 +52,11 @@
                             <label>Private</label>
                             <input type="radio"  name="status" value="public">
                             <label >Public</label><br>
-                            
+
                             <c:if test="${not empty errorMessage}">
                                 <p id='errorMessage'><c:out value="${errorMessage}"/></p>
                             </c:if>
-                            
+
                             <input id="create_button" type='submit' value="CREATE">
                         </form>
                     </div>

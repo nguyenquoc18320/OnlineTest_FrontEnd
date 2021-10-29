@@ -1,0 +1,62 @@
+
+/*.content{
+    position: relative;
+}*/
+
+.path_div{
+    font-size: 12pt;
+    background-color: white;
+    margin-left: 20px;
+    margin-top:50px;
+}
+
+.content_wrap{
+    position: absolute;
+    top: 200px;
+    left: 30%;
+    font-size: 15pt;
+}
+
+#link_create_course{
+    float: right;
+}
+
+
+.table_name_header{
+    width: 600px;
+}
+
+/*for column public*/
+.table_public_header{
+    text-align: center;
+    
+}
+
+.fa-check-circle{
+     color: #01DF01;
+         
+}
+
+.table_check_icon{
+    text-align: center;
+}
+
+
+/*for edit column*/
+.table_edit_header{
+    width: 100px;
+}
+
+.table_edit{
+    text-align: center;
+}
+
+.fa-edit{
+    color: #FF0000;
+}
+
+
+#formSubmit{
+    /*text-align: center;*/
+    margin-top: 50px;
+}

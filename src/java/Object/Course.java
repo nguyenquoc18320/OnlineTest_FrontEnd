@@ -54,7 +54,7 @@ public class Course extends BaseObject{
         this.description = description;
     }
 
-    public boolean isStatus() {
+    public boolean getStatus() {
         return status;
     }
 

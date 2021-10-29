@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="Views/CSS/BaseFormat.css" />
-        <link rel="stylesheet" type="text/css" href="Views/CSS/createNewCourse.css" />
+        <link rel="stylesheet" type="text/css" href="Views/CSS/EditCourse.css" />
         <title>Create new course</title>
     </head>
     <body>
@@ -22,7 +22,7 @@
                     <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
                 </div>
                 <div id='div_functionName'>
-                    <label id='functionName'>Create Course</label>
+                    <label id='functionName'>Update Course</label>
                 </div>
             </div>
 
@@ -34,30 +34,44 @@
                 </div>
                 <div class='content'>
                     <div class ="path_div">
-                        <a href="manage-course?page=1&maxPageItems=5">My Course></a>
-                        <a href="create-course?start=1">Create Course></a>
+                        <a href="manage-course">My Course></a>
+                        <a href="edit-course?start=1&courseid=<c:out value='${course.getId()}'/>">Edit Course></a>
+                        <lable ><c:out value ="${course.getName()}"/></lable>
                     </div>
-                    
+
                     <div class='content_wrap'>
-                        <form action="create-course" method="POST">
+                        <form action="edit-course" method="POST">
+                            <input type="hidden" name="courseid" value ="<c:out value='${course.getId()}'/>">
                             <label class='label_title'>Course name:</label>
-                            <input type="text" class="text_input" name="courseName" required><br>
+                            <input type="text" class="text_input" name="courseName" required value="<c:out value='${course.getName()}'/>"><br>
 
                             <label class='label_title'>Description:</label>
-                            <textarea class="text_input" name = 'description' required></textarea><br>
+                            <textarea class="text_input" name = 'description' required><c:out value='${course.getDescription()}'/></textarea><br>
 
 
                             <label class='label_title'>Course for: </label>
                             <input type="radio"  name="status" value="private" checked>
                             <label>Private</label>
-                            <input type="radio"  name="status" value="public">
-                            <label >Public</label><br>
+
+                            <c:choose>
+                                <c:when test="${course.getStatus()}">
+                                    <input type="radio"  name="status" value="public" checked>
+                                    <label >Public</label><br>
+                                </c:when>
+                                <c:otherwise >
+                                    <input type="radio"  name="status" value="public">
+                                    <label >Public</label><br>
+                                </c:otherwise>
+                            </c:choose>
 
                             <c:if test="${not empty errorMessage}">
                                 <p id='errorMessage'><c:out value="${errorMessage}"/></p>
                             </c:if>
+                                <c:if test="${not empty infoMessage}">
+                                <p id='infoMessage'><c:out value="${infoMessage}"/></p>
+                            </c:if>
 
-                            <input id="create_button" type='submit' value="CREATE">
+                            <input id="create_button" type='submit' value="UPDATE">
                         </form>
                     </div>
                 </div>

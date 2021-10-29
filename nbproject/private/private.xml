@@ -2,17 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/src/java/controllers/CreateNewCourse.java</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/src/java/controllers/ConfirmSignUpCode.java</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/src/java/controllers/APIUtils.java</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/CSS/BaseFormat.css</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/src/java/Object/Course.java</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/src/java/Object/User.java</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/Pages/Course/CreateNewCourse.jsp</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/src/java/Object/Account.java</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/src/java/controllers/SignUp.java</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/src/java/Object/BaseObject.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

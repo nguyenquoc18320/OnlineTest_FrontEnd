@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -38,43 +39,55 @@ public class CreateNewCourse extends HttpServlet {
 
         String url = "/Views/Pages/Course/CreateNewCourse.jsp";
 
+        HttpSession session = request.getSession();
+
         //check whether user logined
-        User user = new User();
-        user.setId(Long.parseLong("4"));
-        try {
-            //if start =1, only open the page
-            //start is null, process the requirement
-            if (request.getAttribute("start") == null) {
-                String name = request.getParameter("courseName");
-                String description = request.getParameter("description");
-                boolean status = false;
+        User user = (User) session.getAttribute("user");
 
-                if ("public".equals(request.getParameter("status"))) {
-                    status = true;
+        if (user == null) {
+            url = "/Views/Pages/User/Login.jsp";
+        } else {
+            try {
+                //if start =1, only open the page
+                //start is null, process the requirement
+                if (request.getParameter("start") == null) {
+                    String name = request.getParameter("courseName");
+                    String description = request.getParameter("description");
+                    boolean status = false;
+
+                    if ("public".equals(request.getParameter("status"))) {
+                        status = true;
+                    }
+
+                    //check info
+                    if (name.isEmpty() || description.isEmpty()) {
+                        request.setAttribute("errorMessage", "Please fill all information!");
+
+                    } else {
+
+                        Course course = new Course(name, description, status, user);
+
+                        //send to API
+                        String api_url = APIUtils.getBaseURLAPi() + "course";
+
+                        ObjectMapper mapper = new ObjectMapper();
+                        String jsonRequest = mapper.writeValueAsString(course);
+
+                        String result = APIUtils.sendPostRequest(api_url, jsonRequest);
+                        System.out.println("Create course: " + result);
+
+                        if (result != null) {
+                            course = mapper.readValue(result, Course.class);
+                            request.setAttribute("course", course);
+                        } else {
+                            request.setAttribute("errorMessage", "Sorry! Can't create your course");
+                        }
+                    }
                 }
+            } catch (Exception ex) {
 
-                Course course = new Course(name, description, status, user);
-
-                //send to API
-                String api_url = APIUtils.getBaseURLAPi() + "course";
-
-                ObjectMapper mapper = new ObjectMapper();
-                String jsonRequest = mapper.writeValueAsString(course);
-
-                String result = APIUtils.sendPostRequest(api_url, jsonRequest);
-                System.out.println("Create course: " + result);
-
-                if (result != null) {
-                    course = mapper.readValue(result, Course.class);
-                    request.setAttribute("course", course);
-                } else {
-                    request.setAttribute("errorMessage", "Sorry! Can't create your course");
-                }
             }
-        } catch (Exception ex) {
-
         }
-
         getServletContext().getRequestDispatcher(url).forward(request, response);
     }
 
