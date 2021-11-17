@@ -11,24 +11,31 @@ import java.util.Date;
  *
  * @author nguye
  */
-public class Course extends BaseObject{
+public class Course extends BaseObject {
+
     private String name;
     private String description;
     private boolean status;
-    
+    private boolean blocked;
+    private boolean deleted;
+
     private User user;
 
-    public Course(){
+    public Course() {
         super();
     }
 
-    public Course(String name, String description, boolean status, User user, Long id, Long createdBy, Date createdDate, Long modifiedBy, Date modifiedDate) {
+    public Course(String name, String description, boolean status, boolean blocked, boolean deleted, User user, Long id, Long createdBy, Date createdDate, Long modifiedBy, Date modifiedDate) {
         super(id, createdBy, createdDate, modifiedBy, modifiedDate);
         this.name = name;
         this.description = description;
         this.status = status;
+        this.blocked = blocked;
+        this.deleted = deleted;
         this.user = user;
     }
+
+  
 
     public Course(String name, String description, boolean status, User user) {
         super();
@@ -37,7 +44,7 @@ public class Course extends BaseObject{
         this.status = status;
         this.user = user;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -61,14 +68,38 @@ public class Course extends BaseObject{
 //    public void setStatus(boolean status) {
 //        this.status = status;
 //    }
-
     public User getUser() {
         return user;
     }
+    
+    
 
 //    public void setUser(User user) {
 //        this.user = user;
 //    }
 //    
-    
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public boolean getBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
+
+    public boolean getDeleted() {
+        return deleted;
+    }
+
+    public void setDelete(boolean deleted) {
+        this.deleted = deleted;
+    }
 }

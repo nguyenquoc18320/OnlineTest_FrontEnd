@@ -7,12 +7,12 @@
     font-size: 12pt;
     background-color: white;
     margin-left: 20px;
-    margin-top:50px;
+    margin-top:5px;
 }
 
 .content_wrap{
     position: absolute;
-    top: 200px;
+    top: 150px;
     left: 30%;
     font-size: 15pt;
 }
@@ -21,9 +21,25 @@
     float: right;
 }
 
+/*search*/
+#search_button{
+    border-radius: 5px;
+    color: #0000FF;
+}
+
 
 .table_name_header{
     width: 600px;
+}
+
+
+.table tr{
+    height: 50px;
+}
+
+/*for course name*/
+.course-name{
+    color:black;
 }
 
 /*for column public*/
@@ -58,5 +74,5 @@
 
 #formSubmit{
     /*text-align: center;*/
-    margin-top: 50px;
+    margin-top: 10px;
 }

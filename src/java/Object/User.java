@@ -16,24 +16,27 @@ public class User extends BaseObject{
     private String gender;
     private Date dateOfBirth;
     private String email;
+    private Role role;
 
     public User(){
         super();
     }
 
-    public User(String name, String gender, Date dateOfBirth, String email) {
+    public User(String name, String gender, Date dateOfBirth, String email, Role role) {
         this.name = name;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
+        this.role = role;
     }
 
-    public User(String name, String gender, Date dateOfBirth, String email, Long id, Long createdBy, Date createdDate, Long modifiedBy, Date modifiedDate) {
+    public User(String name, String gender, Date dateOfBirth, String email, Role role, Long id, Long createdBy, Date createdDate, Long modifiedBy, Date modifiedDate) {
         super(id, createdBy, createdDate, modifiedBy, modifiedDate);
         this.name = name;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
+        this.role = role;
     }
     
     
@@ -68,5 +71,13 @@ public class User extends BaseObject{
     public void setEmail(String email) {
         this.email = email;
     }  
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
     
 }

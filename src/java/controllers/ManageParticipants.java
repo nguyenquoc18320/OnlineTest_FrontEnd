@@ -5,11 +5,14 @@
  */
 package controllers;
 
-import Object.CoursePagination;
+import Object.Course;
+import Object.EntityPagination;
 import Object.User;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,23 +24,14 @@ import javax.servlet.http.HttpSession;
  *
  * @author nguye
  */
-@WebServlet(name = "ManageCourse", urlPatterns = {"/manage-course"})
-public class ManageCourse extends HttpServlet {
+@WebServlet(name = "ManageParticipants", urlPatterns = {"/manage-participants"})
+public class ManageParticipants extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Views/Pages/Course/CourseManager.jsp";
+        String url = "/Views/Pages/Course/ParticipantManager.jsp";
 
         HttpSession session = request.getSession();
 
@@ -49,32 +43,57 @@ public class ManageCourse extends HttpServlet {
 //            System.out.println("Not found user");
         } else {
             try {
-//                System.out.println("Page: " + request.getParameter("page") + "\nMax: " + request.getParameter("maxPageItems"));
-//                page for showing
+                Long courseid = Long.parseLong(request.getParameter("courseid"));
+
+                //send to API
+                String api_url = APIUtils.getBaseURLAPi() + "course?userid=" + user.getId()
+                        + "&courseid=" + courseid;
+
+                Course course = new Course();
+                ObjectMapper mapper = new ObjectMapper();
+                String jsonRequest = mapper.writeValueAsString(course);
+
+                String result = APIUtils.sendGetRequest(api_url, true);
+                System.out.println("Create course: " + result);
+
+                if (result != null) {
+                    course = mapper.readValue(result, Course.class);
+                    request.setAttribute("course", course);
+                } else {
+                    request.setAttribute("errorMessage", "Don't find the course!");
+                }
+
+                //get participants
                 int page = 1;
+
                 int maxPageItems = 5;
                 try {
                     page = Integer.parseInt(request.getParameter("page"));
                     maxPageItems = Integer.parseInt(request.getParameter("maxPageItems")); //number of items per a page
                     request.setAttribute("maxPageItems", maxPageItems);
+                } catch (Exception ex) {
                 }
-                catch(Exception ex){};
 
-                String api_url = APIUtils.getBaseURLAPi() + "user-course/" + user.getId() + "?page=" + page
-                        + "&limit=" + maxPageItems;
+                api_url = APIUtils.getBaseURLAPi() + "join-course/get-list?userid=" + user.getId()
+                        + "&courseid=" + courseid + "&page=" + page + "&limit=" + maxPageItems;
 
-                String result = APIUtils.sendGetRequest(api_url, true);
+                String searchName = request.getParameter("searchName");
+                if(searchName !=null){
+                    api_url += "&name=" + searchName;
+                    request.setAttribute("searchName", searchName);
+                }
 
-//                System.out.println(result);
+                result = APIUtils.sendGetRequest(api_url, true);
+                System.out.println(result);
 
                 if (result != null) {
-                    ObjectMapper mapper = new ObjectMapper();
-                    CoursePagination coursePagination = mapper.readValue(result, CoursePagination.class);
-                    request.setAttribute("coursePagination", coursePagination);
+                    EntityPagination<User> participantPagination = mapper.readValue(result, new TypeReference<EntityPagination<User>>() {
+                    });
+                    request.setAttribute("participantPagination", participantPagination);
                 }
 
             } catch (Exception ex) {
-//                System.out.println("Manage course: " + ex.toString());
+                request.setAttribute("errorMessage", "Don't find the course!");
             }
         }
 
@@ -82,7 +101,7 @@ public class ManageCourse extends HttpServlet {
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *

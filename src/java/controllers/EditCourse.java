@@ -66,7 +66,7 @@ public class EditCourse extends HttpServlet {
                             Course course = mapper.readValue(result, Course.class);
                             request.setAttribute("course", course);
                         } else {
-                            url = "manage-course";
+                             request.setAttribute("errorMessage", "Don't find the course");
                         }
                     } else {
                         String name = request.getParameter("courseName");
@@ -99,7 +99,8 @@ public class EditCourse extends HttpServlet {
                                 request.setAttribute("course", course);
                                 request.setAttribute("infoMessage", "Successfully!");
                             } else {
-                                request.setAttribute("errorMessage", "Sorry! Can't update your course");
+                                request.setAttribute("course", course); //infor user enter
+                                request.setAttribute("errorMessage", "Sorry! Can't update your course. Please check the name.");
                             }
                         }
                     }

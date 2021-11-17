@@ -5,10 +5,12 @@
  */
 package controllers;
 
+import Object.Course;
 import Object.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,51 +22,66 @@ import javax.servlet.http.HttpSession;
  *
  * @author nguye
  */
-@WebServlet(name = "Login", urlPatterns = {"/log-in"})
-public class Login extends HttpServlet {
+@WebServlet(name = "AddParticipants", urlPatterns = {"/add-participants"})
+public class AddParticipants extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Views/Pages/User/Login.jsp";
+        String url = "/Views/Pages/Course/AddParticipants.jsp";
 
         HttpSession session = request.getSession();
 
-        //from SignUp 
-        String checkSignUp = request.getParameter("start");
-        if (checkSignUp == null) {
+        //check whether user logined
+        User user = (User) session.getAttribute("user");
+
+        if (user == null) {
+            url = "/Views/Pages/User/Login.jsp";
+        } else {
             try {
-                String email = (String) request.getParameter("email");
-                request.setAttribute("email", email);
-                String password = (String) request.getParameter("password");
-                request.setAttribute("password", password);
 
-                String api_request = "http://localhost:8081/user/" + email + "/" + password;
+            Long courseid = Long.parseLong(request.getParameter("courseid"));
 
-                //get response from api
-                String result = APIUtils.sendGetRequest(api_request, true);
+            //send to API
+            String api_url = APIUtils.getBaseURLAPi() + "course?userid=" + user.getId()
+                    + "&courseid=" + courseid;
 
+            String result = APIUtils.sendGetRequest(api_url, true);
+
+            if (result != null) {
+                Course course = new Course();
                 ObjectMapper mapper = new ObjectMapper();
+                course = mapper.readValue(result, Course.class);
+                request.setAttribute("course", course);
 
-                if (result != null) {
-                    //login successfully
-                    User user = mapper.readValue(result, User.class);
-                    session.setAttribute("user", user);
-                    System.out.println("Login successfully");
-                    if (user.getRole().getId() == 2) {
-                        url = "/manage-course-user?page=1&maxPageItems=5";
-                    } else if (user.getRole().getId() == 1) {
-                        url = "/manage-course-admin?start=1";
-                    }
-                } else {
-                    request.setAttribute("errorMessage", "Email or password is not correct!");
+                //add participants
+                String emails = request.getParameter("email");
+                request.setAttribute("email", emails);
+
+//                    System.out.println("Emails: " + emails);
+                if (emails != null && !emails.isEmpty()) {
+                    String[] emailList = emails.split("\r\n");
+
+                    api_url = APIUtils.getBaseURLAPi() + "join-course?courseid=" + courseid
+                            +"&userid=" + user.getId();
+                    System.out.println(api_url);
+
+                    String jsonRequest = mapper.writeValueAsString(emailList);
+                    System.out.println("json:: " + jsonRequest);
+                    result = APIUtils.sendPUTRequest(api_url, jsonRequest);
+                    request.setAttribute("result", result);
+                    
+                    System.out.println("Join course: " + result);
                 }
 
+            } else {
+                request.setAttribute("errorMessage", "Don't find the course!");
+            }
+
             } catch (Exception ex) {
-                //from other jsp pages
-                getServletContext().getRequestDispatcher(url).forward(request, response);
-                return;
+                url = "/manager-course-user";
+                request.setAttribute("errorMessage", "Don't find the course!");
             }
         }
         getServletContext().getRequestDispatcher(url).forward(request, response);

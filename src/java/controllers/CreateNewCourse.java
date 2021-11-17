@@ -74,7 +74,7 @@ public class CreateNewCourse extends HttpServlet {
                         String jsonRequest = mapper.writeValueAsString(course);
 
                         String result = APIUtils.sendPostRequest(api_url, jsonRequest);
-                        System.out.println("Create course: " + result);
+//                        System.out.println("Create course: " + result);
 
                         if (result != null) {
                             course = mapper.readValue(result, Course.class);

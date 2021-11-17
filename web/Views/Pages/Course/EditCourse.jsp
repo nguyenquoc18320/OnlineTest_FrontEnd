@@ -34,7 +34,7 @@
                 </div>
                 <div class='content'>
                     <div class ="path_div">
-                        <a href="manage-course">My Course></a>
+                        <a href="manage-course-user">My Course></a>
                         <a href="edit-course?start=1&courseid=<c:out value='${course.getId()}'/>">Edit Course></a>
                         <lable ><c:out value ="${course.getName()}"/></lable>
                     </div>
@@ -65,10 +65,10 @@
                             </c:choose>
 
                             <c:if test="${not empty errorMessage}">
-                                <p id='errorMessage'><c:out value="${errorMessage}"/></p>
+                                <p style="color:#FF0000;" id='errorMessage'><c:out value="${errorMessage}"/></p>
                             </c:if>
                                 <c:if test="${not empty infoMessage}">
-                                <p id='infoMessage'><c:out value="${infoMessage}"/></p>
+                                <p style="color:#0040FF" id='infoMessage'><c:out value="${infoMessage}"/></p>
                             </c:if>
 
                             <input id="create_button" type='submit' value="UPDATE">
