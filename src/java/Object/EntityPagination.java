@@ -12,19 +12,19 @@ import java.util.List;
  *
  * @author nguye
  */
-public class CoursePagination {
+public class EntityPagination<T> {
     int page;
     int totalPage;
-    List<Course> courseList;
+    List<T> entityList;
     
-    public CoursePagination(){
-        this.courseList = new ArrayList<>();
+    public EntityPagination(){
+        this.entityList = new ArrayList<>();
     }
 
-    public CoursePagination(int page, int totalPage, List<Course> courseList) {
+    public EntityPagination(int page, int totalPage, List<T> entityList) {
         this.page = page;
         this.totalPage = totalPage;
-        this.courseList = courseList;
+        this.entityList = entityList;
     }
 
     public int getPage() {
@@ -43,11 +43,11 @@ public class CoursePagination {
         this.totalPage = totalPage;
     }
 
-    public List<Course> getCourseList() {
-        return courseList;
+    public List<T> getEntityList() {
+        return entityList;
     }
 
-    public void setCourseList(List<Course> courseList) {
-        this.courseList = courseList;
+    public void setEntityList(List<T> entityList) {
+        this.entityList = entityList;
     }
 }

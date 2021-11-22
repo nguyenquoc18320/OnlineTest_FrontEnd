@@ -1,0 +1,104 @@
+
+/*.content{
+    position: relative;
+}*/
+
+
+
+.path_div{
+    font-size: 12pt;
+    background-color: white;
+    margin-left: 20px;
+    margin-top:5px;
+}
+
+.path_div a{
+    color: #005566
+}
+
+.content_wrap{
+    position: absolute;
+    top: 150px;
+    left: 30%;
+    font-size: 12pt;
+}
+
+#link_create_course{
+    float: right;
+    font-size: 15pt;
+}
+
+/*search*/
+#search_button{
+    /*border-radius: 5px;*/
+    /*color: #0000FF;*/
+    border: 5px inset #1C6EA4;
+    border-radius: 5px 5px 5px 5px;
+}
+
+
+.table_name_header{
+    width: 600px;
+}
+
+.table thead{
+    background: #1C6EA4;
+    background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+    background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+    background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+    border-bottom: 2px solid #444444;
+}
+
+table thead th {
+    font-size: 15px;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-left: 2px solid #D0E4F5;
+}
+table thead th:first-child {
+    border-left: none;
+}
+
+.table tr{
+    height: 50px;
+}
+
+/*for course name*/
+.course-name{
+    color:black;
+}
+
+/*for column public*/
+.table_public_header{
+    text-align: center;
+
+}
+
+.fa-check-circle{
+    color: #01DF01;
+
+}
+
+.table_check_icon{
+    text-align: center;
+}
+
+
+/*for edit column*/
+.table_edit_header{
+    width: 100px;
+}
+
+.table_edit{
+    text-align: center;
+}
+
+.fa-edit{
+    color: #FF0000;
+}
+
+
+#formSubmit{
+    /*text-align: center;*/
+    margin-top: 10px;
+}

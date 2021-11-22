@@ -34,7 +34,7 @@ public class Login extends HttpServlet {
         //from SignUp 
         String checkSignUp = request.getParameter("start");
         if (checkSignUp == null) {
-//            try {
+            try {
                 String email = (String) request.getParameter("email");
                 request.setAttribute("email", email);
                 String password = (String) request.getParameter("password");
@@ -52,16 +52,21 @@ public class Login extends HttpServlet {
                     User user = mapper.readValue(result, User.class);
                     session.setAttribute("user", user);
                     System.out.println("Login successfully");
-                    url = "/manage-course?page=1&maxPageItems=5";
+                    if (user.getRole().getId() == 2) {
+                        url = "/manage-course-user?page=1&maxPageItems=5";
+                    } else if (user.getRole().getId() == 1) {
+                        url = "/manage-course-admin?start=1";
+                    }
                 } else {
                     request.setAttribute("errorMessage", "Email or password is not correct!");
                 }
 
-//        } catch (NullPointerException ex) {
-//            //from other jsp pages
-//            getServletContext().getRequestDispatcher(url).forward(request, response);
-//            return;
-//            
+            } catch (Exception ex) {
+                //from other jsp pages
+                request.setAttribute("errorMessage", "Can't login!");
+                getServletContext().getRequestDispatcher(url).forward(request, response);
+                return;
+            }
         }
         getServletContext().getRequestDispatcher(url).forward(request, response);
     }
