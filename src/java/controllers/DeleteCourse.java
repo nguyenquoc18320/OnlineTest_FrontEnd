@@ -45,7 +45,7 @@ public class DeleteCourse extends HttpServlet {
                     String api_url = APIUtils.getBaseURLAPi() + "course/delete?userid=" + user.getId()
                             + "&courseid=" + courseid;
 
-                    String result = APIUtils.sendPUTRequest(api_url, "");
+                    String result = APIUtils.sendPutRequest(api_url, "");
 
                     if (result != null) {
                         request.setAttribute("deleteMessage", result);

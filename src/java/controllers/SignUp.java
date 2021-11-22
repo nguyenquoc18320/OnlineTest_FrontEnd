@@ -39,6 +39,7 @@ public class SignUp extends HttpServlet {
         String url = "/Views/Pages/User/SignUp.jsp";
 
         //from login 
+ 
         String checkLogin = request.getParameter("start");
         if (checkLogin == null) {
             try {
@@ -87,7 +88,7 @@ public class SignUp extends HttpServlet {
 //                        System.out.println(account);
 
                             //send code to confirm the email
-                            APIUtils.sendGetRequest("http://localhost:8081/signup-code/" + email, false); 
+                            APIUtils.sendGetRequest(APIUtils.getBaseURLAPi()+"signup-code/" + email, false); 
                             
                             url = "/Views/Pages/User/ConfirmSignUpCode.jsp";
                     }

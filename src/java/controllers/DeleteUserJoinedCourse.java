@@ -65,7 +65,7 @@ public class DeleteUserJoinedCourse extends HttpServlet {
                 api_url = APIUtils.getBaseURLAPi() + "join-course/delete?ownerid=" + user.getId()
                         + "&courseid=" + courseid + "&userid=" + joinedUserId ;
                 
-                result = APIUtils.sendPUTRequest(api_url, "");
+                result = APIUtils.sendPutRequest(api_url, "");
                 System.out.println(result);
                 if (result != null) {
                     request.setAttribute("message", result);

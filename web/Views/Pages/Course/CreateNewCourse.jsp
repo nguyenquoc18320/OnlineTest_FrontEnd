@@ -38,6 +38,7 @@
                         <a href="create-course?start=1">Create Course></a>
                     </div>
                     
+
                     <div class='content_wrap'>
                         <form action="create-course" method="POST">
                             <label class='label_title'>Course name:</label>
@@ -56,6 +57,7 @@
                             <c:if test="${not empty errorMessage}">
                                 <p id='errorMessage'><c:out value="${errorMessage}"/></p>
                             </c:if>
+
 
                             <input id="create_button" type='submit' value="CREATE">
                         </form>

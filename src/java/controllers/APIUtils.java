@@ -13,8 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+
 
 /**
  *
@@ -100,7 +99,7 @@ public class APIUtils {
     /*
     send PUT request
      */
-    public static String sendPUTRequest(String api_url, String stringBodyRequest) throws MalformedURLException, IOException {
+    public static String sendPutRequest(String api_url, String stringBodyRequest) throws MalformedURLException, IOException {
         URL url = new URL(api_url);
 
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
