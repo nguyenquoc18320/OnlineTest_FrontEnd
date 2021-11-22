@@ -14,6 +14,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="Views/CSS/login.css" />
+        <link rel="stylesheet" type="text/css" href="Views/CSS/su/login.css" />
         <title>Login</title>
     </head>
     <body>		
@@ -42,10 +43,34 @@
                         <p class="change_link">
                             Not a member yet ?
                             <a href="sign-up?start=1" class="to_register">Join us</a>
-                        </p>
-                    </form>
+                        </p>                     
+                    </form>                       
+                    <button class="open-button" onclick="openForm()">Forget Password</button>
+                    <div class="form-popup" id="myForm">
+                      <form action="pass-login" class="form-container" method="POST">
+                        <h2>Forget Password</h2>
+                        <label for="email"><b>Your Email:</b></label>
+                        <input type="text" placeholder="Enter Email" name="email-forget" required>
+                        <c:if test ="${not empty EmailFogetError}">
+                            <br>
+                            <label class="errorLabel"><c:out value = "${EmailFogetError}"/></label>
+                        </c:if>
+<!--                        <label for="psw"><b>Confirm Code From Your Email:</b></label>
+                        <input type="password" placeholder="Enter Password" name="psw" required>-->
+                        <button type="submit" class="btn">Confirm Code </button>
+                        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                      </form>
+                    </div>
+                    <script>
+                        function openForm() {
+                          document.getElementById("myForm").style.display = "block";
+                        }
+                        function closeForm() {
+                          document.getElementById("myForm").style.display = "none";
+                        }
+                    </script>
                 </div>			
-            </div>
+            </div>                       
         </div>  
     </body>
 </html>

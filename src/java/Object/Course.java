@@ -44,7 +44,6 @@ public class Course extends BaseObject {
         this.status = status;
         this.user = user;
     }
-
     public String getName() {
         return name;
     }

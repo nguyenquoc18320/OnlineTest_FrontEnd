@@ -66,7 +66,7 @@ public class BlockAndUnblockCourse extends HttpServlet {
                             + "&courseid=" + courseid;
                 }
 
-                String result = APIUtils.sendPUTRequest(api_url, "");
+                String result = APIUtils.sendPutRequest(api_url, "");
 
                 if (result != null) {
                     request.setAttribute("blockMessage", result);

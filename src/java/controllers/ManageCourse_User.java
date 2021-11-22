@@ -65,7 +65,7 @@ public class ManageCourse_User extends HttpServlet {
                             + "&limit=" + maxPageItems + "&coursename="+searchName;
                     request.setAttribute("nameForSearch", ""+searchName);
                 } else {
-                    api_url = APIUtils.getBaseURLAPi() + "user-course/" + user.getId() + "?page=" + page
+                    api_url = APIUtils.getBaseURLAPi() + "course/search?userid=" + user.getId() + "&page=" + page
                             + "&limit=" + maxPageItems;
                     
                 }

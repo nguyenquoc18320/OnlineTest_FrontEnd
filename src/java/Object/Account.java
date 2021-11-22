@@ -18,6 +18,11 @@ public class Account extends BaseObject{
         super();
     }   
     
+    public Account(String password, String status) {
+        this.password = password;
+        this.status = status;
+        
+    }
 
     public Account(String password, String status, User user) {
         this.password = password;

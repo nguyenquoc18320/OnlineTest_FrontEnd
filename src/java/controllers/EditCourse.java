@@ -91,7 +91,7 @@ public class EditCourse extends HttpServlet {
 
                             String jsonRequest = mapper.writeValueAsString(course);
 
-                            String result = APIUtils.sendPUTRequest(api_url, jsonRequest);
+                            String result = APIUtils.sendPutRequest(api_url, jsonRequest);
                             System.out.println("Edit course: " + result);
 
                             if (result != null) {

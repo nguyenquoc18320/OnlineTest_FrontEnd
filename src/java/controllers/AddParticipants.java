@@ -69,7 +69,7 @@ public class AddParticipants extends HttpServlet {
 
                     String jsonRequest = mapper.writeValueAsString(emailList);
                     System.out.println("json:: " + jsonRequest);
-                    result = APIUtils.sendPUTRequest(api_url, jsonRequest);
+                    result = APIUtils.sendPutRequest(api_url, jsonRequest);
                     request.setAttribute("result", result);
                     
                     System.out.println("Join course: " + result);
