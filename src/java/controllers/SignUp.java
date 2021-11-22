@@ -51,7 +51,10 @@ public class SignUp extends HttpServlet {
                 String confirmPassword = (String) request.getParameter("confirmPassword");
 
                 //check whether pass and confirmed pass match
-                if (!password.equals(confirmPassword)) {
+                if (password.length()<8){
+                    request.setAttribute("passwordError", "Password must contain at least 8 characters!");
+                }
+                else if (!password.equals(confirmPassword)) {
                     request.setAttribute("confirmPasswordError", "*Confirmed password does NOT match!");
                 } else {
                     //check whether email exits

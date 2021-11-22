@@ -2,11 +2,19 @@
     position: relative;
 }*/
 
+#functionName{
+    color: #00E6E6;
+}
+
 .path_div{
     font-size: 12pt;
     background-color: white;
     margin-left: 20px;
     margin-top:5px;
+}
+
+.path_div a{
+    color: #005566
 }
 
 .content_wrap{

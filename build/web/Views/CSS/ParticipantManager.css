@@ -3,6 +3,10 @@
     position: relative;
 }*/
 
+#functionName{
+    color: #38A448
+}
+
 .path_div{
     font-size: 12pt;
     background-color: white;
@@ -10,11 +14,15 @@
     margin-top:5px;
 }
 
+.path_div a{
+    color: #005566
+}
+
 .content_wrap{
     position: absolute;
     top: 150px;
     left: 30%;
-    font-size: 15pt;
+    font-size: 13pt;
 }
 
 #link_show_participants{
@@ -29,20 +37,55 @@
     background-color: #819FF7;
 }
 
+#btn_participants{
+    border: 5px outset #25A412;
+    border-radius: 10px;
+}
+
+.fa-users{
+    color: #25A412;
+}
+
+#btn_tests{
+    border: 5px inset #C81942;
+border-radius: 10px;
+}
+
+.fa-tasks{
+    color:#C81942;
+}
+
 #link_add_participant{
     float:right;
+    font-size: 15pt;
 }
 
 /*search*/
 #search_button{
     border-radius: 5px;
     color: #0000FF;
+    font-size: 15pt;
+    font-weight: bold;
 }
 
 #search_form{
     margin-top:20px;
 }
 
+.table thead{
+      background: #38A448;
+  background: -moz-linear-gradient(top, #6abb76 0%, #4cad5a 66%, #38A448 100%);
+  background: -webkit-linear-gradient(top, #6abb76 0%, #4cad5a 66%, #38A448 100%);
+  background: linear-gradient(to bottom, #6abb76 0%, #4cad5a 66%, #38A448 100%);
+  border-bottom: 2px solid #444444;
+}
+
+.table thead th{
+      font-size: 15px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
 
 .table_name_header{
     width: 600px;

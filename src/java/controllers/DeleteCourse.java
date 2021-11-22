@@ -6,9 +6,7 @@
 package controllers;
 
 import Object.User;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,54 +18,50 @@ import javax.servlet.http.HttpSession;
  *
  * @author nguye
  */
-@WebServlet(name = "Login", urlPatterns = {"/log-in"})
-public class Login extends HttpServlet {
+@WebServlet(name = "DeleteCourse", urlPatterns = {"/delete-course"})
+public class DeleteCourse extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Views/Pages/User/Login.jsp";
+        String url = "/Views/Pages/Course/EditCourse.jsp";
 
         HttpSession session = request.getSession();
 
-        //from SignUp 
-        String checkSignUp = request.getParameter("start");
-        if (checkSignUp == null) {
-            try {
-                String email = (String) request.getParameter("email");
-                request.setAttribute("email", email);
-                String password = (String) request.getParameter("password");
-                request.setAttribute("password", password);
+        //check whether user logined
+        User user = (User) session.getAttribute("user");
 
-                String api_request = "http://localhost:8081/user/" + email + "/" + password;
+        try {
+            if (user == null) {
+                url = "/Views/Pages/User/Login.jsp";
+            } else {
+                String courseid = request.getParameter("courseid");
 
-                //get response from api
-                String result = APIUtils.sendGetRequest(api_request, true);
-
-                ObjectMapper mapper = new ObjectMapper();
-
-                if (result != null) {
-                    //login successfully
-                    User user = mapper.readValue(result, User.class);
-                    session.setAttribute("user", user);
-                    System.out.println("Login successfully");
-                    if (user.getRole().getId() == 2) {
-                        url = "/manage-course-user?page=1&maxPageItems=5";
-                    } else if (user.getRole().getId() == 1) {
-                        url = "/manage-course-admin?start=1";
-                    }
+                if (courseid == null || courseid.isEmpty()) {
+                    request.setAttribute("errorMessage", "Can't not delete course!");
                 } else {
-                    request.setAttribute("errorMessage", "Email or password is not correct!");
+                    //set api request
+                    String api_url = APIUtils.getBaseURLAPi() + "course/delete?userid=" + user.getId()
+                            + "&courseid=" + courseid;
+
+                    String result = APIUtils.sendPUTRequest(api_url, "");
+
+                    if (result != null) {
+                        request.setAttribute("deleteMessage", result);
+                    } else {
+                        request.setAttribute("deleteMessage", "Can't not delete course!");
+                    }
+
+                    url = "/manage-course-user";
                 }
 
-            } catch (Exception ex) {
-                //from other jsp pages
-                request.setAttribute("errorMessage", "Can't login!");
-                getServletContext().getRequestDispatcher(url).forward(request, response);
-                return;
             }
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+            request.setAttribute("errorMessage", "Can't not delete course!");
         }
+
         getServletContext().getRequestDispatcher(url).forward(request, response);
     }
 

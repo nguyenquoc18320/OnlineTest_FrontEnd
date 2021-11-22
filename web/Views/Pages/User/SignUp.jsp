@@ -18,9 +18,9 @@
     <body>
         <div class="container">         			
             <div id="container_demo" >
-            <div id = "header">
-                <img id = "logo" src="Views/CSS/images/logo1.png" alt="Logo">
-            </div>
+                <div id = "header">
+                    <img id = "logo" src="Views/CSS/images/logo1.png" alt="Logo">
+                </div>
                 <div id="wrapper">
                     <div id="register" class="animate form">
                         <form  action="sign-up" autocomplete="on" method = "POST"> 
@@ -39,7 +39,11 @@
                             </p>
                             <p> 
                                 <label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
-                                <input id="passwordsignup" name="password" required="required" type="password" />
+                                <c:if test ="${not empty passwordError}">
+                                    <br>
+                                    <label class="errorLabel"><c:out value = "${confirmPasswordError}"/></label>
+                                </c:if>
+                                <input id="passwordsignup" name="password" required="required" type="password" minlength="8" />
                             </p>
                             <p> 
                                 <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
@@ -47,7 +51,7 @@
                                     <br>
                                     <label class="errorLabel"><c:out value = "${confirmPasswordError}"/></label>
                                 </c:if>
-                                <input id="passwordsignup_confirm" name="confirmPassword" required="required" type="password" />
+                                <input id="passwordsignup_confirm" name="confirmPassword" required="required" type="password" minlength="8"/>
                                 <c:if test ="${not empty errorMessage}">
                                     <br>
                                     <label class="errorLabel"><c:out value = "${errorMessage}"/></label>

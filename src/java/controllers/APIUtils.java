@@ -84,7 +84,6 @@ public class APIUtils {
             System.out.println("Error: " + code);
             return "error";
         } else {
-            System.out.println("Sucessfull");
 
             try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
                 String response;
@@ -126,7 +125,6 @@ public class APIUtils {
             System.out.println("Error: " + code);
             return "error";
         } else {
-            System.out.println("Sucessfull");
 
             try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
                 String response;

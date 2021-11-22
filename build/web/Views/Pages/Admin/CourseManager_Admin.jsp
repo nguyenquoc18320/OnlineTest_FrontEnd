@@ -14,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="Views/CSS/BaseFormat.css" />
         <!--<link rel="stylesheet" type="text/css" href="Views/CSS/createNewCourse.css" />-->
-        <link rel="stylesheet" type="text/css" href="Views/CSS/CourseManager_Admin.css" />
+        <link rel="stylesheet" type="text/css" href="Views/CSS/Admin/CourseManager_Admin.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
@@ -120,7 +120,7 @@
                                             <tr>
                                                 <td class="table_name"><c:out value="${item.getName()}"/></td>
                                                 <td>
-                                                    <c:out value="${item.getUser().getName()}"/>
+                                                    <a href="user-course-admin?userid=${item.getUser().getId()}" class="authorName"><c:out value="${item.getUser().getName()}"/></a>
                                                 </td>
                                                 <!--check status, for public or private-->
                                                 <td class="table_check_icon">

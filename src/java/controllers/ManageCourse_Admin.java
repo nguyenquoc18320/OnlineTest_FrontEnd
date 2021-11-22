@@ -94,10 +94,9 @@ public class ManageCourse_Admin extends HttpServlet {
                 api_url = api_url + "&blocked=" + "False";
             }
 
-            System.out.println("api " + api_url);
             String result = APIUtils.sendGetRequest(api_url, true);
 
-            System.out.println(result);
+
             if (result != null) {
                 ObjectMapper mapper = new ObjectMapper();
                 EntityPagination<Course> coursePagination = mapper.readValue(result,  new TypeReference<EntityPagination<Course>>(){});

@@ -51,8 +51,8 @@
                     </div>
 
                     <div class='content_wrap'>
-                        <button><a href = "manage-participants?courseid=${course.getId()}" id="link_show_participants">Participants</a></button>
-                        <button> <a href="#" id="link_show_tests">Tests</a></button>
+                        <button id="btn_participants"><a href = "manage-participants?courseid=${course.getId()}" id="link_show_participants"><i class="fa fa-users">Participants</i></a></button>
+                        <button id='btn_tests'> <a href="#" id="link_show_tests"><i class="fa fa-tasks">Test</i></a></button>
                         <br>
                         
                         <form id="search_form" action="manage-participants" method="GET">

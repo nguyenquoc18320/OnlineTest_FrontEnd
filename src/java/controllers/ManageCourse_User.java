@@ -40,15 +40,12 @@ public class ManageCourse_User extends HttpServlet {
         //check whether logining
         if (user == null) {
             url = "/log-in?start=1";
-//            System.out.println("Not found user");
         } 
         else if(user.getRole().getId()==1){
             url = "/manage-course-admin";
         }
         else {
             try {
-//                System.out.println("Page: " + request.getParameter("page") + "\nMax: " + request.getParameter("maxPageItems"));
-//                page for showing
                 int page = 1;
                 int maxPageItems = 5;
                 try {
@@ -61,7 +58,6 @@ public class ManageCourse_User extends HttpServlet {
                 //check whether using search function or not
                 String searchName = request.getParameter("nameForSearch");
                 System.out.println("name: " + searchName);
-//                request.setAttribute("nameForSearch", ""+searchName);
 
                 String api_url = "";
                 if (searchName != null && searchName.length() != 0) {
@@ -73,16 +69,22 @@ public class ManageCourse_User extends HttpServlet {
                             + "&limit=" + maxPageItems;
                     
                 }
-                
-//                System.out.println(api_url);
+             
 
                 String result = APIUtils.sendGetRequest(api_url, true);
 
-//                System.out.println(result);
                 if (result != null) {
                     ObjectMapper mapper = new ObjectMapper();
                     EntityPagination<Course> coursePagination = mapper.readValue(result, new TypeReference<EntityPagination<Course>>(){});
                     request.setAttribute("coursePagination", coursePagination);
+                }
+                
+                
+                //check delete message
+                String deleteMessage = (String)request.getAttribute("deleteMessage");
+                System.out.println("Delete mess: " + deleteMessage);
+                if(deleteMessage != null){
+                    request.setAttribute("deleteMessage", deleteMessage);
                 }
 
             } catch (Exception ex) {

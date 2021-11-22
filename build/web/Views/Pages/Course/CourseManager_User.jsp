@@ -53,23 +53,30 @@
                         <form id="form-search"  action="manage-course-user" method="GET">
                             <input type="text" id='search_input' name="nameForSearch" 
                                    <c:if test="${not empty nameForSearch}">value="<c:out value='${nameForSearch}'/>"</c:if>>
-                            <button type ="submit" id ="search_button"><i class="fa fa-search" ></i></button> 
-                        </form>             
-                        <form id="formSubmit"  action="manage-course-user" method="GET">                      
-                            <table id="course" class="table table-bordered table table-hover" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th class ='table_name_header'>Name</th>
-                                        <th class ='table_public_header'>Public</th>
-                                        <th class ='table_edit_header'></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                                   <button type ="submit" id ="search_button"><i class="fa fa-search" >Search</i></button> 
+                            </form>             
+                            <form id="formSubmit"  action="manage-course-user" method="GET">                      
+                                <table id="course" class="table table-bordered table table-hover" cellspacing="0" width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th class ='table_name_header'>Name</th>
+                                            <th class ='table_public_header'>Public</th>
+                                            <th class ='table_edit_header'></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                     <c:if test="${not empty coursePagination}">
                                         <c:forEach var='item' items='${coursePagination.getEntityList()}'>
                                             <tr>
                                                 <td class="table_name">
-                                                    <a class="course-name" href="detail-course?courseid=${item.getId()}"><c:out value="${item.getName()}"/></a>
+                                                    <c:choose>
+                                                        <c:when test="${item.getBlocked()}">
+                                                            <c:out value="${item.getName()}"/>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <a class="course-name" href="detail-course?courseid=${item.getId()}"><c:out value="${item.getName()}"/></a>
+                                                        </c:otherwise>
+                                                    </c:choose>
                                                 </td>
                                                 <!--check status, for public or private-->
                                                 <td class="table_check_icon">
@@ -79,7 +86,15 @@
                                                 </td>
 
                                                 <td class = "table_edit">
-                                                    <a href="edit-course?start=1&courseid=<c:out value='${item.getId()}'/>" ><i class='fa fa-edit'></i></a>
+                                                    <!--check whether the course is blocked or not-->
+                                                    <c:choose>
+                                                        <c:when test="${item.getBlocked()}">
+                                                            <label>Blocked</label>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <a href="edit-course?start=1&courseid=<c:out value='${item.getId()}'/>" ><i class='fa fa-edit'></i></a>
+                                                            </c:otherwise>
+                                                        </c:choose>
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -98,12 +113,20 @@
         </div>
 
 
+        <script>
+            //delete message
+            var message = "${deleteMessage}";
+            if (message) {
+                alert(message);
+            }
+        </script>
+
         <script type="text/javascript">
             var totalPages = ${coursePagination.getTotalPage()};
             var currentPage = ${coursePagination.getPage()};
             var maxPageItems = 5;
             var searchName = '${nameForSearch}';
-            console.info("currentPage : " +currentPage);
+            console.info("currentPage : " + currentPage);
 //            var limit = 5; //number of items on a page
 //            var currentPage = 1;
             $(function () {

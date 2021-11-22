@@ -6,7 +6,6 @@
 package controllers;
 
 import Object.User;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,58 +19,70 @@ import javax.servlet.http.HttpSession;
  *
  * @author nguye
  */
-@WebServlet(name = "Login", urlPatterns = {"/log-in"})
-public class Login extends HttpServlet {
+@WebServlet(name = "BlockAndUnblockCourse", urlPatterns = {"/block-unblock-course"})
+public class BlockAndUnblockCourse extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Views/Pages/User/Login.jsp";
+        String url = "";
 
         HttpSession session = request.getSession();
 
-        //from SignUp 
-        String checkSignUp = request.getParameter("start");
-        if (checkSignUp == null) {
+        User user = (User) session.getAttribute("user");
+
+        //check whether logining
+        if (user == null || user.getRole().getId() != 1) {
+            url = "/log-in?start=1";
+        } else {
+
+            String userid = request.getParameter("userid");
+            request.setAttribute("userid", userid);
+            url = "/user-course-admin?userid=" + userid;
+            
             try {
-                String email = (String) request.getParameter("email");
-                request.setAttribute("email", email);
-                String password = (String) request.getParameter("password");
-                request.setAttribute("password", password);
+                //block or not
+                String courseid = request.getParameter("courseid");
+//                request.setAttribute("courseid", courseid);
+                boolean blocked = Boolean.parseBoolean(request.getParameter("blocked"));
 
-                String api_request = "http://localhost:8081/user/" + email + "/" + password;
-
-                //get response from api
-                String result = APIUtils.sendGetRequest(api_request, true);
-
-                ObjectMapper mapper = new ObjectMapper();
-
-                if (result != null) {
-                    //login successfully
-                    User user = mapper.readValue(result, User.class);
-                    session.setAttribute("user", user);
-                    System.out.println("Login successfully");
-                    if (user.getRole().getId() == 2) {
-                        url = "/manage-course-user?page=1&maxPageItems=5";
-                    } else if (user.getRole().getId() == 1) {
-                        url = "/manage-course-admin?start=1";
-                    }
+                String api_url = "";
+    
+                if (blocked) {
+                    api_url = APIUtils.getBaseURLAPi() + "course/block?userid=" + user.getId()
+                            + "&courseid=" + courseid;
                 } else {
-                    request.setAttribute("errorMessage", "Email or password is not correct!");
+                    api_url = APIUtils.getBaseURLAPi() + "course/unblock?userid=" + user.getId()
+                            + "&courseid=" + courseid;
                 }
 
+                String result = APIUtils.sendPUTRequest(api_url, "");
+
+                if (result != null) {
+                    request.setAttribute("blockMessage", result);
+                } else {
+                    request.setAttribute("blockMessage", "Error!");
+                }
             } catch (Exception ex) {
-                //from other jsp pages
-                request.setAttribute("errorMessage", "Can't login!");
-                getServletContext().getRequestDispatcher(url).forward(request, response);
-                return;
+                System.out.println(ex.toString());
+//                url = "/user-course-admin?userid=" + userid;
             }
         }
+
         getServletContext().getRequestDispatcher(url).forward(request, response);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
