@@ -33,15 +33,15 @@
                             <div id="form-right">
                                 <p> 
                                     <label for="usernamesignup" class="uname" data-icon="u">Your name</label>
-                                    <input id="nameupdate" name="nameupdate" required="required" type="text" value="<c:out value="${User.getName()}"/>"/>
+                                    <input id="nameupdate" name="nameupdate" required="required" type="text" value="<c:out value="${user.getName()}"/>"/>
                                 </p>
                                 <p> 
                                     <label for="emailsignup" class="youmail" data-icon="e" > Your email</label>
-                                    <input id="emailupdate" name="emailupdate" required="required" type="email" value ="<c:out value="${User.getEmail()}"/>" disabled/>
+                                    <input id="emailupdate" name="emailupdate" required="required" type="email" value ="<c:out value="${user.getEmail()}"/>" disabled/>
                                 </p>
                                 <p> 
                                     <label for="passwordsignup" class="youpasswd" data-icon="p">Your birthday </label>
-                                    <input id="birthupdate" name="birthdate" type="date" required="required" value="<c:out value="${User.getDateOfBirth()}"/>" />
+                                    <input id="birthupdate" name="birthdate" type="date" required="required" value="<c:out value="${user.getDateOfBirth()}"/>" />
                                                                       
                                 </p>
                                 
@@ -49,7 +49,7 @@
                                     <label class="youpasswd" data-icon="p">Your gender </label><br>
                                 </p>
                                 <p class="checkboxupdate">                                    
-                                    <input type="checkbox" id="myCheck" name="gender" alt="<c:out value="${User.getGender()}"/>" value="Male" />
+                                    <input type="checkbox" id="myCheck" name="gender" alt="<c:out value="${user.getGender()}"/>" value="Male" />
                                     <label for="gender1"> Male</label>
                                     <input type="checkbox" id="myCheck2" name="gender" value="Female" style="margin-left: 40px;">
                                     <label for="gender1"> Female</label><br>                                    
@@ -81,8 +81,8 @@
                                 </p>
 
                                 <p class="imageuser">                          
-                                    <img id="img_url" name="img_url" class="fas fa-user-circle" alt="your image" src="uploads/<c:out value="${User.getImage()}"/>" style="width: 100px; height: 100px; margin-left: 50px; margin-top: 20px;"><br>
-                                    <input type="file" id="file" name ="file" accept="image/*" onload="img_pathUrlLoad(<c:out value="${User.getImage()}"/>);" onChange="img_pathUrl(this);">                                        
+                                    <img id="img_url" name="img_url" class="fas fa-user-circle" alt="your image" src="uploads/<c:out value="${user.getImage()}"/>" style="width: 100px; height: 100px; margin-left: 50px; margin-top: 20px;"><br>
+                                    <input type="file" id="file" name ="file" accept="image/*" onload="img_pathUrlLoad(<c:out value="${user.getImage()}"/>);" onChange="img_pathUrl(this);">                                        
                                     <c:if test ="${not empty errorMessageUpdate}">
                                         <br>
                                         <label class="errorLabel"><c:out value = "${errorMessageUpdate}"/></label>

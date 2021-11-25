@@ -15,10 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-<<<<<<< HEAD
-=======
 import javax.servlet.http.HttpSession;
->>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
 
 /**
  *
@@ -42,45 +39,6 @@ public class CreateNewCourse extends HttpServlet {
 
         String url = "/Views/Pages/Course/CreateNewCourse.jsp";
 
-<<<<<<< HEAD
-        //check whether user logined
-        User user = new User();
-        user.setId(Long.parseLong("4"));
-        try {
-            //if start =1, only open the page
-            //start is null, process the requirement
-            if (request.getAttribute("start") == null) {
-                String name = request.getParameter("courseName");
-                String description = request.getParameter("description");
-                boolean status = false;
-
-                if ("public".equals(request.getParameter("status"))) {
-                    status = true;
-                }
-
-                Course course = new Course(name, description, status, user);
-
-                //send to API
-                String api_url = APIUtils.getBaseURLAPi() + "course";
-
-                ObjectMapper mapper = new ObjectMapper();
-                String jsonRequest = mapper.writeValueAsString(course);
-
-                String result = APIUtils.sendPostRequest(api_url, jsonRequest);
-                System.out.println("Create course: " + result);
-
-                if (result != null) {
-                    course = mapper.readValue(result, Course.class);
-                    request.setAttribute("course", course);
-                } else {
-                    request.setAttribute("errorMessage", "Sorry! Can't create your course");
-                }
-            }
-        } catch (Exception ex) {
-
-        }
-
-=======
         HttpSession session = request.getSession();
 
         //check whether user logined
@@ -130,7 +88,6 @@ public class CreateNewCourse extends HttpServlet {
 
             }
         }
->>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
         getServletContext().getRequestDispatcher(url).forward(request, response);
     }
 

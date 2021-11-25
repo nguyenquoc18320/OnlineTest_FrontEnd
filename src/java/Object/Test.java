@@ -13,29 +13,35 @@ public class Test extends BaseObject{
     private String name;
     private String description;
     private int duration;
+    private boolean status;
     private int attemptnumber;
+    private boolean deleted;
     private Course course;
         
     public Test(){
         super();
     }
     
-    public Test(String name, String description, int duration, int attemptnumber, Course course, Long id, Long createdBy, Date createdDate, Long modifiedBy, Date modifiedDate){
+    public Test(String name, String description, int duration, boolean status, int attemptnumber, boolean deleted, Course course, Long id, Long createdBy, Date createdDate, Long modifiedBy, Date modifiedDate){
         super(id, createdBy, createdDate, modifiedBy, modifiedDate);
         this.name = name;
         this.description = description;
         this.duration = duration;
+        this.status = status;
         this.attemptnumber = attemptnumber;
+        this.deleted = deleted;
         this.course = course;
         
     }
     
-    public Test(String name, String description, int duration, int attemptnumber, Course course){
+    public Test(String name, String description, int duration, boolean status, int attemptnumber, boolean deleted, Course course){
         super();
         this.name = name;
         this.description = description;
         this.duration = duration;
+        this.status = status;
         this.attemptnumber = attemptnumber;
+        this.deleted = deleted;
         this.course = course;
         
     }
@@ -62,6 +68,14 @@ public class Test extends BaseObject{
     public void setDuration(int duration) {
         this.duration = duration;
     }
+    
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 
     public int getAttemptnumber() {
         return attemptnumber;
@@ -70,7 +84,15 @@ public class Test extends BaseObject{
     public void setAttemptnumber(int attemptnumber) {
         this.attemptnumber = attemptnumber;
     }
+    
+    public boolean isDeleted() {
+        return deleted;
+    }
 
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+    
     public Course getCourse() {
         return course;
     }

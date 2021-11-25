@@ -27,9 +27,9 @@
                 <img src="Views/CSS/images/logo1.png">
             </div>
             <div class="profile">
-                <img alt="No Image" src="uploads/<c:out value="${User.getImage()}"/>">
-                <p><c:out value=""/>${User.getName()}</p>
-                <p><c:out value=""/>${User.getEmail()}</p>
+                <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                <p><c:out value=""/>${user.getName()}</p>
+                <p><c:out value=""/>${user.getEmail()}</p>
 
             </div>
             <div class="menu">
@@ -37,7 +37,7 @@
                 <button><a href="UserInformation"><i class="fas fa-address-book"></i> My Information</a></button>
                 <button><a href="list-test?start=1"><i class="fas fa-users"></i> Test Courses</a></button>
                 <button><a href="Views/Pages/Test/CreateTest.jsp"><i class="fas fa-book-open"></i> My Test Courses </a></button>
-                <button><a href="add-question?start=1"><i class="fas fa-splotch"></i> Add qs </a></button>
+                <button><a href="add-question?start=1"><i class="fas fa-splotch"></i>Result </a></button>
                 <button><a href=""><i class="fas fa-user"></i> LogOut</a></button>
             </div>
         </div>
@@ -45,8 +45,7 @@
             <div class="nav-bar">
                 <h1>Information</h1>
                 <div class="drop-down" id="drop-down-user">
-                    <a href="account-profile"><button>Update Image</button></a>
-                    <a href="sign-in"><button>Log Out</button></a>
+                    <a href="/Views/Pages/User/Login.jsp"><button>Log Out</button></a>
                 </div>
                 <i class="fas fa-user-circle" onclick="ToggleDropDown('drop-down-user')"></i>
             </div>
@@ -63,19 +62,19 @@
                     <div class="info-profile">
                         <div class="info-detail-profile">
                             <p class="title-info-detail-profile">Name: </p>
-                            <p class="describe">${User.getName()}</p>
+                            <p class="describe">${user.getName()}</p>
                         </div>
                         <div class="info-detail-profile">
                             <p class="title-info-detail-profile">Date of Birth: </p>
-                            <p class="describe">${User.getDateOfBirth()}</p>
+                            <p class="describe">${user.getDateOfBirth()}</p>
                         </div>
                         <div class="info-detail-profile">
                             <p class="title-info-detail-profile">Gender: </p>
-                            <p class="describe">${User.getGender()}</p>
+                            <p class="describe">${user.getGender()}</p>
                         </div>
                         <div class="info-detail-profile">
                             <p class="title-info-detail-profile">Email: </p>
-                            <p class="describe">${User.getEmail()}</p>
+                            <p class="describe">${user.getEmail()}</p>
                         </div>
                         
                     </div>

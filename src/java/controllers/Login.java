@@ -29,14 +29,6 @@ public class Login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String url = "/Views/Pages/User/Login.jsp";
-<<<<<<< HEAD
-        HttpSession session = request.getSession();
-        session.setAttribute("User", null);
-        //from SignUp 
-        String checkSignUp = request.getParameter("start");
-        if (checkSignUp == null) {
-//            try {
-=======
 
         HttpSession session = request.getSession();
 
@@ -44,15 +36,10 @@ public class Login extends HttpServlet {
         String checkSignUp = request.getParameter("start");
         if (checkSignUp == null) {
             try {
->>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
                 String email = (String) request.getParameter("email");
                 request.setAttribute("email", email);
                 String password = (String) request.getParameter("password");
                 request.setAttribute("password", password);
-<<<<<<< HEAD
-            
-=======
->>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
                 String api_request = "http://localhost:8081/user/" + email + "/" + password;
 
                 //get response from api
@@ -63,39 +50,15 @@ public class Login extends HttpServlet {
                 if (result != null) {
                     //login successfully
                     User user = mapper.readValue(result, User.class);
-<<<<<<< HEAD
-                    session.setAttribute("User", user);
-//                    url = "/Views/Pages/Test/CreateTest.jsp";
-//                    url="/create-test?start=1";
-                      url = "/Views/Pages/User/UserInformation.jsp";
-
-                    //url = "/Views/Pages/Course/CreateNewCourse.jsp";
-//                    System.out.println("Login successfully");
-                } else {
-                    request.setAttribute("errorMessage", "Email or password is not correct!");
-                }             
-        
-//        } catch (NullPointerException ex) {
-//            //from other jsp pages
-//            getServletContext().getRequestDispatcher(url).forward(request, response);
-//            return;
-//            } catch (Exception ex) {
-////            System.out.println(ex.toString());
-//                request.setAttribute("errorMessage", "Can't login!");
-//            }
-        }
-        //getServletContext().getRequestDispatcher(url).forward(request, response);
-        
-        RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
-        rd.forward(request, response);
-=======
                     session.setAttribute("user", user);
                     System.out.println("Login successfully");
                     if (user.getRole().getId() == 2) {
                         url = "/manage-course-user?page=1&maxPageItems=5";
                     } else if (user.getRole().getId() == 1) {
-                        url = "/manage-course-admin?start=1";
+//                        url = "/manage-course-admin?start=1";
+                        url= "/Views/Pages/User/UserInformation.jsp";
                     }
+                    
                 } else {
                     request.setAttribute("errorMessage", "Email or password is not correct!");
                 }
@@ -108,7 +71,6 @@ public class Login extends HttpServlet {
             }
         }
         getServletContext().getRequestDispatcher(url).forward(request, response);
->>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

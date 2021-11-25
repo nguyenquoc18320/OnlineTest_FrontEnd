@@ -1,56 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
-    <servlet>
-        <servlet-name>Faces Servlet</servlet-name>
-        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
-    <!--    <servlet>
-        <servlet-name>UpdateInformation</servlet-name>
-        <servlet-class>controllers.UpdateInformation</servlet-class>
-    </servlet>-->
-<!--    <servlet>
-        <servlet-name>UpdateInfor</servlet-name>
-        <servlet-class>controllers.UpdateInfor</servlet-class>
-    </servlet>-->
-    <servlet-mapping>
-        <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>/faces/*</url-pattern>
-    </servlet-mapping>
-    <!--    <servlet-mapping>
-        <servlet-name>UpdateInformation</servlet-name>
-        <url-pattern>/UpdateInformation</url-pattern>
-    </servlet-mapping>-->
-<!--    <servlet-mapping>
-        <servlet-name>UpdateInfor</servlet-name>
-        <url-pattern>/UpdateInfor</url-pattern>
-    </servlet-mapping>-->
-=======
 
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
->>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-<<<<<<< HEAD
-<!--    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="maxUploadSize" value="100000"/>
-    </bean>-->
     <welcome-file-list>
         <welcome-file>/Views/Pages/User/Login.jsp</welcome-file>
     </welcome-file-list>
 
 </web-app>
-=======
-    
-    <welcome-file-list>
-        <welcome-file>/Views/Pages/User/Login.jsp</welcome-file>
-    </welcome-file-list>
-</web-app>
->>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad

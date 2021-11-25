@@ -37,129 +37,117 @@ public class AddQuestion extends HttpServlet {
 //String url = "list-test?start=1";
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("User");
-        Course course = (Course) session.getAttribute("Course");
-        
+//        Course course = (Course) session.getAttribute("Course");
+
         String api_url = APIUtils.getBaseURLAPi();
         ObjectMapper mapper = new ObjectMapper();
-       
+
         String checkSrart = request.getParameter("start");
-        if (checkSrart!=null){
+        if (checkSrart != null) {
+            String courseidupdate = request.getParameter("courseid");
+            String courseupdate = APIUtils.sendGetRequest(api_url + "course/" + courseidupdate, true);
+            System.out.println("Result course: " + courseupdate);
+            Course course = mapper.readValue(courseupdate, Course.class);
+            request.setAttribute("Course", course);
             String testidQ = request.getParameter("testid");
-            if( testidQ == null){
+            if (testidQ == null) {
                 url = "list-test?start=1";
-            }else{
-                String resultTest = APIUtils.sendGetRequest("http://localhost:8081/test/" + testidQ, true);
+            } else {
+                String resultTest = APIUtils.sendGetRequest(api_url + "test/" + testidQ, true);
                 //String resultCourse = APIUtils.sendGetRequest("http://localhost:8082/course/" + courseQ, true);
                 Test test1 = mapper.readValue(resultTest, Test.class);
 //                Course course = mapper.readValue(resultCourse, Course.class);
 //                System.out.println("Result test we: " + test1);
-                String resultListQuestion =  APIUtils.sendGetRequest(api_url+"/test-question/" + testidQ, true);
+                String resultListQuestion = APIUtils.sendGetRequest(api_url + "/test-question/" + testidQ, true);
                 List<Question> listQuestion = mapper.readValue(resultListQuestion, new TypeReference<List<Question>>() {
                 });
                 if (test1 != null) {
-                    session.setAttribute("Test", test1);
+                    request.setAttribute("Test", test1);
                     request.setAttribute("listQuestion", listQuestion);
                     System.out.println("Result list: " + listQuestion);
                     request.setAttribute("totalQuestion", listQuestion.size());
                     System.out.println("Result total: " + listQuestion.size());
-                    if(listQuestion == null){
+                    if (listQuestion == null) {
                         request.setAttribute("errorMessage", "You need add question!");
                     }
-                }else{
+                } else {
                     request.setAttribute("errorMessage", "Error!!");
                 }
             }
 
-        }
-        else{
+        } else {
             System.out.println("error start: ");
         }
-        
 
 //        try {
-            if (checkSrart==null) {
-                Test test = (Test)session.getAttribute("Test");
-                System.out.println("test 2: " + test);
+        if (checkSrart == null) {
+            String testid = request.getParameter("testid");
+//                System.out.println("Result1: " + testidupdate);
+            String resultTest = APIUtils.sendGetRequest(APIUtils.getBaseURLAPi() + "test/" + testid, true);
+            Test test = mapper.readValue(resultTest, Test.class);
+            System.out.println("test 2: " + test);
 //                List<Answer> answers = new ArrayList<Answer>();
-                int number = 1;
-                while(number > 0){
-                    System.out.println("number: "+ number);
-                    String numberQuestion = request.getParameter("intput_question_number_" + number);
-                    if(numberQuestion != null){
-                        int numberQuestion2 = Integer.valueOf(numberQuestion);
-                        System.out.println("number: "+ numberQuestion);
-                        String content = request.getParameter("contentQuestion1");
-                        String a = request.getParameter("a_question"+number);
-                        String b = request.getParameter("b_question"+number);
-                        String c = request.getParameter("C_question"+number);
-                        String d = request.getParameter("D_question"+number);
-                        String e = request.getParameter("E_question"+number);
-                        String f = request.getParameter("F_question"+number);
-                        String g = request.getParameter("G_question"+number);
-                        String h = request.getParameter("H_question"+number);
-                        String i = request.getParameter("I_question"+number);
-                        String j = request.getParameter("J_question"+number);
-                        String correctquestion = request.getParameter("correctQ"+number);
+            int number = 1;
+            int totalQuestion = 0;
+            while (number > 0) {
+                System.out.println("number: " + number);
+                String numberQuestion = request.getParameter("intput_question_number_" + number);
+                if (numberQuestion != null) {
+                    int numberQuestion2 = Integer.valueOf(numberQuestion);
+                    System.out.println("number: " + numberQuestion);
+                    String content = request.getParameter("contentQuestion" + number);
+                    String a = request.getParameter("a_question" + number);
+                    String b = request.getParameter("b_question" + number);
+                    String c = request.getParameter("C_question" + number);
+                    String d = request.getParameter("D_question" + number);
+                    String e = request.getParameter("E_question" + number);
+                    String f = request.getParameter("F_question" + number);
+                    String g = request.getParameter("G_question" + number);
+                    String h = request.getParameter("H_question" + number);
+                    String i = request.getParameter("I_question" + number);
+                    String j = request.getParameter("J_question" + number);
+                    String correctquestion = request.getParameter("correctQ" + number);
 
-                        Question question = new Question(numberQuestion2, correctquestion,content, a, b, c, d, e, f, g, h, i, j, test);
-                        //Answer answer = new Answer(correctquestion, question);
-                        String jsonRequest = mapper.writeValueAsString(question);
-                        String resultcreate = APIUtils.sendPostRequest("http://localhost:8081/question", jsonRequest);
-                        if(resultcreate == null){
+                    Question question = new Question(numberQuestion2, correctquestion, content, a, b, c, d, e, f, g, h, i, j, false, test);
+                    String jsonRequest = mapper.writeValueAsString(question);
+                    // Check Question exist
+                    String checkQuestionExist = APIUtils.sendGetRequest(APIUtils.getBaseURLAPi() + "question-exist/" + test.getId() + "/" + numberQuestion2, true);
+                    if (checkQuestionExist == null) {// add new question
+                        String resultcreate = APIUtils.sendPostRequest(APIUtils.getBaseURLAPi() + "question", jsonRequest);
+                        System.out.println("Create Question: " + resultcreate);
+                        if (resultcreate == null) {
                             request.setAttribute("errorMessage", "Sorry! Can't create your question");
                         }
-                        number=number+1;
-                    }else{
-                        number = -1;
+                    } else { // update Quetion
+                        String resultupdate = APIUtils.sendPutRequest(APIUtils.getBaseURLAPi() + "question", jsonRequest);
+                        System.out.println("update Question: " + resultupdate);
+                        if (resultupdate == null) {
+                            request.setAttribute("errorMessage", "Sorry! Can't update your question");
+                        }
                     }
-
+                    totalQuestion = totalQuestion + 1;
+                    number = number + 1;
+                } else {
+                    number = -1;
                 }
-                url = "list-test?start=1";
-                
-//                System.out.println("Create question: " + resultcreate);
 
-//                if (resultcreate == null) {
-//                    request.setAttribute("errorMessage", "Sorry! Can't create your course");
-//                    System.out.println("resultcreate: null  ");
-//                }
-//                else{
-//                    url = "list-test?start=1";
-//                    System.out.println("resultcreate: ok  ");
-//                }
-                
             }
-//        } catch (Exception ex) {
-//            //System.out.println("test question erron: " + test);
-//                int numberQuestion = Integer.valueOf(request.getParameter("intput_question_number_1"));
-//                Test test = (Test)session.getAttribute("Test");
-//                String content = request.getParameter("contentQuestion1");
-//                String a = request.getParameter("a_question1");
-//                String b = request.getParameter("b_question1");
-//                String c = request.getParameter("C_question1");
-//                String d = request.getParameter("D_question1");
-//                String e = request.getParameter("E_question1");
-//                String f = request.getParameter("F_question1");
-//                String g = request.getParameter("G_question1");
-//                String h = request.getParameter("H_question1");
-//                String i = request.getParameter("I_question1");
-//                String j = request.getParameter("J_question1");
-//                String correctquestion = request.getParameter("correctQ1");
-//                    
-//                Question question = new Question(numberQuestion, content, a, b, c, d, e, f, g, h, i, j, test);
-//                Answer answer = new Answer(correctquestion, question);   
-//                String jsonRequest = mapper.writeValueAsString(answer);
-//                //String resultcreate = APIUtils.sendPostRequest("http://localhost:8082/question", jsonRequest);
-//                String resultcreate = APIUtils.sendPostRequest("http://localhost:8082/question-answer", jsonRequest);
-//                System.out.println("Create question: " + resultcreate);
-//
-//                if (resultcreate == null) {
-//                    request.setAttribute("errorMessage", "Sorry! Can't create your course");
-//                }
-//                else{
-//                    url = "list-test?start=1";
-//                }
-//        }
-        
+            System.out.println("Tong: " + totalQuestion);
+            //delete question
+            String resultListQuestion = APIUtils.sendGetRequest(api_url + "/test-question/" + testid, true);
+            List<Question> listQuestion = mapper.readValue(resultListQuestion, new TypeReference<List<Question>>() {
+            });
+            for (int i = listQuestion.size(); i > totalQuestion; i--) {
+                String resultdelete = APIUtils.sendPutRequest(APIUtils.getBaseURLAPi() + "delete-question/"+testid + "/" + i, "");
+                System.out.println("Delete Question: " + resultdelete);
+                if (resultdelete == null) {
+                    request.setAttribute("errorMessage", "Sorry! Can't delete your question");
+                    break;
+                }
+            }
+            url = "list-test?start=1";
+        }
+
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

@@ -2,11 +2,7 @@
     position: relative;
 }*/
 
-<<<<<<< HEAD
-.content_wrap{
-    position: absolute;
-    top: 200px;
-=======
+
 #functionName{
     color: #00E6E6;
 }
@@ -25,7 +21,6 @@
 .content_wrap{
     position: absolute;
     top: 150px;
->>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
     left: 30%;
     font-size: 15pt;
 }

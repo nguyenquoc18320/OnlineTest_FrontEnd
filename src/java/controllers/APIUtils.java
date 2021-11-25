@@ -13,12 +13,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-<<<<<<< HEAD
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-=======
-
->>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
 
 /**
  *
@@ -72,13 +66,8 @@ public class APIUtils {
         con.setRequestProperty("Accept", "application/json");
         con.setRequestProperty("content-type", "application/json");
         con.setRequestProperty("Accept-Charset", "UTF-8");
-<<<<<<< HEAD
-        
-         con.setDoOutput(true);
-=======
 
         con.setDoOutput(true);
->>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
 
         try (OutputStream os = con.getOutputStream()) {
             byte[] input = stringBodyRequest.getBytes("utf-8");
@@ -93,10 +82,6 @@ public class APIUtils {
             System.out.println("Error: " + code);
             return "error";
         } else {
-<<<<<<< HEAD
-            System.out.println("Sucessfull");
-=======
->>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
 
             try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
                 String response;
@@ -109,11 +94,6 @@ public class APIUtils {
         }
         return null;
     }
-<<<<<<< HEAD
-    public static String sendPutRequest(String api_url, String stringBodyRequest) throws MalformedURLException, IOException {
-        //post
-        URL url = new URL(api_url);
-=======
 
     /*
     send PUT request
@@ -121,22 +101,15 @@ public class APIUtils {
     public static String sendPutRequest(String api_url, String stringBodyRequest) throws MalformedURLException, IOException {
         URL url = new URL(api_url);
 
->>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("PUT");
 
         con.setRequestProperty("Accept", "application/json");
         con.setRequestProperty("content-type", "application/json");
         con.setRequestProperty("Accept-Charset", "UTF-8");
-<<<<<<< HEAD
-        
-         con.setDoOutput(true);
-
-=======
 
         con.setDoOutput(true);
         
->>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
         try (OutputStream os = con.getOutputStream()) {
             byte[] input = stringBodyRequest.getBytes("utf-8");
             os.write(input, 0, input.length);
@@ -150,10 +123,6 @@ public class APIUtils {
             System.out.println("Error: " + code);
             return "error";
         } else {
-<<<<<<< HEAD
-            System.out.println("Sucessfull");
-=======
->>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
 
             try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()))) {
                 String response;

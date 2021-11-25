@@ -32,17 +32,17 @@
                 <img src="Views/CSS/images/logo1.png">
             </div>
             <div class="profile">
-                <img alt="No Image" src="uploads/<c:out value="${User.getImage()}"/>">
-                <p><c:out value=""/>${User.getName()}</p>
-                <p><c:out value=""/>${User.getEmail()}</p>
+                <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                <p><c:out value=""/>${user.getName()}</p>
+                <p><c:out value=""/>${user.getEmail()}</p>
 
             </div>
             <div class="menu">
                 <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
-                <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
-                <button><a href=""><i class="fas fa-users"></i> Test Courses</a></button>
-                <button><a href=""><i class="fas fa-book-open"></i> My Test Courses </a></button>
-                <button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>
+                <button><a href="UserInformation"><i class="fas fa-address-book"></i> My Information</a></button>
+                <button><a href="list-test?start=1"><i class="fas fa-users"></i> Test Courses</a></button>
+                <button><a href="Views/Pages/Test/CreateTest.jsp"><i class="fas fa-book-open"></i> My Test Courses </a></button>
+                <button><a href="add-question?start=1"><i class="fas fa-splotch"></i>Result </a></button>
                 <button><a href=""><i class="fas fa-user"></i> LogOut</a></button>
             </div>
         </div>
@@ -61,8 +61,10 @@
                             <label for="listourse" class="label_test" data-icon="u" >Course: </label>                           
                             <select name="listourse" class="cbb_listcourse">                               
                                 <c:forEach items="${courseList}" var="Course">
-                                    <option value="${Course.id}"
-                                            <c:if test="${Course.id eq 0}">selected="selected"</c:if>
+                                    <option value="${Course.id}" 
+                                            <c:set var="courseid" value="${Course.id}"/>
+                                            <c:set var="coursecurrent" value="${CourseCurrent.id}"/>
+                                            <c:if test="${courseid eq coursecurrent}">selected="selected"</c:if>
                                                 >
                                             ${Course.name}
                                     </option>
