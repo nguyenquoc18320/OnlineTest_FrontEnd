@@ -38,25 +38,23 @@
                 <img src="Views/CSS/images/logo1.png">
             </div>
             <div class="profile">
-                <img alt="No Image" src="uploads/<c:out value="${User.getImage()}"/>">
-                <p><c:out value=""/>${User.getName()}</p>
-                <p><c:out value=""/>${User.getEmail()}</p>
+                <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                <p><c:out value=""/>${user.getName()}</p>
+                <p><c:out value=""/>${user.getEmail()}</p>
 
             </div>
             <div class="menu">
                 <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
-                <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
-                <button><a href=""><i class="fas fa-users"></i> Test Courses</a></button>
-                <button><a href=""><i class="fas fa-book-open"></i> My Test Courses </a></button>
-                <button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>
-                <button><a href=""><i class="fas fa-user"></i> LogOut</a></button>
+                <button><a href="UserInformation"><i class="fas fa-address-book"></i> My Information</a></button>
+                <button><a href="list-test?start=1"><i class="fas fa-users"></i> Test Courses</a></button>
+                <button><a href="Views/Pages/Test/CreateTest.jsp"><i class="fas fa-book-open"></i> My Test Courses </a></button>
+                <button><a href="add-question?start=1"><i class="fas fa-splotch"></i>Result </a></button>
+                <button><a href=""><i class="fas fa-user"></i> LogOut</a></button>>
             </div>
         </div>
         <div class="wrapped">
             <div class="nav-bar">
                 <h1>List of Tests of the Course</h1>
-<!--
-                Course course = (Course) session.getAttribute("courselist");-->
                 <div class="drop-down" id="drop-down-user">
                     <a href="log-in"><button>Log Out</button></a>
                 </div>
@@ -78,15 +76,15 @@
                                 <p id="list-descrip" >Duration: <c:out value="${item.getDuration()}"/> (minutes)</p>
                                 <p id="list-descrip"> Attempt number: <c:out value="${item.getAttemptnumber()}"/> </p>
                                 <p style="display: inline;">
-                                    <a id="questiontest" name="questiontest" href="add-question?testid=<c:out value="${item.getId()}&start=1"/>" >Question</a>
-                                    <a id="updatetest" name="updatetest" href="update-test?testid=<c:out value="${item.getId()}"/>&start=1" >Update</a>
-                                    <a id="deletetest" name="deletetest" >Delete</a>  
+                                    <a id="questiontest" name="questiontest" href="add-question?courseid=<c:out value="${Course.getId()}"/>&testid=<c:out value="${item.getId()}&start=1"/>" >Question</a>
+                                    <a id="updatetest" name="updatetest" href="update-test?courseid=<c:out value="${Course.getId()}"/>&testid=<c:out value="${item.getId()}"/>&start=1" >Update</a>
+                                    <a id="deletetest" name="deletetest" href="delete-test?courseid=<c:out value="${Course.getId()}"/>&testid=<c:out value="${item.getId()}"/>" >Delete</a>  
                                 </p>
                             </div>
                         </c:forEach>                        
                     </div>
                     <div class="buttton-new-test">
-                        <a href="create-test" ><input type="button" id="addquestion" class="newquestion" value="New Test"></a>                        
+                        <a href="create-test?courseid=<c:out value="${Course.getId()}"/>&start=1" ><input type="button" id="addquestion" class="newquestion" value="New Test"></a>                        
                     </div>
                 </div>
             </div>

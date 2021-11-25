@@ -27,7 +27,7 @@ public class UserInformation extends HttpServlet{
 
         String url = "/Views/Pages/User/UserInformation.jsp";
         HttpSession session = request.getSession();
-        User user = (User)session.getAttribute("User");
+        User user = (User)session.getAttribute("user");
         
         RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
         rd.forward(request, response);

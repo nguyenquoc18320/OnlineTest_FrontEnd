@@ -9,7 +9,10 @@
             30
         </session-timeout>
     </session-config>
+<<<<<<< HEAD
+=======
     
+>>>>>>> e69e54f (commit)
     <welcome-file-list>
         <welcome-file>/Views/Pages/User/Login.jsp</welcome-file>
     </welcome-file-list>

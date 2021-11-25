@@ -32,7 +32,7 @@
                             <div id="form-right">
                                 <p> 
                                     <label for="emailchange" class="youmail" data-icon="e" > Your email</label>
-                                    <input id="emailchange" name="emailchange" required="required" type="email" value ="<c:out value="${User.getEmail()}"/>" disabled/>
+                                    <input id="emailchange" name="emailchange" required="required" type="email" value ="<c:out value="${user.getEmail()}"/>" disabled/>
                                 </p>
                                 <p> 
                                     <label for="passwordchange_old" class="youpasswd" data-icon="p">New old password </label>

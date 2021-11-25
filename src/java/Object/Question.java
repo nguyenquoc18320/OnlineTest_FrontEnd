@@ -12,12 +12,12 @@ import java.util.List;
  *
  * @author PhanSu
  */
-public class Question extends BaseObject{
+public class Question extends BaseObject {
 
     private int questionnumber;
 
-    private String correctanswer ;
-    
+    private String correctanswer;
+
     private String content;
 
     private String optionA;
@@ -40,54 +40,62 @@ public class Question extends BaseObject{
 
     private String optionJ;
 
+    private boolean deleted;
+
     private Test test;
-	
+
     private List<User> users;
+
     public Question() {
         super();
     }
-    
-    public Question(Long id, Long createdBy, Date createdDate, Long modifiedBy, Date modifiedDate, int questionnumber, String correctanswer, String content, String optionA, String optionB, String optionC, String optionD, String optionE, String optionF, String optionG, String optionH, String optionI, String optionJ, Test test) {
-            super(id, createdBy, createdDate, modifiedBy, modifiedDate);
-            this.questionnumber = questionnumber;
-            this.correctanswer = correctanswer;
-            this.content = content;
-            this.optionA = optionA;
-            this.optionB = optionB;
-            this.optionC = optionC;
-            this.optionD = optionD;
-            this.optionE = optionE;
-            this.optionF = optionF;
-            this.optionG = optionG;
-            this.optionH = optionH;
-            this.optionI = optionI;
-            this.optionJ = optionJ;
-            this.test = test;
+
+    public Question(Long id, Long createdBy, Date createdDate, Long modifiedBy, Date modifiedDate, int questionnumber, String correctanswer, String content, String optionA, String optionB, String optionC, String optionD, String optionE, String optionF, String optionG, String optionH, String optionI, String optionJ, boolean deleted, Test test) {
+        super(id, createdBy, createdDate, modifiedBy, modifiedDate);
+        this.questionnumber = questionnumber;
+        this.correctanswer = correctanswer;
+        this.content = content;
+        this.optionA = optionA;
+        this.optionB = optionB;
+        this.optionC = optionC;
+        this.optionD = optionD;
+        this.optionE = optionE;
+        this.optionF = optionF;
+        this.optionG = optionG;
+        this.optionH = optionH;
+        this.optionI = optionI;
+        this.optionJ = optionJ;
+        this.deleted = deleted;
+        this.test = test;
     }
-    public Question(int questionnumber, String correctanswer, String content, String optionA, String optionB, String optionC, String optionD, String optionE, String optionF, String optionG, String optionH, String optionI, String optionJ, Test test) {
-            super();
-            this.questionnumber = questionnumber;
-            this.correctanswer = correctanswer;
-            this.content = content;
-            this.optionA = optionA;
-            this.optionB = optionB;
-            this.optionC = optionC;
-            this.optionD = optionD;
-            this.optionE = optionE;
-            this.optionF = optionF;
-            this.optionG = optionG;
-            this.optionH = optionH;
-            this.optionI = optionI;
-            this.optionJ = optionJ;
-            this.test = test;
+
+    public Question(int questionnumber, String correctanswer, String content, String optionA, String optionB, String optionC, String optionD, String optionE, String optionF, String optionG, String optionH, String optionI, String optionJ, boolean deleted, Test test) {
+        super();
+        this.questionnumber = questionnumber;
+        this.correctanswer = correctanswer;
+        this.content = content;
+        this.optionA = optionA;
+        this.optionB = optionB;
+        this.optionC = optionC;
+        this.optionD = optionD;
+        this.optionE = optionE;
+        this.optionF = optionF;
+        this.optionG = optionG;
+        this.optionH = optionH;
+        this.optionI = optionI;
+        this.optionJ = optionJ;
+        this.deleted = deleted;
+        this.test = test;
     }
-	
+
     public int getQuestionnumber() {
-            return questionnumber;
+        return questionnumber;
     }
+
     public void setQuestionnumber(int questionnumber) {
-            this.questionnumber = questionnumber;
+        this.questionnumber = questionnumber;
     }
+
     public String getCorrectanswer() {
         return correctanswer;
     }
@@ -97,77 +105,108 @@ public class Question extends BaseObject{
     }
 
     public String getContent() {
-            return content;
+        return content;
     }
+
     public void setContent(String content) {
-            this.content = content;
+        this.content = content;
     }
+
     public String getOptionA() {
-            return optionA;
+        return optionA;
     }
+
     public void setOptionA(String optionA) {
-            this.optionA = optionA;
+        this.optionA = optionA;
     }
+
     public String getOptionB() {
-            return optionB;
+        return optionB;
     }
+
     public void setOptionB(String optionB) {
-            this.optionB = optionB;
+        this.optionB = optionB;
     }
+
     public String getOptionC() {
-            return optionC;
+        return optionC;
     }
+
     public void setOptionC(String optionC) {
-            this.optionC = optionC;
+        this.optionC = optionC;
     }
+
     public String getOptionD() {
-            return optionD;
+        return optionD;
     }
+
     public void setOptionD(String optionD) {
-            this.optionD = optionD;
+        this.optionD = optionD;
     }
+
     public String getOptionE() {
-            return optionE;
+        return optionE;
     }
+
     public void setOptionE(String optionE) {
-            this.optionE = optionE;
+        this.optionE = optionE;
     }
+
     public String getOptionF() {
-            return optionF;
+        return optionF;
     }
+
     public void setOptionF(String optionF) {
-            this.optionF = optionF;
+        this.optionF = optionF;
     }
+
     public String getOptionG() {
-            return optionG;
+        return optionG;
     }
+
     public void setOptionG(String optionG) {
-            this.optionG = optionG;
+        this.optionG = optionG;
     }
+
     public String getOptionH() {
-            return optionH;
+        return optionH;
     }
+
     public void setOptionH(String optionH) {
-            this.optionH = optionH;
+        this.optionH = optionH;
     }
+
     public String getOptionI() {
-            return optionI;
+        return optionI;
     }
+
     public void setOptionI(String optionI) {
-            this.optionI = optionI;
+        this.optionI = optionI;
     }
+
     public String getOptionJ() {
-            return optionJ;
+        return optionJ;
     }
+
     public void setOptionJ(String optionJ) {
-            this.optionJ = optionJ;
+        this.optionJ = optionJ;
     }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
     public Test getTest() {
-            return test;
+        return test;
     }
 //    public void setTest(Test test) {
 //            this.test = test;
 //    }
+
     public List<User> getUsers() {
         return users;
     }

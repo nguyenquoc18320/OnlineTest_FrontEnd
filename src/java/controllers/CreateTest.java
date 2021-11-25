@@ -35,56 +35,63 @@ public class CreateTest extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = "/Views/Pages/Test/CreateTest.jsp";
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("User");
-        Course course = (Course)session.getAttribute("Course");
-        try {
-            //check whether email exits
-            String result = APIUtils.sendGetRequest("http://localhost:8081/course-by-user/" + user.getId(), true);
-
-            ObjectMapper mapper = new ObjectMapper();
-            List<Course> courseList = mapper.readValue(result, new TypeReference<List<Course>>() {
-            });
-//            System.out.println("Result course: " + courseList);
-            if (courseList != null) {
-                request.setAttribute("courseList", courseList);
-            }
-            RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-            dispatcher.forward(request, response);
-
-        } catch (Exception ex) {
-            request.setAttribute("errorMessage", "Can't load course!");
-        }
-        
-        try {
-            //if start =1, only open the page
-            //start is null, process the requirement
-            if (request.getAttribute("start") == null) {
-                String couresid = request.getParameter("listourse");
-                String name = request.getParameter("testname");
-                String description = request.getParameter("description");
-                int duration = Integer.valueOf(request.getParameter("duration"));
-                int attempt = Integer.valueOf(request.getParameter("attempt"));
-                String api_url = APIUtils.getBaseURLAPi();
-                //get course                
-                String result = APIUtils.sendGetRequest(api_url + "course/"+couresid, true);
-                System.out.println("Course ID: " + couresid);
-                ObjectMapper mapper = new ObjectMapper();
-                Course courseresult = mapper.readValue(result, Course.class);
-                Test test = new Test(name, description, duration, attempt, courseresult);
-                
-                //create
-                String jsonRequest = mapper.writeValueAsString(test);
-
-                String resultcreate = APIUtils.sendPostRequest(api_url+ "test", jsonRequest);
-                System.out.println("Create test: " + resultcreate);
-
-                if (resultcreate == null) {
-                    request.setAttribute("errorMessage", "Sorry! Can't create your course");
+        User user = (User) session.getAttribute("user");
+         ///tam
+        String api_url = APIUtils.getBaseURLAPi();
+        ObjectMapper mapper = new ObjectMapper();
+        String checkSrart = request.getParameter("start");
+        if (checkSrart!=null){
+            try {
+                String courseidupdate = request.getParameter("courseid");
+                String courseupdate = APIUtils.sendGetRequest(api_url + "course/"+ courseidupdate, true);
+                System.out.println("Result course: " + courseupdate);
+                Course course = mapper.readValue(courseupdate, Course.class);
+                String result = APIUtils.sendGetRequest(api_url+"course-by-user/" + user.getId(), true);
+                List<Course> courseList = mapper.readValue(result, new TypeReference<List<Course>>() {
+                });
+                if (courseList != null) {
+                    request.setAttribute("courseList", courseList);
+                    request.setAttribute("CourseCurrent", course);
                 }
+            } catch (Exception ex) {
+                request.setAttribute("errorMessage", "Can't load list course!");
             }
-        } catch (Exception ex) {
-
         }
+        if (checkSrart==null){
+            try {
+                //if start =1, only open the page
+                //start is null, process the requirement
+                if (request.getAttribute("start") == null) {
+                    String couresid = request.getParameter("listourse");
+                    String name = request.getParameter("testname");
+                    String description = request.getParameter("description");
+                    int duration = Integer.valueOf(request.getParameter("duration"));
+                    int attempt = Integer.valueOf(request.getParameter("attempt"));
+                    //get course                
+                    String result = APIUtils.sendGetRequest(api_url + "course/"+couresid, true);
+                    System.out.println("Course ID: " + couresid);
+                    Course courseresult = mapper.readValue(result, Course.class);
+                    Test test = new Test(name, description, duration, true, attempt, false, courseresult);
+
+                    //create
+                    String jsonRequest = mapper.writeValueAsString(test);
+
+                    String resultcreate = APIUtils.sendPostRequest(api_url+ "test", jsonRequest);
+                    System.out.println("Create test: " + resultcreate);
+
+                    if (resultcreate == null) {
+                        request.setAttribute("errorMessage", "Sorry! Can't create your test");
+                    }else{
+                       Test testcurrent = mapper.readValue(resultcreate, Test.class);
+                        url = "add-question?courseid="+courseresult.getId()+"&testid="+testcurrent.getId()+"&start=1";
+                    }
+                }
+            } catch (Exception ex) {
+                request.setAttribute("errorMessage", "Sorry! Can't create your test");
+            }
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+                dispatcher.forward(request, response);
 //        getServletContext().getRequestDispatcher(url).forward(request, response);
     }
 

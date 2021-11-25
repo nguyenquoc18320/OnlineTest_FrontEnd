@@ -32,7 +32,7 @@ and open the template in the editor.
 .sm-profiletest{
     position: relative;
     top: 1px;
-    margin-left: 75%;
+    margin-left: 60%;
 }
 .sm-profiletest input{
     color: #FFDD99;
@@ -63,7 +63,7 @@ and open the template in the editor.
     font-style: normal;
     font-variant: normal;
     text-transform: none;
-    background: #CCCCCC;
+    background: #4cad5a;
     margin-right: 50px;
 }
 
