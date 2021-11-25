@@ -18,9 +18,15 @@
     <body>
         <div class="container">         			
             <div id="container_demo" >
+<<<<<<< HEAD
             <div id = "header">
                 <img id = "logo" src="Views/CSS/images/logo1.png" alt="Logo">
             </div>
+=======
+                <div id = "header">
+                    <img id = "logo" src="Views/CSS/images/logo1.png" alt="Logo">
+                </div>
+>>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
                 <div id="wrapper">
                     <div id="register" class="animate form">
                         <form  action="sign-up" autocomplete="on" method = "POST"> 
@@ -39,7 +45,15 @@
                             </p>
                             <p> 
                                 <label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
+<<<<<<< HEAD
                                 <input id="passwordsignup" name="password" required="required" type="password" />
+=======
+                                <c:if test ="${not empty passwordError}">
+                                    <br>
+                                    <label class="errorLabel"><c:out value = "${confirmPasswordError}"/></label>
+                                </c:if>
+                                <input id="passwordsignup" name="password" required="required" type="password" minlength="8" />
+>>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
                             </p>
                             <p> 
                                 <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
@@ -47,7 +61,11 @@
                                     <br>
                                     <label class="errorLabel"><c:out value = "${confirmPasswordError}"/></label>
                                 </c:if>
+<<<<<<< HEAD
                                 <input id="passwordsignup_confirm" name="confirmPassword" required="required" type="password" />
+=======
+                                <input id="passwordsignup_confirm" name="confirmPassword" required="required" type="password" minlength="8"/>
+>>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
                                 <c:if test ="${not empty errorMessage}">
                                     <br>
                                     <label class="errorLabel"><c:out value = "${errorMessage}"/></label>
@@ -66,4 +84,8 @@
             </div>  
         </div>
     </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+>>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad

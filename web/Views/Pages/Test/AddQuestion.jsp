@@ -217,7 +217,13 @@
                     int total = 1;
                     
                 %>
+<<<<<<< HEAD
                 
+=======
+                <%%>
+
+
+>>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
                 <%for (int i = 1; i < totalQuestion; i++) {%>
 
                     <%Question questionQ = listQ.get(i);%>

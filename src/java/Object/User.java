@@ -48,6 +48,17 @@ public class User extends BaseObject{
         this.image = image;
     }
     
+<<<<<<< HEAD
+=======
+        public User(String name, String gender, Date dateOfBirth, String email, Role role) {
+        this.name = name;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this.email = email;
+        this.role = role;
+    }
+    
+>>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
     
     public String getName() {
         return name;
@@ -77,6 +88,13 @@ public class User extends BaseObject{
         return email;
     }
 
+<<<<<<< HEAD
+=======
+    public void setEmail(String email) {
+        this.email = email;
+    }  
+
+>>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
     public String getImage() {
         return image;
     }

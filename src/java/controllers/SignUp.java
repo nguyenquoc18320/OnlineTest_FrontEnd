@@ -37,6 +37,11 @@ public class SignUp extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         String url = "/Views/Pages/User/SignUp.jsp";
+<<<<<<< HEAD
+=======
+
+        //from login 
+>>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
  
         String checkLogin = request.getParameter("start");
         if (checkLogin == null) {
@@ -50,7 +55,14 @@ public class SignUp extends HttpServlet {
                 String confirmPassword = (String) request.getParameter("confirmPassword");
 
                 //check whether pass and confirmed pass match
+<<<<<<< HEAD
                 if (!password.equals(confirmPassword)) {
+=======
+                if (password.length()<8){
+                    request.setAttribute("passwordError", "Password must contain at least 8 characters!");
+                }
+                else if (!password.equals(confirmPassword)) {
+>>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
                     request.setAttribute("confirmPasswordError", "*Confirmed password does NOT match!");
                 } else {
                     //check whether email exits
@@ -83,7 +95,11 @@ public class SignUp extends HttpServlet {
 //                        System.out.println(account);
 
                             //send code to confirm the email
+<<<<<<< HEAD
                             APIUtils.sendGetRequest("http://localhost:8082/signup-code/" + email, false); 
+=======
+                            APIUtils.sendGetRequest(APIUtils.getBaseURLAPi()+"signup-code/" + email, false); 
+>>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
                             
                             url = "/Views/Pages/User/ConfirmSignUpCode.jsp";
                     }

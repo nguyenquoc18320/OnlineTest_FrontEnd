@@ -1,0 +1,64 @@
+/*.content{
+    position: relative;
+}*/
+
+.path_div{
+    font-size: 12pt;
+    background-color: white;
+    margin-left: 20px;
+    margin-top:5px;
+}
+
+.path_div a{
+    color: #005566
+}
+
+.content_wrap{
+    position: absolute;
+    top: 200px;
+    left: 30%;
+    font-size: 15pt;
+}
+
+.label_title{
+    margin-top:20px;
+    display: inline-block;
+    width: 150px;
+    float: top;
+}
+
+.text_input{
+    width: 600px;
+    font-size: 15pt;
+    margin-top:20px;
+    vertical-align: top;
+}
+
+.content_wrap textarea{
+    height: 100px;
+}
+
+.div_btn{
+    float:right; 
+}
+
+#btn_delete{
+    font-size: 20pt;
+    font-weight: bold;
+    border: 5px inset #FB1332;
+    border-radius: 10px;
+    background-color: white;
+    color: #C00F26;
+}
+
+#create_button{
+    font-size: 20pt;
+    font-weight: bold;
+    border: 5px outset rgba(19,24,192,0.81);
+    border-radius: 10px;
+    color: #1015A6;
+}
+
+#infoMessage{
+    color: #3ADF00;
+}

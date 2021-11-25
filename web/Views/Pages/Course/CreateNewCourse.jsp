@@ -33,6 +33,15 @@
                     </div>
                 </div>
                 <div class='content'>
+<<<<<<< HEAD
+=======
+                    <div class ="path_div">
+                        <a href="manage-course-user?page=1&maxPageItems=5">My Course></a>
+                        <a href="create-course?start=1">Create Course></a>
+                    </div>
+                    
+
+>>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
                     <div class='content_wrap'>
                         <form action="create-course" method="POST">
                             <label class='label_title'>Course name:</label>
@@ -47,11 +56,20 @@
                             <label>Private</label>
                             <input type="radio"  name="status" value="public">
                             <label >Public</label><br>
+<<<<<<< HEAD
                             
                             <c:if test="${not empty errorMessage}">
                                 <p id='errorMessage'><c:out value="${errorMessage}"/></p>
                             </c:if>
                             
+=======
+
+                            <c:if test="${not empty errorMessage}">
+                                <p id='errorMessage'><c:out value="${errorMessage}"/></p>
+                            </c:if>
+
+
+>>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
                             <input id="create_button" type='submit' value="CREATE">
                         </form>
                     </div>

@@ -6,6 +6,10 @@
 package controllers;
 
 import Object.Account;
+<<<<<<< HEAD
+=======
+import Object.Role;
+>>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
 import Object.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
@@ -16,6 +20,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
+=======
+import javax.servlet.http.HttpSession;
+>>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
 
 @WebServlet(name = "ConfirmSignUpCode", urlPatterns = {"/confirm-signup-code"})
 public class ConfirmSignUpCode extends HttpServlet {
@@ -26,6 +34,11 @@ public class ConfirmSignUpCode extends HttpServlet {
 
         String url = "/Views/Pages/User/ConfirmSignUpCode.jsp";
 
+<<<<<<< HEAD
+=======
+        HttpSession session = request.getSession();
+
+>>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
         String name = request.getParameter("name");
         request.setAttribute("name", name);
         String email = request.getParameter("email");
@@ -43,12 +56,18 @@ public class ConfirmSignUpCode extends HttpServlet {
                     + (String) request.getParameter("number5")
                     + (String) request.getParameter("number6");
 
+<<<<<<< HEAD
             User user = new User(name, null, null, email);
+=======
+            Role role = new Role(2L, "User");
+            User user = new User(name, null, null, email, role);
+>>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
             Account account = new Account(password, "1", user);
 
             //send http request to create new user
             ObjectMapper mapper = new ObjectMapper();
             String jsonRequest = mapper.writeValueAsString(account);
+<<<<<<< HEAD
             String result = APIUtils.sendPostRequest("http://localhost:8081/account/"+code, jsonRequest);
 
             System.out.print("Ket qua:" +result);
@@ -58,6 +77,27 @@ public class ConfirmSignUpCode extends HttpServlet {
                 System.out.print(account);
                 //sign up successfully
             }else {
+=======
+            String result = APIUtils.sendPostRequest("http://localhost:8081/account/" + code, jsonRequest);
+
+            System.out.print("Ket qua:" + result);
+
+            if (result != null) {
+                account = mapper.readValue(result, Account.class);
+                System.out.print(account);
+                user = account.getUser();
+                session.setAttribute("user", user);
+
+                //check role
+                if (user.getRole().getId() == 1) {
+
+//                url = "/Views/"
+                } else {
+                    url = "/manage-course-user?page=1&limit=5";
+                }
+                //sign up successfully
+            } else {
+>>>>>>> 81084ff77a23dc37be7bde4d50b27bfe139d48ad
                 //sign up successfully
                 request.setAttribute("errorMessage", "The code is incorrect!");
             }
