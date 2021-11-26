@@ -55,8 +55,10 @@ public class Login extends HttpServlet {
                     if (user.getRole().getId() == 2) {
                         url = "/manage-course-user?page=1&maxPageItems=5";
                     } else if (user.getRole().getId() == 1) {
-                        url = "/manage-course-admin?start=1";
+//                        url = "/manage-course-admin?start=1";
+                        url= "/Views/Pages/User/UserInformation.jsp";
                     }
+                    
                 } else {
                     request.setAttribute("errorMessage", "Email or password is not correct!");
                 }

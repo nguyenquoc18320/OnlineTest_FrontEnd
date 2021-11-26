@@ -39,7 +39,7 @@ public class ChangePassword extends HttpServlet {
         String url = "/Views/Pages/User/ChangePassword.jsp";
 
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("User");
+        User user = (User) session.getAttribute("user");
         
         String oldPassword = (String) request.getParameter("passwordold");
         request.setAttribute("passwordold", oldPassword);

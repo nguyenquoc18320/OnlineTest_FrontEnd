@@ -43,26 +43,22 @@ public class ListTestOfCourse extends HttpServlet {
         
         String url = "/Views/Pages/Test/ListTestOfCourse.jsp";
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("User");
-        
+        User user = (User) session.getAttribute("user");        
         ///Tempt 
         String api_url = APIUtils.getBaseURLAPi();            
-        String resultcourse = APIUtils.sendGetRequest(api_url + "course/1", true);
-//        System.out.println("Result: " + resultcourse);
         ObjectMapper mapper = new ObjectMapper();
-        Course course = mapper.readValue(resultcourse, Course.class);
-        session.setAttribute("Course", course);
         try {
             //check whether email exits
-            String result = APIUtils.sendGetRequest("http://localhost:8081/test-course/" + course.getId(), true);
-//            System.out.println("Result2: " + result);
-//            ObjectMapper mapper = new ObjectMapper();
+            String resultcourse = APIUtils.sendGetRequest(api_url + "course/3", true);
+            System.out.println("Result course: " + resultcourse);
+            Course course = mapper.readValue(resultcourse, Course.class);
+            String result = APIUtils.sendGetRequest(APIUtils.getBaseURLAPi()+ "test-course/" + course.getId(), true);
+            System.out.println("Result list: " + result);
             List<Test> testList = mapper.readValue(result, new TypeReference<List<Test>>() {
-            });
-            
+            });          
             if (testList != null) {
                 request.setAttribute("testList", testList);
-//                System.out.println("Result listTest: " + testList);
+                request.setAttribute("Course", course);
             }
             RequestDispatcher dispatcher = request.getRequestDispatcher(url);
             dispatcher.forward(request, response);

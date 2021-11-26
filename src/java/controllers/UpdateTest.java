@@ -43,32 +43,28 @@ public class UpdateTest extends HttpServlet {
 
         String url = "/Views/Pages/Test/UpdateTest.jsp";
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("User");
+        User user = (User) session.getAttribute("user");
 
         ///tam
         String api_url = APIUtils.getBaseURLAPi();
-        String resultcourse = APIUtils.sendGetRequest(api_url + "course/" + 1, true);
         ObjectMapper mapper = new ObjectMapper();
-        Course course = mapper.readValue(resultcourse, Course.class);
-         String checkSrart = request.getParameter("start");
+        String checkSrart = request.getParameter("start");
         if (checkSrart!=null){
             try {
-    //            Object myObject = new Object();
-    //            myObject = request.getAttribute("testid");
-    //            System.out.println("Result1: " + myObject);
+                String courseidupdate = request.getParameter("courseid");
+                String courseupdate = APIUtils.sendGetRequest(api_url + "course/"+ courseidupdate, true);
+                System.out.println("Result course: " + courseupdate);
+                Course course = mapper.readValue(courseupdate, Course.class);
                 String testidupdate = request.getParameter("testid");
-//                System.out.println("Result1: " + testidupdate);
-                String resultTest = APIUtils.sendGetRequest("http://localhost:8081/test/" + testidupdate, true);
-                String resultListCourse = APIUtils.sendGetRequest("http://localhost:8081/course-by-user/" + user.getId(), true);
+                String resultTest = APIUtils.sendGetRequest(APIUtils.getBaseURLAPi()+ "test/" + testidupdate, true);
+                String resultListCourse = APIUtils.sendGetRequest( APIUtils.getBaseURLAPi() + "course-by-user/" + user.getId(), true);
                 Test test = mapper.readValue(resultTest, Test.class);
                 List<Course> courseList = mapper.readValue(resultListCourse, new TypeReference<List<Course>>() {
                 });
-    //            System.out.println("Result course: " + courseList);
                 if (courseList != null) {
                     request.setAttribute("courseList", courseList);
                     request.setAttribute("Test", test);
                     request.setAttribute("CourseUpdate", course);
-    //                System.out.println("Result course: " + course);
                 }
             } catch (Exception ex) {
                 request.setAttribute("errorMessage", "Can't load course!");
@@ -80,14 +76,11 @@ public class UpdateTest extends HttpServlet {
             String description = request.getParameter("description");
             int duration = Integer.valueOf(request.getParameter("duration"));
             int attempt = Integer.valueOf(request.getParameter("attempt"));
-            
             //get course                
             String result = APIUtils.sendGetRequest(api_url + "course/" + couresid, true);
             Course courseresult = mapper.readValue(result, Course.class);
-             Test testupdate = new Test(name, description, duration, attempt, courseresult);
-             //create
+            Test testupdate = new Test(name, description, duration, true, attempt, false, courseresult);
             String jsonRequest = mapper.writeValueAsString(testupdate);
-//            Test t1 = (Test)request.getAttribute("testupdate");
             int testid = Integer.valueOf(request.getParameter("testid"));
             String resultcreate = APIUtils.sendPutRequest(api_url + "test/"+testid, jsonRequest);
             System.out.println("Update test: " + resultcreate);

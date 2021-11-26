@@ -31,18 +31,18 @@
                 <img src="Views/CSS/images/logo1.png">
             </div>
             <div class="profile">
-                <img alt="No Image" src="uploads/<c:out value="${User.getImage()}"/>">
-                <p><c:out value=""/>${User.getName()}</p>
-                <p><c:out value=""/>${User.getEmail()}</p>
+                <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                <p><c:out value=""/>${user.getName()}</p>
+                <p><c:out value=""/>${user.getEmail()}</p>
 
             </div>
 
             <div class="menu">
                 <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
                 <button><a href="UserInformation"><i class="fas fa-address-book"></i> My Information</a></button>
-                <button><a href="list-test?start=1"><i class="fas fa-users"></i> My Tests</a></button>
-                <button><a href="Views/Pages/Test/CreateTest.jsp"><i class="fas fa-book-open"></i> My Courses </a></button>
-                <button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>
+                <button><a href="list-test?start=1"><i class="fas fa-users"></i> Test Courses</a></button>
+                <button><a href="Views/Pages/Test/CreateTest.jsp"><i class="fas fa-book-open"></i> My Test Courses </a></button>
+                <button><a href="add-question?start=1"><i class="fas fa-splotch"></i>Result </a></button>
                 <button><a href=""><i class="fas fa-user"></i> LogOut</a></button>
             </div>
         </div>
@@ -54,7 +54,7 @@
                 </div>
                 <i class="fas fa-user-circle"></i>
             </div>
-            <form  action="add-question" method="POST"> 
+            <form  action="add-question?testid=<c:out value="${Test.getId()}"/>" method="POST"> 
                 <div id="content" class="content"> 
                     <h2 class="h2-aq">${Course.getName()}</h2>
                     <h3 class="he-aq">${Test.getName()}</h3>
@@ -91,8 +91,10 @@
                             <input type="button" id="addoption_question1" class="addoption" onclick="RemoveOption(1)"  value="Remove">
                             <input type="button" id="minusoptionplus_question1" class="minusoptionplus"  onclick="AddOption(1)" value="Add">
                         </div>
-
-
+                        
+                        <% Test testnow = (Test) request.getAttribute("Test");
+                            request.setAttribute("testupdate", testnow);
+                        %>
                         <script>
 
                             var totalOptions = 10;
@@ -215,54 +217,55 @@
                     List<Question> listQ = (List<Question>) request.getAttribute("listQuestion");
                     int totalQuestion = (int) request.getAttribute("totalQuestion");
                     int total = 1;
-                    
+                    if(totalQuestion>0){%>
+                        RemoveQuestion();
+                        questionList[1] = 0;
+                    <%}
                 %>
-                <%%>
 
+                <%for (int i = 1; i <= totalQuestion; i++) {%>
 
-                <%for (int i = 1; i < totalQuestion; i++) {%>
-
-                    <%Question questionQ = listQ.get(i);%>
+                    <%Question questionQ = listQ.get(i-1);%>
                     NewQuestion();
                     
-                    document.getElementById('contentQuestion' + '<%=i+1%>').innerHTML = '<c:out value="<%=questionQ.getContent()%>"/>';
-                    document.getElementById('a_question' + '<%=i+1%>').value = '<c:out value="<%=questionQ.getOptionA()%>"/>';
-                    document.getElementById('b_question' + '<%=i+1%>').value = '<c:out value="<%=questionQ.getOptionB()%>"/>';
+                    document.getElementById('contentQuestion' + '<%=i%>').innerHTML = '<c:out value="<%=questionQ.getContent()%>"/>';
+                    document.getElementById('a_question' + '<%=i%>').value = '<c:out value="<%=questionQ.getOptionA()%>"/>';
+                    document.getElementById('b_question' + '<%=i%>').value = '<c:out value="<%=questionQ.getOptionB()%>"/>';
 
                     if(<%=questionQ.getOptionC() != null %>){
-                      document.getElementById('minusoptionplus_question'+'<%=i+1%>').click();
-                      document.getElementById('C_question' + '<%=i+1%>').value = '<c:out value="<%=questionQ.getOptionC()%>"/>';
+                      document.getElementById('minusoptionplus_question'+'<%=i%>').click();
+                      document.getElementById('C_question' + '<%=i%>').value = '<c:out value="<%=questionQ.getOptionC()%>"/>';
                     }
                     if(<%=questionQ.getOptionD() != null %>){
-                      document.getElementById('minusoptionplus_question'+'<%=i+1%>').click();
-                      document.getElementById('D_question' + '<%=i+1%>').value = '<c:out value="<%=questionQ.getOptionD()%>"/>';
+                      document.getElementById('minusoptionplus_question'+'<%=i%>').click();
+                      document.getElementById('D_question' + '<%=i%>').value = '<c:out value="<%=questionQ.getOptionD()%>"/>';
                     }
                     if(<%=questionQ.getOptionE() != null %>){
-                      document.getElementById('minusoptionplus_question'+'<%=i+1%>').click();
-                      document.getElementById('E_question' + '<%=i+1%>').value = '<c:out value="<%=questionQ.getOptionE()%>"/>';
+                      document.getElementById('minusoptionplus_question'+'<%=i%>').click();
+                      document.getElementById('E_question' + '<%=i%>').value = '<c:out value="<%=questionQ.getOptionE()%>"/>';
                     }
                     if(<%=questionQ.getOptionF() != null %>){
-                      document.getElementById('minusoptionplus_question'+'<%=i+1%>').click();
-                      document.getElementById('F_question' + '<%=i+1%>').value = '<c:out value="<%=questionQ.getOptionF()%>"/>';
+                      document.getElementById('minusoptionplus_question'+'<%=i%>').click();
+                      document.getElementById('F_question' + '<%=i%>').value = '<c:out value="<%=questionQ.getOptionF()%>"/>';
                     }
                     if(<%=questionQ.getOptionG() != null %>){
-                      document.getElementById('minusoptionplus_question'+'<%=i+1%>').click();
-                      document.getElementById('G_question' + '<%=i+1%>').value = '<c:out value="<%=questionQ.getOptionG()%>"/>';
+                      document.getElementById('minusoptionplus_question'+'<%=i%>').click();
+                      document.getElementById('G_question' + '<%=i%>').value = '<c:out value="<%=questionQ.getOptionG()%>"/>';
                     }
                     if(<%=questionQ.getOptionH() != null %>){
-                      document.getElementById('minusoptionplus_question'+'<%=i+1%>').click();
-                      document.getElementById('H_question' + '<%=i+1%>').value = '<c:out value="<%=questionQ.getOptionH()%>"/>';
+                      document.getElementById('minusoptionplus_question'+'<%=i%>').click();
+                      document.getElementById('H_question' + '<%=i%>').value = '<c:out value="<%=questionQ.getOptionH()%>"/>';
                     }
                     if(<%=questionQ.getOptionI() != null %>){
-                      document.getElementById('minusoptionplus_question'+'<%=i+1%>').click();
-                      document.getElementById('I_question' + '<%=i+1%>').value = '<c:out value="<%=questionQ.getOptionI()%>"/>';
+                      document.getElementById('minusoptionplus_question'+'<%=i%>').click();
+                      document.getElementById('I_question' + '<%=i%>').value = '<c:out value="<%=questionQ.getOptionI()%>"/>';
                     }
                     if(<%=questionQ.getOptionJ() != null %>){
-                      document.getElementById('minusoptionplus_question'+'<%=i+1%>').click();
-                      document.getElementById('J_question' + '<%=i+1%>').value = '<c:out value="<%=questionQ.getOptionJ()%>"/>';
+                      document.getElementById('minusoptionplus_question'+'<%=i%>').click();
+                      document.getElementById('J_question' + '<%=i%>').value = '<c:out value="<%=questionQ.getOptionJ()%>"/>';
                     }
                     
-                    selectElement('correctQ'+<%=i+1%>,'<%=(String)questionQ.getCorrectanswer()%>');
+                    selectElement('correctQ'+<%=i%>,'<%=(String)questionQ.getCorrectanswer()%>');
 
                 <% }%>
 
@@ -434,7 +437,7 @@
                             break;
                         }
                     }
-                    if (removeQuestion < 2)
+                    if (removeQuestion < 1)
                     {
                         alert("Unable to continue deleting Question  !!");
                         return;
