@@ -5,15 +5,8 @@
  */
 package controllers;
 
-import Object.Course;
-import Object.Test;
-import Object.User;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,52 +16,19 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author PhanSu
+ * @author nguye
  */
-@WebServlet(name = "ListTestOfCourse", urlPatterns = {"/list-test"})
-public class ListTestOfCourse extends HttpServlet {
+@WebServlet(name = "LogOut", urlPatterns = {"/log-out"})
+public class LogOut extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        String url = "/Views/Pages/Test/ListTestOfCourse.jsp";
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");        
-        ///Tempt 
-        String api_url = APIUtils.getBaseURLAPi();            
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            //check whether email exits
-            String resultcourse = APIUtils.sendGetRequest(api_url + "course/3", true);
-            System.out.println("Result course: " + resultcourse);
-            Course course = mapper.readValue(resultcourse, Course.class);
-            String result = APIUtils.sendGetRequest(APIUtils.getBaseURLAPi()+ "test-course/" + course.getId(), true);
-            System.out.println("Result list: " + result);
-            List<Test> testList = mapper.readValue(result, new TypeReference<List<Test>>() {
-            });          
-            if (testList != null) {
-                request.setAttribute("testList", testList);
-                request.setAttribute("Course", course);
-            }
-            RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-            dispatcher.forward(request, response);
-
-        } catch (Exception ex) {
-//            request.setAttribute("errorMessage", "Can't load course!");
-        }
-
-        getServletContext().getRequestDispatcher(url).forward(request, response);
         
+      getServletContext().getRequestDispatcher("/log-in?start=1").forward(request, response);
+      
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

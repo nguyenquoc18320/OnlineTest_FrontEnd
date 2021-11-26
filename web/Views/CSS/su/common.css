@@ -35,25 +35,25 @@ a{
     padding: 20px;
 }
 
-    .footer .small-container{
-        display: flex;
-        flex-wrap: wrap;
-    }
+.footer .small-container{
+    display: flex;
+    flex-wrap: wrap;
+}
 
 
-    .footer .small-container ul{
-        list-style-type: none;
-        padding-left: 15px;
-    }
+.footer .small-container ul{
+    list-style-type: none;
+    padding-left: 15px;
+}
 
-    .footer .small-container .icon-logo{
-        background: url("../Images/logo.png") no-repeat;
-        background-size: 240px 120px;
-        background-position: center;
-        height: 150px;
-        width: 250px;
-        cursor: pointer;
-    }
+.footer .small-container .icon-logo{
+    background: url("../Images/logo.png") no-repeat;
+    background-size: 240px 120px;
+    background-position: center;
+    height: 150px;
+    width: 250px;
+    cursor: pointer;
+}
 
 .info-member{
     display: flex;

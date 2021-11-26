@@ -63,12 +63,12 @@ and open the template in the editor.
     border: 1px solid #000;
     margin-top: 30px;
     margin-bottom: 25px;
-    
+
 }
 
 .introduce-profile.lagre{
     width: 80%;
-    
+
 }
 
 
@@ -397,31 +397,31 @@ a{
 
 .logo{
 }
-    .logo img{
-        width: 100%;
-    }
+.logo img{
+    width: 100%;
+}
 .profile{
     height: 300px;
 }
 
-    .profile img{
-        margin-top: 20px;
-        height: 50%;
-        border: 4px solid #18FFFF;
-        border-radius: 12px;
-        padding: 3px;
-    }
+.profile img{
+    margin-top: 20px;
+    height: 50%;
+    border: 4px solid #18FFFF;
+    border-radius: 12px;
+    padding: 3px;
+}
 
-    .profile :nth-child(2){
-        font-size: 28px;
-        font-weight: bold;
-    }
+.profile :nth-child(2){
+    font-size: 28px;
+    font-weight: bold;
+}
 
-    .profile :nth-child(3){
-        font-size: 16px;
-        font-weight: bold;
-/*        color: #fff;*/
-    }
+.profile :nth-child(3){
+    font-size: 16px;
+    font-weight: bold;
+    /*        color: #fff;*/
+}
 
 .menu{
     display: flex;
@@ -462,7 +462,7 @@ a{
 .nav-bar h1{
     font-size: 30px;
     margin-left: 40px;
-    
+
 }
 
 .nav-bar i{
@@ -507,37 +507,37 @@ a{
     justify-content: center;
 }
 
-    input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { 
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        margin: 0;  
-    }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;  
+}
 
-    .pagination input{
-       text-align: center;
-       width: 40px;
-       margin: 0 20px;
-    }
+.pagination input{
+    text-align: center;
+    width: 40px;
+    margin: 0 20px;
+}
 
-    .pagination i{
-        font-size: 20px;
-        padding: 0 20px;
-        cursor: pointer;
-    }
-    
-    .btnApprove , .btnCancel{
-        padding: 2px 4px;
-        color: #fff;
-        border: 1px solid #000;
-    }
-    
-    .btnApprove {
-        background: #31B404;
-        margin-right: 10px;
-    }
-    
-    .btnCancel{
-        background: #B40404;
-    }
+.pagination i{
+    font-size: 20px;
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+.btnApprove , .btnCancel{
+    padding: 2px 4px;
+    color: #fff;
+    border: 1px solid #000;
+}
+
+.btnApprove {
+    background: #31B404;
+    margin-right: 10px;
+}
+
+.btnCancel{
+    background: #B40404;
+}

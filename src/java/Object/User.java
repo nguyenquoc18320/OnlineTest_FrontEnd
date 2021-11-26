@@ -60,6 +60,10 @@ public class User extends BaseObject{
     public String getName() {
         return name;
     }
+    
+        public String getUserName() {
+        return name;
+    }
 
     public void setName(String name) {
         this.name = name;

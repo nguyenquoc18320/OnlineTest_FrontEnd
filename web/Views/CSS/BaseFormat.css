@@ -25,7 +25,7 @@ body, html
     width: 280px;
     height: 100%;
     float: left;
-    background-color: aqua;
+    /*background-color: aqua;*/
 }
 
 #logo{
@@ -35,7 +35,6 @@ body, html
 }
 
 #div_functionName{
-
 
     width: 100%;
     height: 100%;
@@ -62,15 +61,21 @@ body, html
     width: 280px; /* kích thước chiều rộng của vùng thanh bên */
     float: left; /* canh div từ trái sang */
     height: 100%;
-    background-color: lightgreen; /* tạo màu để dễ nhìn */
+    /*background-color: #FF6D00;  tạo màu để dễ nhìn*/ 
+}
+
+.profile{
+    background-color: #FFE0B2;
 }
 
 .user_info{
     width: 100%; /* kích thước chiều rộng của vùng thanh bên */
     float: top; /* canh div từ trái sang */
     height: 150px;
-    background-color: chocolate; /* tạo màu để dễ nhìn */
+    background-color: #FFE0B2; /* tạo màu để dễ nhìn */
 }
+
+
 
 .content
 {

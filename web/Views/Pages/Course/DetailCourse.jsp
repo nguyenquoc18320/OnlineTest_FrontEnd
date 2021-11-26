@@ -51,7 +51,7 @@
 
                     <div class='content_wrap'>
                        <button id="btn_participants"><a href = "manage-participants?courseid=${course.getId()}" id="link_show_participants"><i class="fa fa-users">Participants</i></a></button>
-                        <button id='btn_tests'> <a href="#" id="link_show_tests"><i class="fa fa-tasks">Test</i></a></button>
+                       <button id='btn_tests'> <a href="list-test?courseid=${course.getId()}" id="link_show_tests"><i class="fa fa-tasks">Test</i></a></button>
                         
                         <c:if test="${not empty errorMessage}">
                         <br><label id="errorMessage"><c:out value="${errorMessage}"/></label> 
