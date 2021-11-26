@@ -26,7 +26,7 @@ public class LogOut extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         HttpSession session = request.getSession();
-        
+        session.setAttribute("user", null);
       getServletContext().getRequestDispatcher("/log-in?start=1").forward(request, response);
       
     }
