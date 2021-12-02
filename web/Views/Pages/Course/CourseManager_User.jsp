@@ -26,8 +26,6 @@
         <title>My course</title>
     </head>
     <body>
-
-
         <div class='wrap'>
             <div id = 'header'><!--Header includes the logo and name of function-->
                 <div id='div_logo'>
@@ -48,7 +46,7 @@
                     <div class="menu">
                         <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
                         <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
-                        <button><a href=""><i class="fas fa-users"></i> Test Courses</a></button>
+                        <button><a href="attended-course"><i class="fas fa-users"></i>Attended Courses</a></button>
                         <button><a href="manage-course-user"><i class="fas fa-book-open"></i> My Test Courses </a></button>
                         <button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>
                         <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>

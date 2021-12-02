@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package Object;
-import java.sql.Date;
+
+import java.util.Date;
+
 /**
  *
  * @author PhanSu
@@ -14,6 +16,8 @@ public class Test extends BaseObject{
     private String description;
     private int duration;
     private boolean status;
+    private Date start;
+    private Date end;
     private int attemptnumber;
     private boolean deleted;
     private Course course;
@@ -96,9 +100,22 @@ public class Test extends BaseObject{
     public Course getCourse() {
         return course;
     }
-//
-//    public void setCourse(Course course) {
-//        this.course = course;
-//    }
+
+    public Date getStart() {
+        return start;
+    }
+
+    public void setStart(Date start) {
+        this.start = start;
+    }
+
+    public Date getEnd() {
+        return end;
+    }
+
+    public void setEnd(Date end) {
+        this.end = end;
+    }
 	
+    
 }

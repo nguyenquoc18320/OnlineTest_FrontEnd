@@ -48,8 +48,8 @@ public class ListTestOfCourse extends HttpServlet {
         String api_url = APIUtils.getBaseURLAPi();            
         ObjectMapper mapper = new ObjectMapper();
         try {
-            //check whether email exits
-            String resultcourse = APIUtils.sendGetRequest(api_url + "course/3", true);
+            String courseid = request.getParameter("courseid");
+            String resultcourse = APIUtils.sendGetRequest(api_url + "course/" + courseid, true);
             System.out.println("Result course: " + resultcourse);
             Course course = mapper.readValue(resultcourse, Course.class);
             String result = APIUtils.sendGetRequest(APIUtils.getBaseURLAPi()+ "test-course/" + course.getId(), true);

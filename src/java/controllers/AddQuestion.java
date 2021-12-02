@@ -51,7 +51,7 @@ public class AddQuestion extends HttpServlet {
             request.setAttribute("Course", course);
             String testidQ = request.getParameter("testid");
             if (testidQ == null) {
-                url = "list-test?start=1";
+                url = "list-test?start=1"+ "&courseid=" + course.getId();
             } else {
                 String resultTest = APIUtils.sendGetRequest(api_url + "test/" + testidQ, true);
                 //String resultCourse = APIUtils.sendGetRequest("http://localhost:8082/course/" + courseQ, true);
@@ -145,7 +145,7 @@ public class AddQuestion extends HttpServlet {
                     break;
                 }
             }
-            url = "list-test?start=1";
+            url = "list-test?start=1&courseid=" + test.getCourse().getId();
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
