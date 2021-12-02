@@ -18,8 +18,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import sun.security.util.Length;
-
 /**
  *
  * @author nguye
@@ -38,7 +36,7 @@ public class ManageCourse_User extends HttpServlet {
         User user = (User) session.getAttribute("user");
 
         //check whether logining
-        if (user == null) {
+        if (user == null) {        
             url = "/log-in?start=1";
         } 
         else if(user.getRole().getId()==1){
@@ -82,7 +80,6 @@ public class ManageCourse_User extends HttpServlet {
                 
                 //check delete message
                 String deleteMessage = (String)request.getAttribute("deleteMessage");
-                System.out.println("Delete mess: " + deleteMessage);
                 if(deleteMessage != null){
                     request.setAttribute("deleteMessage", deleteMessage);
                 }

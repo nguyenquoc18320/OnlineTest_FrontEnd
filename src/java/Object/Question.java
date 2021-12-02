@@ -6,6 +6,8 @@
 package Object;
 
 import java.sql.Date;
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -213,5 +215,22 @@ public class Question extends BaseObject {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public List<String> getAnswerList() {
+        List<String> ansList = new ArrayList<>();
+
+        ansList.add(this.optionA);
+        ansList.add(this.optionB);
+        ansList.add(this.optionC);
+        ansList.add(this.optionD);
+        ansList.add(this.optionE);
+        ansList.add(this.optionF);
+        ansList.add(this.optionG);
+        ansList.add(this.optionH);
+        ansList.add(this.optionI);
+        ansList.add(this.optionJ);
+
+        return ansList;
     }
 }

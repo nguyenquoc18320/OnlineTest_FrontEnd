@@ -1,0 +1,165 @@
+
+/*
+*/
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    /*height: 100%;*/
+    width: 100%;
+    background-color: #FF6D00;
+
+}
+
+.menu button{
+    padding: 20px 50px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    /*background-color: #FF6D00;*/
+    background-color: transparent;
+    text-align: left;
+}
+
+
+.menu button:hover{
+    background-color: #FFAB40;
+    color: #fff;
+}
+
+.menu i{
+    font-size: 20px;
+    color: black;
+}
+
+.menu a{
+    color: black;
+}
+
+
+/*
+profile
+*/
+
+.profile{
+    height: 200px;
+    width: 100%;
+    text-align: center
+}
+
+.profile img{
+    margin-top: 20px;
+    /*height: 50%;*/
+    border: 4px solid #18FFFF;
+    border-radius: 12px;
+    padding: 3px;
+}
+
+.profile :nth-child(2){
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.profile :nth-child(3){
+    font-size: 16px;
+    font-weight: bold;
+    /*        color: #fff;*/
+}
+
+/*.content{
+    position: relative;
+}*/
+
+
+
+.path_div{
+    font-size: 12pt;
+    background-color: white;
+    margin-left: 20px;
+    margin-top:5px;
+}
+
+.path_div a{
+    color: #005566
+}
+
+.content_wrap{
+    position: absolute;
+    top: 150px;
+    left: 30%;
+    font-size: 12pt;
+}
+
+
+/*search*/
+#search_button{
+    /*border-radius: 5px;*/
+    /*color: #0000FF;*/
+    border: 5px inset #1C6EA4;
+    border-radius: 5px 5px 5px 5px;
+}
+
+
+.div_test{
+    border: 5px outset #1C6EA4;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 800px;
+    padding-left: 10px;
+}
+
+
+/*for course name*/
+.testName{
+    color:black;
+    font-size: 18pt;
+    color: #002AFF;
+    font-weight: bold;
+}
+
+#link_not_done{
+    color: #E40B0B;
+    border: 5px groove #E40B0B;
+    border-radius: 10px;
+    padding: 3px;
+    font-weight: bold;
+    width: 100px;
+    display: inline-block;
+    text-align: center;
+}
+
+#link_done{
+    color: #2AE41D;
+    border: 5px groove #2AE41D;
+    border-radius: 10px;
+    padding: 3px;
+    font-weight: bold;
+    width: 100px;
+    display: inline-block;
+    text-align: center;
+}
+
+/*.authorName{
+    color: black;
+    font-size: 
+}*/
+
+.fa-lock{
+    color: red;
+}
+
+.fa-check{
+    color: #44CC00;
+}
+
+.label_description{
+    /*height: 10px;*/
+}
+
+
+#formSubmit{
+    /*text-align: center;*/
+    margin-top: 10px;
+}
+
