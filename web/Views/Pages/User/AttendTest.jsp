@@ -34,7 +34,7 @@
             <div class ='main'>
                 <div class ='navi'><!--navigation buttons-->
                     <div class ='profile'>
-                        <img alt="No Image" src="uploads/<c:out value="${User.getImage()}"/>">
+                        <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
                         <p><c:out value=""/>${user.getName()}</p>
                         <p><c:out value=""/>${user.getEmail()}</p>
                     </div>
@@ -60,37 +60,42 @@
                                 <form id='formSubmit'action="finish-test" method="POST">
                                     <input type='hidden' name='testid' value='<c:out value="${test.getId()}"/>'>
                                     <div class='div_answer'>
-                                        <c:forEach var="i" begin="0" end="${questionList.size()-1}">
-                                            <label id='label_num_${i+1}' class='label_num' onclick='openQuestion(${i+1}, ${questionList.get(i).getId()})'><c:out value="${i+1}"/></label>
-                                        </c:forEach><br>
+                                        <c:if test="${(questionList.size()-1) ge 0}">
+                                            <c:forEach var="i" begin="0" end="${questionList.size()-1}">
+                                                <label id='label_num_${i+1}' class='label_num' onclick='openQuestion(${i+1}, ${questionList.get(i).getId()})'><c:out value="${i+1}"/></label>
+                                            </c:forEach><br>
+                                        </c:if>
                                         End time: <label id='label_endTime'> <fmt:parseDate value="${result.get('endTime')}" var="date" pattern="yyyy-MM-dd'T'HH:mm:ss.SSSZ"/>
                                             <fmt:formatDate value="${date}" pattern="HH:mm dd-MM-yyy "/></label>
                                         <p id='note'>You must submit your answers before end time.</p>
                                         <label id='label_submit' onclick='finish(${test.getId()})'>Finish</label>
+
                                     </div>
                                     <div class='div_question'>
-                                        <c:forEach var="i" begin="0" end="${questionList.size()-1}">
-                                            <div id='div_question_${i+1}'>
-                                                <label class='label_question'><c:out value="Question ${questionList.get(i).getQuestionnumber()}: ${questionList.get(i). getContent()}"/></label>
+                                        <c:if test="${(questionList.size()-1) ge 0}">
+                                            <c:forEach var="i" begin="0" end="${questionList.size()-1}">
+                                                <div id='div_question_${i+1}'>
+                                                    <label class='label_question'><c:out value="Question ${questionList.get(i).getQuestionnumber()}: ${questionList.get(i). getContent()}"/></label>
 
-                                                <c:forEach var='j' begin='0' end="${questionList.get(i).getAnswerList().size()-1}">
-                                                    <c:if test="${not empty questionList.get(i).getAnswerList().get(j)}">
-                                                        <input id='question_${i+1}_answer_${j+1}' type="radio" name='answer_${i+1}' value='${j}'>
-                                                        <label ><c:out value="${questionList.get(i).getAnswerList().get(j)}"/></label><br>
-                                                    </c:if>
-                                                </c:forEach>
-                                                <c:forEach var="ans" items="${answerList}">
-                                                    <c:if test="${ans[0] eq questionList.get(i).getId()}">
-                                                        <script>
-                                                            var rad = document.getElementById('question_${i+1}_answer_${ans[1]}');
-                                                            rad.checked = true;
-                                                            var label1 = document.getElementById('label_num_' + (${i+1}));
-                                                            label1.style.backgroundColor = '#B3D9FF';
-                                                        </script>
-                                                    </c:if>
-                                                </c:forEach>
-                                            </div>
-                                        </c:forEach><br>
+                                                    <c:forEach var='j' begin='0' end="${questionList.get(i).getAnswerList().size()-1}">
+                                                        <c:if test="${not empty questionList.get(i).getAnswerList().get(j)}">
+                                                            <input id='question_${i+1}_answer_${j+1}' type="radio" name='answer_${i+1}' value='${j}'>
+                                                            <label ><c:out value="${questionList.get(i).getAnswerList().get(j)}"/></label><br>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                    <c:forEach var="ans" items="${answerList}">
+                                                        <c:if test="${ans[0] eq questionList.get(i).getId()}">
+                                                            <script>
+                                                                var rad = document.getElementById('question_${i+1}_answer_${ans[1]}');
+                                                                rad.checked = true;
+                                                                var label1 = document.getElementById('label_num_' + (${i+1}));
+                                                                label1.style.backgroundColor = '#B3D9FF';
+                                                            </script>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </div>
+                                            </c:forEach><br>
+                                        </c:if>
                                     </div>
                                 </form>
                             </c:when>
@@ -113,7 +118,7 @@
             var userid = '${user.getId()}';
             var ansCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
             openQuestion(1);
-            
+
             function openQuestion(num) {
                 console.info("curr: " + currentQuestion);
                 console.info("num: " + num);

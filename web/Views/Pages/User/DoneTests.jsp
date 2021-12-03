@@ -33,7 +33,7 @@
             <div class ='main'>
                 <div class ='navi'><!--navigation buttons-->
                     <div class ='profile'>
-                        <img alt="No Image" src="uploads/<c:out value="${User.getImage()}"/>">
+                        <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
                         <p><c:out value=""/>${user.getName()}</p>
                         <p><c:out value=""/>${user.getEmail()}</p>
                     </div>
@@ -62,7 +62,7 @@
                                     <a class ='testName' href="test-detail?testid=${test.getId()}"><c:out value="${test.getName()}"/></a><br>
                                     <!--check test open or not-->
                                     <c:choose>
-                                        <c:when test="${(test.getStart() lt now) and (test.getend() gt now)}">
+                                        <c:when test="${(test.getStart() gt now) or (test.getEnd() lt now)}">
                                              <i class='fa fa-lock'>Closed</i>
                                         </c:when>
                                         <c:otherwise>

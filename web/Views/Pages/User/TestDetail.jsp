@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <jsp:useBean id="now" class="java.util.Date"/>
 <!DOCTYPE html>
 <html>
@@ -33,7 +34,7 @@
             <div class ='main'>
                 <div class ='navi'><!--navigation buttons-->
                     <div class ='profile'>
-                        <img alt="No Image" src="uploads/<c:out value="${User.getImage()}"/>">
+                        <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
                         <p><c:out value=""/>${user.getName()}</p>
                         <p><c:out value=""/>${user.getEmail()}</p>
                     </div>
@@ -67,8 +68,8 @@
                             <h3 id='testName'><c:out value="${test.getName()}"/></h3>
                             <h4 id='description'><c:out value='${test.getDescription()}'/></h4><br>
                             <div id="div_info">
-                                Open: <label class='info'> <c:out value='${test.getStart()}'/></label><br>
-                                Close: <label id='info'> <c:out value='${test.getEnd()}'/></label><br>
+                                Open: <label class='info'> <fmt:formatDate pattern = "HH:mm dd-MM-yyyy" value = "${test.getStart()}" /></label><br>
+                                Close: <label id='info'> <fmt:formatDate pattern = "HH:mm dd-MM-yyyy" value = "${test.getEnd()}" /></label><br>
                                 Duration for test: <label id='info'> <c:out value='${test.getDuration()}'/> minutes</label><br>
                                 Attempt times: <label id='info'> <c:if test="${test.getAttemptnumber() gt 0}"><c:out value='${test.getAttemptnumber()}'/></c:if></label><br>
                                 Result: <label id='info'><c:out value='${result.get("score")}'/> (<c:out value="${result.get('attempt')}"/> attempts)</label>
@@ -78,6 +79,9 @@
                             <c:choose>
                                 <c:when test="${continueStatus eq true}">
                                     <a href ="continue-test?testid=${test.getId()}"><input type="button" id='label_continue' value="CONTINUE"></a>
+                                    </c:when>
+                                    <c:when test="${(test.getStart() gt now) or (test.getEnd() lt now)}">
+
                                 </c:when>
                                 <c:otherwise>
                                     <c:if test="${(result.get('attempt') lt test.getAttemptnumber() ) or (empty result) or(test.getAttemptnumber() lt 1)}">
