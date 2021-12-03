@@ -5,21 +5,70 @@
  */
 package controllers;
 
+import Object.Course;
+import Object.EntityPagination;
+import Object.User;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet(name = "home", urlPatterns = {"/home"})
+@WebServlet(name = "home", urlPatterns = {"/Home"})
 public class Home extends HttpServlet {
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        String url = "/SignUp.jsp";
-         getServletContext().getRequestDispatcher(url).forward(request, response);
+
+        String url = "/Views/Pages/User/Home.jsp";
+
+        HttpSession session = request.getSession();
+
+        User user = (User) session.getAttribute("user");
+
+        //check whether logining
+        if (user == null) {
+            url = "/log-in?start=1";
+        } else if (user.getRole().getId() == 1) {
+            url = "/manage-course-admin";
+        } else {
+            try {
+                String searchName = request.getParameter("searchName");
+
+                String api_url = APIUtils.getBaseURLAPi() + "course/public-courses?userid=" + user.getId();
+
+                int page = 1;
+                int maxPageItems = 5;
+                try {
+                    page = Integer.parseInt(request.getParameter("page"));
+                    maxPageItems = Integer.parseInt(request.getParameter("maxPageItems")); //number of items per a page
+                    request.setAttribute("maxPageItems", maxPageItems);
+                } catch (Exception ex) {
+                }
+                
+               api_url += "&page=" + page+ "&limit=" + maxPageItems;
+                
+                if (searchName != null) {
+                    api_url += "&courseName=" + searchName;
+                }
+
+                String result = APIUtils.sendGetRequest(api_url, true);
+                ObjectMapper mapper = new ObjectMapper();
+                if (result != null) {
+                    EntityPagination<Course> coursePagination = mapper.readValue(result, new TypeReference<EntityPagination<Course>>() {
+                    });
+                    request.setAttribute("coursePagination", coursePagination);
+                }
+            } catch (Exception ex) {
+
+            }
+        }
+        getServletContext().getRequestDispatcher(url).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

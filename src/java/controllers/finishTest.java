@@ -22,7 +22,7 @@ public class finishTest extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Views/Pages/User/AttendTest.jsp";
+        String url = "/my-test-results";
 
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
@@ -42,7 +42,7 @@ public class finishTest extends HttpServlet {
                 
                 String result = APIUtils.sendPutRequest(api_url, "");
                 
-                
+                url = "/my-test-results?testid="+testid;
                 
             }catch(Exception ex){
                 

@@ -41,7 +41,7 @@
 profile
 */
 
-.profile{
+/*.profile{
     height: 200px;
     width: 100%;
     text-align: center
@@ -49,11 +49,11 @@ profile
 
 .profile img{
     margin-top: 20px;
-    /*height: 50%;*/
+    height: 50%;
     border: 4px solid #18FFFF;
     border-radius: 12px;
     padding: 3px;
-}
+}*/
 
 .profile :nth-child(2){
     font-size: 28px;

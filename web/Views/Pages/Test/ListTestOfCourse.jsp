@@ -29,9 +29,9 @@
     <title>Course Test</title>
 </head>
 <body>
-           
 
-                         
+
+
     <div class="container-full">
         <div class="side-bar">
             <div class="logo">
@@ -50,11 +50,11 @@
             </div>
             <div class="menu">
                 <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
-                <button><a href="UserInformation"><i class="fas fa-address-book"></i> My Information</a></button>
-                <button><a href="list-test?start=1"><i class="fas fa-users"></i> Test Courses</a></button>
-                <button><a href="Views/Pages/Test/CreateTest.jsp"><i class="fas fa-book-open"></i> My Test Courses </a></button>
-                <button><a href="add-question?start=1"><i class="fas fa-splotch"></i>Result </a></button>
-                <button><a href=""><i class="fas fa-user"></i> LogOut</a></button>>
+                <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
+                <button><a href="attended-course"><i class="fas fa-users"></i>Attended Courses</a></button>
+                <button><a href="manage-course-user"><i class="fas fa-book-open"></i> My Test Courses </a></button>
+                <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
+                <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>
             </div>
         </div>
         <div class="wrapped">
@@ -69,15 +69,15 @@
                 <div class="introduce-listtest">
                     <div >
                         <script>
-                            setInterval(function(){
+                            setInterval(function () {
                                 var colors = ['#004DE6', '#99001A', '#662200', '#660000', '#0F2107', '#070421', '#114506'];
                                 var random_color = colors[Math.floor(Math.random() * colors.length)];
                                 document.getElementById('fEtestlist').style.background = random_color;
-                            },1000)
+                            }, 1000)
                         </script>
                         <c:forEach var = 'item' items='${testList}'>
                             <div class="borderlist" name="fEtestlist">
-                                <p id="label_listtest"><c:out value="${item.getName()}"/></p>
+                                <a href="show-result-author-test?testid=${item.getId()}"><p id="label_listtest"><c:out value="${item.getName()}"/></p></a>
                                 <c:choose>
                                     <c:when test="${item.isStatus()}">
                                         <i class="fa fa-unlock-alt" onclick="blockTest('${Course.getId()}','${item.getId()}')"></i>                                      

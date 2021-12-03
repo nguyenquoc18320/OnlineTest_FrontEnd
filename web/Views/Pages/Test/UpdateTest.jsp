@@ -47,11 +47,11 @@
             </div>
             <div class="menu">
                 <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
-                <button><a href="UserInformation"><i class="fas fa-address-book"></i> My Information</a></button>
-                <button><a href="list-test?start=1"><i class="fas fa-users"></i> Test Courses</a></button>
-                <button><a href="Views/Pages/Test/CreateTest.jsp"><i class="fas fa-book-open"></i> My Test Courses </a></button>
-                <button><a href="add-question?start=1"><i class="fas fa-splotch"></i>Result </a></button>
-                <button><a href=""><i class="fas fa-user"></i> LogOut</a></button>
+                <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
+                <button><a href="attended-course"><i class="fas fa-users"></i>Attended Courses</a></button>
+                <button><a href="manage-course-user"><i class="fas fa-book-open"></i> My Test Courses </a></button>
+                <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
+                <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>
             </div>
         </div>
         <div class="wrapped">
