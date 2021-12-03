@@ -38,7 +38,12 @@
                 <img src="Views/CSS/images/logo1.png">
             </div>
             <div class="profile">
-                <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                <c:if test ="${not empty user.getImage()}">
+                    <img  class="imageuserinfor" alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                </c:if>
+                <c:if test ="${empty user.getImage()}">
+                    <img src="Views/CSS/images/userinfor.png">
+                </c:if>
                 <p><c:out value=""/>${user.getName()}</p>
                 <p><c:out value=""/>${user.getEmail()}</p>
 
@@ -73,12 +78,20 @@
                         <c:forEach var = 'item' items='${testList}'>
                             <div class="borderlist" name="fEtestlist">
                                 <p id="label_listtest"><c:out value="${item.getName()}"/></p>
+                                <c:choose>
+                                    <c:when test="${item.isStatus()}">
+                                        <i class="fa fa-unlock-alt" onclick="blockTest('${Course.getId()}','${item.getId()}')"></i>                                      
+                                    </c:when>
+                                    <c:otherwise >
+                                        <i class="fa fa-lock" onclick="blockTest('${Course.getId()}','${item.getId()}')"></i>                                        
+                                    </c:otherwise>
+                                 </c:choose>
                                 <p id="list-descrip" >Duration: <c:out value="${item.getDuration()}"/> (minutes)</p>
                                 <p id="list-descrip"> Attempt number: <c:out value="${item.getAttemptnumber()}"/> </p>
                                 <p style="display: inline;">
                                     <a id="questiontest" name="questiontest" href="add-question?courseid=<c:out value="${Course.getId()}"/>&testid=<c:out value="${item.getId()}&start=1"/>" >Question</a>
                                     <a id="updatetest" name="updatetest" href="update-test?courseid=<c:out value="${Course.getId()}"/>&testid=<c:out value="${item.getId()}"/>&start=1" >Update</a>
-                                    <a id="deletetest" name="deletetest" href="delete-test?courseid=<c:out value="${Course.getId()}"/>&testid=<c:out value="${item.getId()}"/>" >Delete</a>  
+                                    <a id="deletetest" name="deletetest" onclick="deleteTest('${Course.getId()}', '${item.getId()}')">Delete</a>  
                                 </p>
                             </div>
                         </c:forEach>                        
@@ -86,7 +99,27 @@
                     <div class="buttton-new-test">
                         <a href="create-test?courseid=<c:out value="${Course.getId()}"/>&start=1" ><input type="button" id="addquestion" class="newquestion" value="New Test"></a>                        
                     </div>
+                    <script>
+                        function deleteTest(courseid, testid) {
+                            if (confirm("Are you sure you want to delete the Test ?")) {
+                                document.location.href = "delete-test?courseid=" + courseid + "&testid=" + testid;
+                            } 
+                        }
+                        function blockTest(courseid, testid) {
+                            if (confirm("Are you sure you want to change the test status?")) {
+                                document.location.href = "block-unblock-test?courseid="+courseid+"&testid=" + testid;
+                            }
+                        }
+                    </script>
+                    <script>
+                        // message
+                        var message = "${alertMessage}";
+                        if (message) {
+                            alert(message);
+                        }
+                    </script>
                 </div>
+                    
             </div>
         </div>
 </body>

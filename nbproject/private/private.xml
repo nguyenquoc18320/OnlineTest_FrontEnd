@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -7,3 +8,72 @@
         </group>
     </open-files>
 </project-private>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/Object/Role.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/UserCourse_Admin.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Course/test.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/Login.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/Object/Course.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/UpdateInformation.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Course/DetailCourse.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/AddParticipants.css</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/User/SignUp.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/BlockAndUnblockCourse.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/ForgetPassword_Login.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Course/CourseManager_User.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Course/EditCourse.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/AddQuestion.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/Object/User.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/User/UserInformation.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/Object/Question.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/su/user.css</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Course/CreateNewCourse.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Course/AddParticipants.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/DeleteCourse.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/UpdateInfor.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/images/userinfor.png</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/Object/Account.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/Home.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/ConfirmSignUpCode.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Test/CreateTest.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/UserInformation.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/login.css</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Course/ParticipantManager.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/DeleteTest.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/BaseFormat.css</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/User/ForgetPassword.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Test/ListTestOfCourse.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/AddParticipants.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/su/login.css</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/DeleteUserJoinedCourse.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/SignUp.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/User/ChangePassword.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/su/updateinfor.css</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/CreateTest.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/ListTestOfCourse.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/signup.css</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/CourseManager_user.css</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/User/ConfirmSignUpCode.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/UpdateTest.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/Object/Test.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/ChangePassword.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/Object/Answer.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Test/AddQuestion.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/User/UpdateInformation.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/su/test.css</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/User/Login.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/APIUtils.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/Object/BaseObject.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/FortgetPassword.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Test/UpdateTest.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/createNewCourse.css</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/CreateNewCourse.java</file>
+        </group>
+    </open-files>
+</project-private>
+>>>>>>> f75c23f (new)

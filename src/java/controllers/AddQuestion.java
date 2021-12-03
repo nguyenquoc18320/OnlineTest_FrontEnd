@@ -82,11 +82,10 @@ public class AddQuestion extends HttpServlet {
 //        try {
         if (checkSrart == null) {
             String testid = request.getParameter("testid");
-//                System.out.println("Result1: " + testidupdate);
             String resultTest = APIUtils.sendGetRequest(APIUtils.getBaseURLAPi() + "test/" + testid, true);
             Test test = mapper.readValue(resultTest, Test.class);
             System.out.println("test 2: " + test);
-//                List<Answer> answers = new ArrayList<Answer>();
+            String courseid = request.getParameter("courseid");
             int number = 1;
             int totalQuestion = 0;
             while (number > 0) {

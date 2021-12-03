@@ -42,7 +42,12 @@
                                 <p> 
                                     <label for="passwordsignup" class="youpasswd" data-icon="p">Your birthday </label>
                                     <input id="birthupdate" name="birthdate" type="date" required="required" value="<c:out value="${user.getDateOfBirth()}"/>" />
-                                                                      
+                                    <script>
+                                        <%User user = (User)session.getAttribute("user");%>
+                                        if(<%=user.getDateOfBirth()%>===null)
+                                            document.getElementById("birthupdate").value = "2000-01-01";
+                                        
+                                    </script>                             
                                 </p>
                                 
                                 <p class="topcheckbox">
@@ -81,7 +86,13 @@
                                 </p>
 
                                 <p class="imageuser">                          
-                                    <img id="img_url" name="img_url" class="fas fa-user-circle" alt="your image" src="uploads/<c:out value="${user.getImage()}"/>" style="width: 100px; height: 100px; margin-left: 50px; margin-top: 20px;"><br>
+                                    
+                                    <c:if test ="${not empty user.getImage()}">
+                                        <img id="img_url" name="img_url" class="fas fa-user-circle" alt="your image" src="uploads/<c:out value="${user.getImage()}"/>" style="width: 100px; height: 100px; margin-left: 50px; margin-top: 20px;"><br>
+                                    </c:if>
+                                    <c:if test ="${empty user.getImage()}">
+                                        <img id="img_url" name="img_url" src="Views/CSS/images/userinfor.png" style="width: 100px; height: 100px; margin-left: 50px; margin-top: 20px;">
+                                    </c:if>
                                     <input type="file" id="file" name ="file" accept="image/*" onload="img_pathUrlLoad(<c:out value="${user.getImage()}"/>);" onChange="img_pathUrl(this);">                                        
                                     <c:if test ="${not empty errorMessageUpdate}">
                                         <br>

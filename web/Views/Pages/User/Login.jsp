@@ -40,12 +40,12 @@
                         <p class="login button"> 
                             <input type="submit" value="Login" /> 
                         </p>
+                        </form>
                         <p class="change_link">
                             Not a member yet ?
                             <a href="sign-up?start=1" class="to_register">Join us</a>
+                            <button class="open-button" onclick="openForm()">Forget Password</button>
                         </p>                     
-                    </form>                       
-                    <button class="open-button" onclick="openForm()">Forget Password</button>
                     <div class="form-popup" id="myForm">
                       <form action="pass-login" class="form-container" method="POST">
                         <h2>Forget Password</h2>

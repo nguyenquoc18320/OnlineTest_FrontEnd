@@ -26,11 +26,13 @@ public class Test extends BaseObject{
         super();
     }
     
-    public Test(String name, String description, int duration, boolean status, int attemptnumber, boolean deleted, Course course, Long id, Long createdBy, Date createdDate, Long modifiedBy, Date modifiedDate){
+    public Test(String name, String description, int duration, Date start, Date end, boolean status, int attemptnumber, boolean deleted, Course course, Long id, Long createdBy, Date createdDate, Long modifiedBy, Date modifiedDate){
         super(id, createdBy, createdDate, modifiedBy, modifiedDate);
         this.name = name;
         this.description = description;
         this.duration = duration;
+        this.start = start;
+        this.end = end;
         this.status = status;
         this.attemptnumber = attemptnumber;
         this.deleted = deleted;
@@ -38,11 +40,13 @@ public class Test extends BaseObject{
         
     }
     
-    public Test(String name, String description, int duration, boolean status, int attemptnumber, boolean deleted, Course course){
+    public Test(String name, String description, int duration, Date start, Date end, boolean status, int attemptnumber, boolean deleted, Course course){
         super();
         this.name = name;
         this.description = description;
         this.duration = duration;
+        this.start = start;
+        this.end = end;
         this.status = status;
         this.attemptnumber = attemptnumber;
         this.deleted = deleted;
@@ -72,6 +76,7 @@ public class Test extends BaseObject{
     public void setDuration(int duration) {
         this.duration = duration;
     }
+    
     
     public boolean isStatus() {
         return status;

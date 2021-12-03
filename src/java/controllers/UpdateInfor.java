@@ -35,8 +35,6 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.util.*;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-
-                
 //import com.oreilly.servlet.MultipartRequest;
 /**
  *
@@ -45,7 +43,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 @WebServlet(name = "UpdateInfor", urlPatterns = {"/update-info"})
 @MultipartConfig
 public class UpdateInfor extends HttpServlet {
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -68,7 +66,7 @@ public class UpdateInfor extends HttpServlet {
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
         if (isMultipart) {
             try {
-                  //Create a factory for disk-based file items
+                //Create a factory for disk-based file items
                 DiskFileItemFactory factory = new DiskFileItemFactory();
                 // Configure a repository (to ensure a secure temp location is used)
                 ServletContext servletContext = this.getServletConfig().getServletContext();
@@ -90,9 +88,9 @@ public class UpdateInfor extends HttpServlet {
 //                        System.out.println("test  " + name +value);
                     } else {
                         String filename = item.getName();
-                        if(filename == null || filename.equals("")){
+                        if (filename == null || filename.equals("")) {
                             break;
-                        }else{
+                        } else {
                             Path path = Paths.get(filename);
                             String storePath = servletContext.getRealPath("/uploads");
                             File uploadFile = new File(storePath + "/" + path.getFileName());
@@ -101,33 +99,39 @@ public class UpdateInfor extends HttpServlet {
                         fields.put("image", filename);
                     }
                 }
-                if(fields.get("nameupdate")!=null &&fields.get("gender") != null && fields.get("image")!=null && fields.get("birthdate")!=null){
+                if (fields.get("nameupdate") != null && fields.get("gender") != null && fields.get("birthdate") != null) {
                     nameupdate = fields.get("nameupdate");
                     gender = fields.get("gender");
                     birth = fields.get("birthdate");
                     String image = fields.get("image");
-
                     Date birthEdit = Date.valueOf(birth);
+                    
+                    System.out.println("Image: " + image);
+                    if (image == null) {
+                        image = (String)user.getImage();
+                    }
                     User userupdate = new User(nameupdate, gender, birthEdit, user.getEmail(), image, user.getRole());
                     //send http request to create new user
                     ObjectMapper mapper = new ObjectMapper();
                     String jsonRequest = mapper.writeValueAsString(userupdate);
                     String result = APIUtils.sendPutRequest("http://localhost:8081/user/" + user.getId(), jsonRequest);
-                    
-                    url = "/Views/Pages/User/UserInformation.jsp";
-                    
-//                    out.write("Ket qua:" + result);
-
+                    if (result == null) {
+                        request.setAttribute("alertMessage", "Sorry! Can't update your information!!!");
+                    } else {
+                        User usercurrent = mapper.readValue(result, User.class);
+                        session.setAttribute("user", usercurrent);
+                        request.setAttribute("alertMessage", "Updated your information.");
+                        url = "/Views/Pages/User/UserInformation.jsp";
+                        
+                    }
                 } else {
                     request.setAttribute("errorMessageUpdate", "Information is not enough!!! ");
                 }
-            } catch (FileUploadException fue){
-            request.setAttribute("errorMessage", "Error!");}
+            } catch (FileUploadException fue) {
+                request.setAttribute("errorMessage", "Error!");
+            }
         }
-                
-             
-                
-                
+
 //                FileItemIterator iter = upload.getItemIterator(request);
 //                FileItemStream item = null;
 //                String name = "";
@@ -192,7 +196,6 @@ public class UpdateInfor extends HttpServlet {
 ////            } catch (FileUploadException fue) {  
 ////            }
 //        }   
-        
 //        String checkUpdate = request.getParameter("start");
 //        if (checkUpdate == null) {
 //            try {
@@ -239,9 +242,8 @@ public class UpdateInfor extends HttpServlet {
 //                request.setAttribute("errorMessage", "*Can't sign up!");
 //            }
 //        }
-
         getServletContext()
-        .getRequestDispatcher(url).forward(request, response);
+                .getRequestDispatcher(url).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -293,9 +295,8 @@ public class UpdateInfor extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    
     private static String convertInputStreamToString(InputStream inputStream) throws IOException {
         //convert
-            return null;
+        return null;
     }
 }
