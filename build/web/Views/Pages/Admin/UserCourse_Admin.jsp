@@ -11,6 +11,7 @@
         <link rel="stylesheet" type="text/css" href="Views/CSS/Admin/UserCourse_Admin.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
         <script   type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
@@ -32,9 +33,19 @@
             </div>
 
             <div class ='main'>
-                <div class ='nav'><!--navigation buttons-->
-                    <div class ='user_info'>
-
+               <div class ='navi'><!--navigation buttons-->
+                    <div class ='profile'>
+                        <img alt="No Image" src="uploads/<c:out value="${User.getImage()}"/>">
+                        <p><c:out value=""/>${user.getName()}</p>
+                        <p><c:out value=""/>${user.getEmail()}</p>
+                    </div>
+                    <div class="menu">
+                        <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
+                        <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
+                        <button><a href="#"><i class="fas fa-users"></i>Manage users</a></button>
+                        <button><a href="manage-course-admin"><i class="fas fa-book-open"></i>Manage Courses </a></button>
+                        <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
+                        <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>
                     </div>
                 </div>
                 <div class='content'>

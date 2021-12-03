@@ -56,11 +56,12 @@ body, html
     float: left; /* canh div từ trái sang */
 }
 
-.nav
+.navi
 {
     width: 280px; /* kích thước chiều rộng của vùng thanh bên */
     float: left; /* canh div từ trái sang */
     height: 100%;
+    display: block;
     /*background-color: #FF6D00;  tạo màu để dễ nhìn*/ 
 }
 

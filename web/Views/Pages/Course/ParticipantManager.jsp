@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
         <script   type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <!--<script charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>-->
         <script src="<c:url value='/Views/Template/jquery.twbsPagination.js'/>" type="text/javascript"></script>
         <title><c:out value="${course.getName()}"/></title>
@@ -47,9 +48,9 @@
                     <div class="menu">
                         <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
                         <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
-                        <button><a href=""><i class="fas fa-users"></i> Test Courses</a></button>
+                        <button><a href="attended-course"><i class="fas fa-users"></i>Attended Courses</a></button>
                         <button><a href="manage-course-user"><i class="fas fa-book-open"></i> My Test Courses </a></button>
-                        <button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>
+                        <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
                         <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>
                     </div>
                 </div>
@@ -64,18 +65,18 @@
                         <button id="btn_participants"><a href = "manage-participants?courseid=${course.getId()}" id="link_show_participants"><i class="fa fa-users">Participants</i></a></button>
                         <button id='btn_tests'> <a href="list-test?courseid=${course.getId()}" id="link_show_tests"><i class="fa fa-tasks">Test</i></a></button>
                         <br>
-                        
+
                         <form id="search_form" action="manage-participants" method="GET">
                             <input id ="input_search" name="searchName" value ="<c:out value='${searchName}'/>" >
                             <input type="hidden" id='courseid' value="${course.getId()}" name="courseid">
                             <input type="submit" id="search_button" value="Search">
                             <a href = "add-participants?start=1&courseid=${course.getId()}" id="link_add_participant"><i id="icon_add" class="fa fa-plus-circle">Add participants</i></a>
                         </form>
-                        
+
                         <c:if test='${not empty errorMessage}'>
-                        <br><label id="errorMessage"><c:out value="${errorMessage}"/></label> 
+                            <br><label id="errorMessage"><c:out value="${errorMessage}"/></label> 
                         </c:if>
-                        
+
                         <form id="formSubmit"  action="manage-participants" method="GET">                      
                             <table id="course" class="table table-bordered table table-hover" cellspacing="0" width="100%">
                                 <thead>
@@ -111,14 +112,14 @@
         </div>
         <script>
             var message = "${message}";
-            if(message){
+            if (message) {
                 alert(message);
             }
             function deleteFunction(username, userid, courseid) {
-                if (confirm("Are you sure you want to delete " + username +"?")) {
+                if (confirm("Are you sure you want to delete " + username + "?")) {
                     //                    console.info("OK");
-                    document.location.href = "delete-joined-user?courseid=" + courseid 
-                                            + "&userid=" + userid;
+                    document.location.href = "delete-joined-user?courseid=" + courseid
+                            + "&userid=" + userid;
                 } else {
                     //                    console.info("Cancel");
                 }
