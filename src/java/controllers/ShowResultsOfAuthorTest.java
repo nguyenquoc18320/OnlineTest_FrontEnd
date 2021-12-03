@@ -38,7 +38,7 @@ public class ShowResultsOfAuthorTest extends HttpServlet {
         } else if (user.getRole().getId() == 1) {
             url = "/manage-course-admin";
         } else {
-//          try {
+          try {
                 Long testid = Long.parseLong(request.getParameter("testid"));
 
                 //get test
@@ -76,9 +76,9 @@ public class ShowResultsOfAuthorTest extends HttpServlet {
                     request.setAttribute("resultPagination", resultPagination);
                 }
 
-//            } catch (Exception ex) {
-//
-//            }
+            } catch (Exception ex) {
+
+            }
         }
 
         getServletContext().getRequestDispatcher(url).forward(request, response);

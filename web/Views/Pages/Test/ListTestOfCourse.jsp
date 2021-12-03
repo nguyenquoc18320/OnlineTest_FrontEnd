@@ -77,7 +77,7 @@
                         </script>
                         <c:forEach var = 'item' items='${testList}'>
                             <div class="borderlist" name="fEtestlist">
-                                <p id="label_listtest"><c:out value="${item.getName()}"/></p>
+                                <a href="show-result-author-test?testid=${item.getId()}"><p id="label_listtest"><c:out value="${item.getName()}"/></p></a>
                                 <c:choose>
                                     <c:when test="${item.isStatus()}">
                                         <i class="fa fa-unlock-alt" onclick="blockTest('${Course.getId()}','${item.getId()}')"></i>                                      
