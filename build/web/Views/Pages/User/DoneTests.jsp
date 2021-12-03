@@ -31,7 +31,7 @@
             </div>
 
             <div class ='main'>
-                <div class ='nav'><!--navigation buttons-->
+                <div class ='navi'><!--navigation buttons-->
                     <div class ='profile'>
                         <img alt="No Image" src="uploads/<c:out value="${User.getImage()}"/>">
                         <p><c:out value=""/>${user.getName()}</p>

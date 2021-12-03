@@ -1,4 +1,4 @@
--<%-- 
+<%-- 
     Document   : CreateNewCourse
     Created on : Oct 15, 2021, 10:59:40 PM
     Author     : nguye
@@ -37,7 +37,7 @@
             </div>
 
             <div class ='main'>
-                <div class ='nav'><!--navigation buttons-->
+                <div class ='navi'><!--navigation buttons-->
                     <div class ='profile'>
                         <img alt="No Image" src="uploads/<c:out value="${User.getImage()}"/>">
                         <p><c:out value=""/>${user.getName()}</p>
@@ -48,7 +48,7 @@
                         <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
                         <button><a href="attended-course"><i class="fas fa-users"></i>Attended Courses</a></button>
                         <button><a href="manage-course-user"><i class="fas fa-book-open"></i> My Test Courses </a></button>
-                        <button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>
+                        <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
                         <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>
                     </div>
                 </div>
