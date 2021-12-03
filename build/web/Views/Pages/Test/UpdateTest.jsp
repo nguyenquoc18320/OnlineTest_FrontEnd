@@ -5,6 +5,7 @@
 --%>
 
 
+<%@page import="java.util.Date"%>
 <%@page import="Object.Test"%>
 <%@page import="Object.Course"%>
 <%@page import="java.util.List"%>
@@ -34,7 +35,12 @@
                 <img src="Views/CSS/images/logo1.png">
             </div>
             <div class="profile">
-                <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                <c:if test ="${not empty user.getImage()}">
+                    <img  class="imageuserinfor" alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                </c:if>
+                <c:if test ="${empty user.getImage()}">
+                    <img src="Views/CSS/images/userinfor.png">
+                </c:if>
                 <p><c:out value=""/>${user.getName()}</p>
                 <p><c:out value=""/>${user.getEmail()}</p>
 
@@ -58,14 +64,14 @@
             </div>
             <div class="content">
                 <div class="introduce-test">
-                    <form action="update-test?testid=${Test.getId()}" method="post" autocomplete="on">
+                    <form action="update-test?courseid=${CourseUpdate.getId()}&testid=${Test.getId()}" method="post">
                         <div class="introduce-profiletest">
                             <label for="listourse" class="label_test" data-icon="u" >Course: </label>                           
                             <select name="listourse" class="cbb_listcourse">                               
                                 <c:forEach items="${courseList}" var="Course">
                                     <option value="${Course.id}" 
                                             <c:set var="courseid" value="${Course.id}"/>
-                                            <c:set var="courseupdate" value="${CourseUpdate.id}"/>
+                                            <c:set var="courseupdate" value="${CourseUpdate.getId()}"/>
                                             <c:if test="${courseid eq courseupdate}">selected="selected"</c:if>
                                                 >
                                             ${Course.name}
@@ -92,14 +98,34 @@
                             <label  class="label_test" data-icon="u">Attempt Number: </label>
                             <input id="attempt" name="attempt" required="required" type="text" value="${Test.getAttemptnumber()}"/>
                         </div>
+                        <div class="datetest">
+                            <div class="introducedatetest">
+                                <label class="label_test" data-icon="u">Start Test: </label>
+                                <input id="starttest" name="starttest" required="required" type="datetime-local" value=""/>
+                            </div>
+                            <div class="introducedatetest2">
+                                <label class="label_test" data-icon="u">End Test: </label>
+                                <input id="endtest" name="endtest" required="required" type="datetime-local" value=""/>
+                            </div> 
+                        </div>
                         <c:if test="${not empty errorMessage}">
                             <p id='errorMessage'><c:out value="${errorMessage}"/></p>
                         </c:if>
-                            <div class="sm-profiletest" style="display: inline;">
-                            <a id="updatetest" class="qs-profiletest" href="add-question?testid=<c:out value="${Test.getId()}&start=1"/>" value="Add Question" /> Question</a>
-                            <input type="submit" value="Update" />
-                            
+                            <div class="sm-profiletest" style="display: contents;">
+                            <a id="updatetest" class="updateQ_a" href="add-question?&courseid=<c:out value="${CourseUpdate.getId()}"/>&testid=<c:out value="${Test.getId()}&start=1"/>" value="Add Question" /> Question</a>
+                            <input type="submit" value="Update" />                            
                         </div>
+                        <script> 
+                            <% 
+                                String startTest = (String)request.getAttribute("StartTest");
+                                String endTest = (String)request.getAttribute("EndTest");
+                            %>
+                            var now = new Date();
+                            document.getElementById('starttest').value = '<%=startTest%>';
+                            document.getElementById('endtest').value = '<%=endTest%>';
+                            
+                        </script>
+                        
                             
                     </form>
                 </div>

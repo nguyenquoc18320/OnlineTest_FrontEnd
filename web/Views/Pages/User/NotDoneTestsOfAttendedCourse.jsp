@@ -62,7 +62,7 @@
                                     <a class ='testName' href="test-detail?testid=${test.getId()}"><c:out value="${test.getName()}"/></a><br>
                                     <!--check test open or not-->
                                     <c:choose>
-                                        <c:when test="${(test.getStart() lt now) and (test.getend() gt now)}">
+                                        <c:when test="${(test.getStart() lt now) and (test.getEnd() gt now)}">
                                              <i class='fa fa-lock'>Closed</i>
                                         </c:when>
                                         <c:otherwise>

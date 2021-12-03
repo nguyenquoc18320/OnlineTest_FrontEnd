@@ -32,39 +32,40 @@ and open the template in the editor.
 .sm-profiletest{
     position: relative;
     top: 1px;
-    margin-left: 60%;
+    margin-left: 63%;
 }
 .sm-profiletest input{
-    color: #FFDD99;
-    font-size: 25px;
+    color: #FFFFFF;
+    font-size: 16px;
     line-height: 25px; 
-    padding: 5px;
+    padding: 10px;
     border-radius: 8px; 
-    font-weight: normal;
+    font-weight: bold;
     text-decoration: none;
     font-style: normal;
     font-variant: normal;
     text-transform: none;
-    background: #19004D;
+    background: #2E64FE;
+    width: 200px;
 }
 .sm-profiletest input:hover {
     background: #1C6EA4; }
 .sm-profiletest input:active {
     background: #19004D; }
-
-.qs-profiletest{
-    color: #1C6EA4;
-    font-size: 25px;
+.updateQ_a{
+    color: #FFFFFF;
+    font-size: 16px;
     line-height: 25px; 
-    padding: 5px;
+    padding: 15px 66px 15px 66px;
     border-radius: 8px; 
-    font-weight: normal;
+    font-weight: bold;
     text-decoration: none;
     font-style: normal;
     font-variant: normal;
     text-transform: none;
-    background: #4cad5a;
-    margin-right: 50px;
+    background: #2E64FE;
+    width: 200px;
+    margin-left: 25%;
 }
 
 .cbb_listcourse{
@@ -127,22 +128,42 @@ and open the template in the editor.
     color: #FFFFFF;
     font-size: 15px;
     font-weight: bold;
+    border-radius: 10px 10px 10px 10px;
     padding: 10px 20px 10px 20px;
     margin-left: 50%;
-    -webkit-box-shadow: inset -1px 3px 8px 5px #31B404, 2px 5px 16px 0px #0B325E, 12px 13px 14px 1px rgba(0,0,0,0); 
+    -webkit-box-shadow: inset -1px 3px 8px 5px #31B404, 2px 5px 1px 0px #0B325E, 12px 13px 14px 1px rgba(0,0,0,0); 
     box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 12px 13px 14px 1px rgba(0,0,0,0);
     /*background: #31B404;*/
     
+}
+.borderlist #questiontest:hover{
+    color: #1F87FF;
+    background: #FFFFFF;
+    font-weight: bold;
+    border: 2px solid #B3CCFF;   
+}
+.borderlist #updatetest:hover{
+    color: #1F87FF;
+    background: #FFFFFF;
+    font-weight: bold;
+    border: 2px solid #B3CCFF;   
+}
+.borderlist #deletetest:hover{
+    color: red;
+    background: #FFFFFF;
+    font-weight: bold;
+    border: 2px solid #C9461E;   
 }
 .borderlist #updatetest{
     color: #FFFFFF;
     font-size: 15px;
     font-weight: bold;
+    border-radius: 10px 10px 10px 10px;
 /*    width: 100px;
     height: 40px;*/
     padding: 10px 20px 10px 20px;
     margin-left: 20px;
-    -webkit-box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 12px 13px 14px 1px rgba(0,0,0,0); 
+    -webkit-box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 1px 0px #0B325E, 12px 13px 14px 1px rgba(0,0,0,0); 
     box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 12px 13px 14px 1px rgba(0,0,0,0);
     /*background: #1C6EA4;*/
     
@@ -151,9 +172,10 @@ and open the template in the editor.
     color: #FFFFFF;
     font-size: 15px;
     font-weight: bold;
+    border-radius: 10px 10px 10px 10px;
     padding: 10px 20px 10px 20px;
     margin-left: 20px;
-    -webkit-box-shadow: inset -1px 3px 8px 5px #D33D2B, 2px 5px 16px 0px #570417, 12px 13px 14px 1px rgba(0,0,0,0); 
+    -webkit-box-shadow: inset -1px 3px 8px 5px #D33D2B, 2px 5px 1px 0px #570417, 12px 13px 14px 1px rgba(0,0,0,0); 
     box-shadow: inset -1px 3px 8px 5px #D33D2B, 2px 5px 16px 0px #570417, 12px 13px 14px 1px rgba(0,0,0,0);
     background: #D33D2B;
     
@@ -256,6 +278,10 @@ and open the template in the editor.
     padding: 10px 15px 10px 15px;
     width: 35%;
 }
+.newquestion :hover{
+    color: #FFFFFF;
+    background: #40C930;
+}
 .completequestion{
     background: #19004D;
     font-weight: bold;
@@ -277,4 +303,36 @@ and open the template in the editor.
     margin-left:80%;
     padding: 5px;
     text-align: center;
+}
+.datetest{
+    display: flex;
+}
+
+.introducedatetest input{
+    width: 250px;
+    margin-top: 4px;
+    margin-left: 65px;
+    padding: 10px 5px 10px 25px;
+    border: 2px solid rgb(178, 178, 178);
+    border-radius: 6px;
+}
+.introducedatetest{
+    /*display:none;*/
+/*    margin-top: 10px;*/
+    margin-bottom: 25px;
+}
+.introducedatetest2{
+    /*display:none;*/
+    margin-top: 10px;
+    margin-bottom: 25px;
+    margin-left: 11%
+}
+
+.introducedatetest2 input{
+    width: 250px;
+    margin-top: 4px;
+    margin-left: 65px;
+    padding: 10px 5px 10px 25px;
+    border: 2px solid rgb(178, 178, 178);
+    border-radius: 6px;
 }

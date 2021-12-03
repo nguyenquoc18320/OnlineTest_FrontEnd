@@ -22,9 +22,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author PhanSu
  */
-@WebServlet(name = "DeleteTest", urlPatterns = {"/delete-test"})
-public class DeleteTest extends HttpServlet {
-
+@WebServlet(name = "BlockandUnblockTest", urlPatterns = {"/block-unblock-test"})
+public class BlockandUnblockTest extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,7 +36,8 @@ public class DeleteTest extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "list-test?start=1";
+
+        String url = "";
 
         HttpSession session = request.getSession();
 
@@ -55,18 +55,18 @@ public class DeleteTest extends HttpServlet {
                     request.setAttribute("errorMessage", "Can't not delete course!");
                 } else {
                     String testid = request.getParameter("testid");
-                    String result = APIUtils.sendPutRequest(APIUtils.getBaseURLAPi() + "delete-test/" + courseid+ "/" + testid ,"");
+                    String result = APIUtils.sendPutRequest(APIUtils.getBaseURLAPi() + "change-status-test/" + courseid+ "/" + testid ,"");
                     if (result != null) {
-                        request.setAttribute("alertMessage", "Deleted Test");
+                        request.setAttribute("alertMessage", "Changed the test status ");
                         url= "list-test?courseid="+courseid+"&start=1";
                     } else {
-                        request.setAttribute("alertMessage", "Can't not delete test!");
+                        request.setAttribute("alertMessage", "Can't not change the test status !");
                     }
                 }
             }
         } catch (Exception ex) {
             System.out.println(ex.toString());
-            request.setAttribute("errorMessage", "Can't not delete test!");
+            request.setAttribute("errorMessage", "Can't not change status test!");
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);

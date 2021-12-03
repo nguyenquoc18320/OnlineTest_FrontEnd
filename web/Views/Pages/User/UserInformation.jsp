@@ -26,8 +26,13 @@
             <div class="logo">
                 <img src="Views/CSS/images/logo1.png">
             </div>
-            <div class="profile">
-                <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+            <div class="profile">                
+                <c:if test ="${not empty user.getImage()}">
+                    <img  class="imageuserinfor" alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                </c:if>
+                <c:if test ="${empty user.getImage()}">
+                    <img src="Views/CSS/images/userinfor.png">
+                </c:if>
                 <p><c:out value=""/>${user.getName()}</p>
                 <p><c:out value=""/>${user.getEmail()}</p>
 
@@ -35,7 +40,7 @@
             <div class="menu">
                 <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
                 <button><a href="UserInformation"><i class="fas fa-address-book"></i> My Information</a></button>
-                <button><a href="list-test?start=1"><i class="fas fa-users"></i> Test Courses</a></button>
+                <button><a href="list-test?courseid=3&start=1"><i class="fas fa-users"></i> Test Courses</a></button>
                 <button><a href="Views/Pages/Test/CreateTest.jsp"><i class="fas fa-book-open"></i> My Test Courses </a></button>
                 <button><a href="add-question?start=1"><i class="fas fa-splotch"></i>Result </a></button>
                 <button><a href=""><i class="fas fa-user"></i> LogOut</a></button>
@@ -79,7 +84,13 @@
                         
                     </div>
                 </div>
-            
+            <script>
+                // message
+                var message = "${alertMessage}";
+                if (message) {
+                    alert(message);
+                }
+            </script>
         </div>
     </div>
 </body>

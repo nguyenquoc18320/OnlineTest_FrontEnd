@@ -1,6 +1,7 @@
 <%-- 
     Author     : PhanSu
 --%>
+<%@page import="Object.Course"%>
 <%@page import="Object.Question"%>
 <%@page import="java.util.List"%>
 <%@page import="Object.Test"%>
@@ -31,7 +32,12 @@
                 <img src="Views/CSS/images/logo1.png">
             </div>
             <div class="profile">
-                <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+               <c:if test ="${not empty user.getImage()}">
+                    <img  class="imageuserinfor" alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                </c:if>
+                <c:if test ="${empty user.getImage()}">
+                    <img src="Views/CSS/images/userinfor.png">
+                </c:if>
                 <p><c:out value=""/>${user.getName()}</p>
                 <p><c:out value=""/>${user.getEmail()}</p>
 
@@ -40,7 +46,7 @@
             <div class="menu">
                 <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
                 <button><a href="UserInformation"><i class="fas fa-address-book"></i> My Information</a></button>
-                <button><a href="list-test?start=1"><i class="fas fa-users"></i> Test Courses</a></button>
+                <button><a href="list-test?courseid=${Course.getId()}&start=1"><i class="fas fa-users"></i> Test Courses</a></button>
                 <button><a href="manage-course-user"><i class="fas fa-book-open"></i> My Test Courses </a></button>
                 <button><a href="add-question?start=1"><i class="fas fa-splotch"></i>Result </a></button>
                 <button><a href=""><i class="fas fa-user"></i> LogOut</a></button>
@@ -54,9 +60,9 @@
                 </div>
                 <i class="fas fa-user-circle"></i>
             </div>
-            <form  action="add-question?testid=<c:out value="${Test.getId()}"/>" method="POST"> 
+            <form  action="add-question?courseid=<c:out value="${Course.getId()}"/>&testid=<c:out value="${Test.getId()}"/>" method="POST"> 
                 <div id="content" class="content"> 
-                    <h2 class="h2-aq">${Course.getName()}</h2>
+                    <h2 class="h2-aq"><a href="list-test?courseid=<c:out value="${Course.getId()}"/>&start=1">${Course.getName()}</a></h2>
                     <h3 class="he-aq">${Test.getName()}</h3>
                     <%--<c:forEach var = 'item' items='${listQuestion}'>--%>
                     <div id="question_1" class="border-addquestion" >
@@ -94,6 +100,7 @@
                         
                         <% Test testnow = (Test) request.getAttribute("Test");
                             request.setAttribute("testupdate", testnow);
+                            
                         %>
                         <script>
 
