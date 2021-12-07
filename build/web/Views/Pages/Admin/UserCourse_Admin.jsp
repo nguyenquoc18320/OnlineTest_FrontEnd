@@ -27,17 +27,13 @@
                 <div id='div_logo'>
                     <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
                 </div>
-                <div id='div_functionName'>
-                    <label id='functionName'>Manage Course</label>
-                </div>
-            </div>
-
-            <div class ='main'>
-               <div class ='navi'><!--navigation buttons-->
+                <div class ='navi'><!--navigation buttons-->
                     <div class ='profile'>
                         <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
-                        <p><c:out value=""/>${user.getName()}</p>
-                        <p><c:out value=""/>${user.getEmail()}</p>
+                        <div class='info'>
+                            <p id='info_name'><c:out value=""/>${user.getName()}</p>
+                            <p id='info_email'><c:out value=""/>${user.getEmail()}</p>
+                        </div>
                     </div>
                     <div class="menu">
                         <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
@@ -48,6 +44,8 @@
                         <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>
                     </div>
                 </div>
+            </div>
+            <div class ='main'>
                 <div class='content'>
                     <div class ="path_div">
                         <a href="manage-course-admin">Manage Course></a>
@@ -135,8 +133,8 @@
                                                         </c:when>
                                                         <c:otherwise>
                                                             <a href="block-unblock-course?userid=${userid}&courseid=${item.getId()}&blocked=true"> <i id="icon_unblocked" class="fa fa-unlock"></i></a>
-                                                        </c:otherwise>
-                                                    </c:choose>
+                                                            </c:otherwise>
+                                                        </c:choose>
                                                 </td>
                                             </tr>
                                         </c:forEach>
@@ -160,11 +158,11 @@
         <script>
             //message block
             var blockMessage = "${blockMessage}";
-            if(blockMessage){
+            if (blockMessage) {
                 alert(blockMessage);
             }
         </script>
-        
+
         <script type="text/javascript">
             var totalPages = ${coursePagination.getTotalPage()};
             var currentPage = ${coursePagination.getPage()};
