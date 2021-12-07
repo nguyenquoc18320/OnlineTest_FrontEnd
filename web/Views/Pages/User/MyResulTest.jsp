@@ -12,6 +12,10 @@
         <link rel="stylesheet" type="text/css" href="Views/CSS/User/MyResultTest.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
         <script   type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
@@ -26,27 +30,25 @@
                 <div id='div_logo'>
                     <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
                 </div>
-                <div id='div_functionName'>
-                    <label id='functionName' style="color: #4D4DFF"><c:out value="${test.getCourse().getName()}"/></label>
-                </div>
-            </div>
-
-            <div class ='main'>
                 <div class ='navi'><!--navigation buttons-->
                     <div class ='profile'>
                         <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
-                        <p><c:out value=""/>${user.getName()}</p>
-                        <p><c:out value=""/>${user.getEmail()}</p>
+                        <div class='info'>
+                            <p id='info_name'><c:out value=""/>${user.getName()}</p>
+                            <p id='info_email'><c:out value=""/>${user.getEmail()}</p>
+                        </div>
                     </div>
                     <div class="menu">
                         <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
-                        <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
-                        <button><a href="attended-course"><i class="fas fa-users"></i>Attended Courses</a></button>
-                        <button><a href="manage-course-user"><i class="fas fa-book-open"></i> My Courses </a></button>
+                        <button><a href="user-info"><i class="fas fa-address-book"></i> My Profile</a></button>
+                        <button><a href="attended-course"><i class="fas fa-users" style='background-color: #5531FB; color:white'></i>Attended Courses</a></button>
+                        <button><a href="manage-course-user" ><i class="fas fa-book-open"></i> My Courses </a></button>
                         <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
-                        <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>
+                        <button><a href="log-out"><i class="fas fa-sign-out-alt"></i> LogOut</a></button>
                     </div>
                 </div>
+            </div>
+            <div class ='main'>
                 <div class='content'>
                     <div class ="path_div">
                         <a href="attended-course">Attended Courses></a>
@@ -74,7 +76,7 @@
                                     <label class='label_end_time'>End Time:  <fmt:formatDate pattern = "HH:mm dd-MM-yyyy" value = "${result.getEndTime()}" /></label>
                                 </div>
                             </c:forEach>
-                            
+
                             <ul class="pagination justify-content-center" id="pagination"></ul>
                             <input type='hidden' value='1' id ='page' name='page'>
                             <input type='hidden' value='<c:out value="${maxPageItems}"/>' id ='maxPageItems' name='maxPageItems'>

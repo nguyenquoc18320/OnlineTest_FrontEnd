@@ -26,24 +26,18 @@
         <title>My course</title>
     </head>
     <body>
-
-
         <div class='wrap'>
             <div id = 'header'><!--Header includes the logo and name of function-->
                 <div id='div_logo'>
                     <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
                 </div>
-                <div id='div_functionName'>
-                    <label id='functionName'>Manage Course</label>
-                </div>
-            </div>
-
-            <div class ='main'>
                 <div class ='navi'><!--navigation buttons-->
                     <div class ='profile'>
                         <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
-                        <p><c:out value=""/>${user.getName()}</p>
-                        <p><c:out value=""/>${user.getEmail()}</p>
+                        <div class='info'>
+                            <p id='info_name'><c:out value=""/>${user.getName()}</p>
+                            <p id='info_email'><c:out value=""/>${user.getEmail()}</p>
+                        </div>
                     </div>
                     <div class="menu">
                         <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
@@ -54,6 +48,9 @@
                         <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>
                     </div>
                 </div>
+            </div>
+
+            <div class ='main'>
                 <div class='content'>
                     <div class ="path_div">
                         <a href="manage-course-admin">Manage Course></a>
@@ -63,24 +60,24 @@
 
                         <form id="form-search"  action="manage-course-admin" method="GET">
                             <div class ="div_1">   
-                                
+
                                 <c:choose>
                                     <c:when test="${blockedStatus eq 'Yes'}">
                                         <div>Blocked: <input type="radio" name="blockedStatus" value="NotUse"><label>Not use</label><br></div>
                                         <div><input type="radio" name="blockedStatus" value="Yes" checked><label>Yes</label><br></div>
                                         <div><input type="radio" name="blockedStatus" value="No"><label>No</label><br></div>
-                                    </c:when>
-                                    <c:when test="${blockedStatus eq 'No'}">
+                                        </c:when>
+                                        <c:when test="${blockedStatus eq 'No'}">
                                         <div>Blocked: <input type="radio" name="blockedStatus" value="NotUse"><label>Not use</label><br></div>
                                         <div><input type="radio" name="blockedStatus" value="Yes" ><label>Yes</label><br></div>
                                         <div><input type="radio" name="blockedStatus" value="No" checked><label>No</label><br></div>
-                                    </c:when>
-                                    <c:otherwise >
+                                        </c:when>
+                                        <c:otherwise >
                                         <div>Blocked:<input type="radio" name="blockedStatus" value="NotUse" checked><label>Not use</label><br></div>
                                         <div><input type="radio" name="blockedStatus" value="Yes" ><label>Yes</label><br></div>
                                         <div><input type="radio" name="blockedStatus" value="No" ><label>No</label><br></div>
-                                    </c:otherwise>
-                                </c:choose>
+                                        </c:otherwise>
+                                    </c:choose>
                             </div>
                             <div class ="div_2">                             
                                 <c:choose>
@@ -111,7 +108,7 @@
                                        <label> Author:</label>
                                        <input type="text" id="author_search" name="authorForSearch" <c:if test="${not empty authorForSearch}">value="<c:out value='${authorForSearch}'/>"</c:if>>
                                        <br/>
-         
+
                                        <!--<a href = "create-course?start=1" id="link_create_course"><i id="icon_add" class="fa fa-plus-circle">New Course</i></a>-->
                                 </div>
                             </form>             

@@ -13,6 +13,11 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="Views/CSS/BaseFormat.css" />
         <link rel="stylesheet" type="text/css" href="Views/CSS/createNewCourse.css" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <title>Create new course</title>
     </head>
@@ -22,34 +27,34 @@
                 <div id='div_logo'>
                     <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
                 </div>
-                <div id='div_functionName'>
-                    <label id='functionName'>Create Course</label>
+                <div class ='navi'><!--navigation buttons-->
+                    <div class ='profile'>
+                        <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                        <div class='info'>
+                            <p id='info_name'><c:out value=""/>${user.getName()}</p>
+                            <p id='info_email'><c:out value=""/>${user.getEmail()}</p>
+                        </div>
+                    </div>
+                    <div class="menu">
+                        <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
+                        <button><a href="user-info"><i class="fas fa-address-book"></i> My Profile</a></button>
+                        <button><a href="attended-course"><i class="fas fa-users" style='background-color: #5531FB; color:white'></i>Attended Courses</a></button>
+                        <button><a href="manage-course-user" ><i class="fas fa-book-open"></i> My Courses </a></button>
+                        <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
+                        <button><a href="log-out"><i class="fas fa-sign-out-alt"></i> LogOut</a></button>
+                    </div>
                 </div>
             </div>
 
             <div class ='main'>
-                 <div class ='navi'><!--navigation buttons-->
-                    <div class ='profile'>
-                        <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
-                        <p><c:out value=""/>${user.getName()}</p>
-                        <p><c:out value=""/>${user.getEmail()}</p>
-                    </div>
-                    <div class="menu">
-                        <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
-                        <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
-                        <button><a href="attended-course"><i class="fas fa-users"></i>Attended Courses</a></button>
-                        <button><a href="manage-course-user"><i class="fas fa-book-open"></i> My Test Courses </a></button>
-<!--                        <button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
-                        <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>
-                    </div>
-                 </div>
                 <div class='content'>
                     <div class ="path_div">
                         <a href="manage-course-user?page=1&maxPageItems=5">My Course></a>
                         <a href="create-course?start=1">Create Course></a>
                     </div>
                     <div class='content_wrap'>
-                        <form action="create-course" method="POST">
+                        <form id='div_create_course' action="create-course" method="POST">
+                             <h1 id='course_name'>Create Course</h1> 
                             <label class='label_title'>Course name:</label>
                             <input type="text" class="text_input" name="courseName" required><br>
 

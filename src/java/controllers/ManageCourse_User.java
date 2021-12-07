@@ -11,7 +11,6 @@ import Object.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -45,7 +44,7 @@ public class ManageCourse_User extends HttpServlet {
         else {
             try {
                 int page = 1;
-                int maxPageItems = 5;
+                int maxPageItems = 6;
                 try {
                     page = Integer.parseInt(request.getParameter("page"));
                     maxPageItems = Integer.parseInt(request.getParameter("maxPageItems")); //number of items per a page

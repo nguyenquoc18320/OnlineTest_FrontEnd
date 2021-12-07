@@ -9,6 +9,10 @@
         <link rel="stylesheet" type="text/css" href="Views/CSS/BaseFormat.css" />
         <link rel="stylesheet" type="text/css" href="Views/CSS/AddParticipants.css" />
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
         <title>Add Participants</title>
     </head>
     <body>
@@ -17,27 +21,27 @@
                 <div id='div_logo'>
                     <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
                 </div>
-                <div id='div_functionName'>
-                    <label id='functionName'><c:out value="${course.getName()}"/></label>
+                <div class ='navi'><!--navigation buttons-->
+                    <div class ='profile'>
+                        <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                        <div class='info'>
+                            <p id='info_name'><c:out value=""/>${user.getName()}</p>
+                            <p id='info_email'><c:out value=""/>${user.getEmail()}</p>
+                        </div>
+                    </div>
+                    <div class="menu">
+                        <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
+                        <button><a href="user-info"><i class="fas fa-address-book"></i> My Profile</a></button>
+                        <button><a href="attended-course"><i class="fas fa-users" style='background-color: #5531FB; color:white'></i>Attended Courses</a></button>
+                        <button><a href="manage-course-user" ><i class="fas fa-book-open"></i> My Courses </a></button>
+                        <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
+                        <button><a href="log-out"><i class="fas fa-sign-out-alt"></i> LogOut</a></button>
+                    </div>
                 </div>
             </div>
 
             <div class ='main'>
-                <div class ='navi'><!--navigation buttons-->
-                    <div class ='profile'>
-                        <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
-                        <p><c:out value=""/>${user.getName()}</p>
-                        <p><c:out value=""/>${user.getEmail()}</p>
-                    </div>
-                    <div class="menu">
-                        <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
-                        <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
-                        <button><a href="attended-course"><i class="fas fa-users"></i>Attended Courses</a></button>
-                        <button><a href="manage-course-user"><i class="fas fa-book-open"></i> My Test Courses </a></button>
-                        <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
-                        <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>
-                    </div>
-                </div>
+
                 <div class='content'>
                     <div class ="path_div">
                         <a href="manage-course-user">My Course></a>
@@ -47,7 +51,8 @@
                     </div>
 
                     <div class='content_wrap'>
-                        <form action="add-participants" method="POST">
+                        <form  id = 'formSubmit' action="add-participants" method="POST">
+                            <h1 id='course_name'><c:out value="${course.getName()}"/></h1>
                             <p >
                                 You can add many participants concurrently.Each email should be on a line.
                             </p>
@@ -58,7 +63,7 @@
                                 <label class='label_title'>Result: </label>
                                 <textarea readonly class="text_input" name = 'result'><c:if test="${not empty email}"><c:out value="${result}"/></c:if></textarea><br>
 
-                            <input id="add_button" type='submit' value="ADD">
+                            <div id='div_btn_submit'><input id="add_button" type='submit' value="ADD"></div>
                         </form>
                     </div>
                 </div>
