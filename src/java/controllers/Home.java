@@ -38,12 +38,12 @@ public class Home extends HttpServlet {
             url = "/manage-course-admin";
         } else {
             try {
-                String searchName = request.getParameter("searchName");
+                String searchName = request.getParameter("nameForSearch");
 
                 String api_url = APIUtils.getBaseURLAPi() + "course/public-courses?userid=" + user.getId();
 
                 int page = 1;
-                int maxPageItems = 5;
+                int maxPageItems = 6;
                 try {
                     page = Integer.parseInt(request.getParameter("page"));
                     maxPageItems = Integer.parseInt(request.getParameter("maxPageItems")); //number of items per a page
@@ -55,6 +55,7 @@ public class Home extends HttpServlet {
                 
                 if (searchName != null) {
                     api_url += "&courseName=" + searchName;
+                    request.setAttribute("nameForSearch", searchName);
                 }
 
                 String result = APIUtils.sendGetRequest(api_url, true);

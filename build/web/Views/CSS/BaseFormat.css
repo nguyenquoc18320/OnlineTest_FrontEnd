@@ -1,15 +1,15 @@
-.profile{
-    height: 250px;
-    width: 100%;
-    text-align: center
-}
-
-.profile img{
-    margin-top: 20px;
-    height: 50%;
-    border: 4px solid #18FFFF;
-    border-radius: 12px;
-    padding: 3px;
+#header 
+{
+    width: 280px;
+    float: left;
+    background-color: yellow;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+    background-color: #EFF1FA;
 }
 
 body, html
@@ -25,41 +25,28 @@ body, html
     width: 100%; /* kích thước chiều rộng trang web */
     float: left; /* canh div từ trái sang */
     height: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+    font-family:  'Roboto', sans-serif;
 }
 
-#header 
-{
-    width: 100%; /* kích thước chiều rộng trang web */
-    height:100px;;
-    float: left; /* canh div từ trái sang */
-    /*background-color: yellow;  tạo màu để dễ nhìn */
-}
+
 
 #div_logo{
-    width: 280px;
-    height: 100%;
+    /*height: 100%;*/
     float: left;
-    background-color: #FFE0B2;
+    background-color: #F6F7FC;
 }
 
 #logo{
     margin-left: 40px;
-    height: 90%;
+    height:  90px;
     margin-top: 5px;
-}
-
-#div_functionName{
-
-    width: 100%;
-    height: 100%;
-    display: block;
-    text-align: center;
-    line-height: 80px
-}
-
-#functionName{
-    font-size: 40pt;
-    font-weight: bold;
 }
 
 .main
@@ -72,29 +59,106 @@ body, html
 
 .navi
 {
-    width: 280px; /* kích thước chiều rộng của vùng thanh bên */
+    /*    width: 280px;  kích thước chiều rộng của vùng thanh bên */
     float: left; /* canh div từ trái sang */
     height: 100%;
     display: block;
+    background-color: #F6F7FC;
     /*background-color: #FF6D00;  tạo màu để dễ nhìn*/ 
 }
-
 .profile{
-    background-color: #FFE0B2;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+    margin-top: 40px;
 }
 
-.user_info{
-    width: 100%; /* kích thước chiều rộng của vùng thanh bên */
-    float: top; /* canh div từ trái sang */
-    height: 150px;
-    background-color: #FFE0B2; /* tạo màu để dễ nhìn */
+.profile img{
+    height: 50px;
+    width: 50px;
+    margin-left: 10px;
+
 }
 
+.info p{
+    margin: 0px 0px 0px 10px;
+}
+
+#info_name{
+    font-weight: bold;   
+}
+
+/*menu*/
+.menu{
+    display: flex;
+    flex-direction: column;
+    /*height: 100%;*/
+    width: 100%;
+    background-color: #F6F7FC;
+    padding-top: 40px;
+}
+
+.menu button{
+    padding: 20px 0px 0px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    /*background-color: #FF6D00;*/
+    background-color: transparent;
+    text-align: left;
+}
+
+
+.menu button:hover{
+    background-color: #FFAB40;
+    color: #fff;
+}
+
+.menu i{
+    font-size: 20px;
+    color: black;
+    padding: 5px;
+}
+
+.menu a{
+    color: black;
+    text-decoration: none;
+}
 
 
 .content
 {
-    width: 700px; /* kích thước chiều rộng của vùng nội dung */
+    width: 100%; /* kích thước chiều rộng của vùng nội dung */
     float: left; /* canh div từ trái sang */ 
 
+}
+.path_div{
+    font-size: 12pt;
+    background-color: white;
+    padding: 5px 0px 5px 10px;
+    background-color: #EFF1FA;
+    color:black;
+    width: 100%;
+}
+
+.path_div a{
+    color: black;
+    text-decoration: none;
+}
+
+#label_function_name{
+    font-size: 25pt;
+font-weight: bold;
+}
+
+.content_wrap{
+    margin-top: 50px;
+    margin-left: 50px;
+    font-size: 12pt;
+    margin-right: 50px;
+    /*width: 100%;*/
 }

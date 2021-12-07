@@ -42,7 +42,7 @@ public class AttendedCourse extends HttpServlet {
         } else {
 
             int page = 1;
-            int maxPageItems = 5;
+            int maxPageItems = 6;
             try {
                 page = Integer.parseInt(request.getParameter("page"));
                 maxPageItems = Integer.parseInt(request.getParameter("maxPageItems")); //number of items per a page

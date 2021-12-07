@@ -17,6 +17,10 @@
         <link rel="stylesheet" type="text/css" href="Views/CSS/CourseManager_user.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+        
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
         <script   type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
@@ -31,97 +35,81 @@
                 <div id='div_logo'>
                     <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
                 </div>
-                <div id='div_functionName'>
-                    <label id='functionName'>My Course</label>
+                <div class ='navi'><!--navigation buttons-->
+                    <div class ='profile'>
+                        <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                        <div class='info'>
+                            <p id='info_name'><c:out value=""/>${user.getName()}</p>
+                            <p id='info_email'><c:out value=""/>${user.getEmail()}</p>
+                        </div>
+                    </div>
+                    <div class="menu">
+                        <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
+                        <button><a href="user-info"><i class="fas fa-address-book"></i> My Profile</a></button>
+                        <button><a href="attended-course"><i class="fas fa-users"></i>Attended Courses</a></button>
+                        <button><a href="manage-course-user" ><i class="fas fa-book-open" style='background-color: #5531FB; color:white'></i> My Courses </a></button>
+                        <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
+                        <button><a href="log-out"><i class="fas fa-sign-out-alt"></i> LogOut</a></button>
+                    </div>
                 </div>
             </div>
 
             <div class ='main'>
-                <div class ='navi'><!--navigation buttons-->
-                    <div class ='profile'>
-                        <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
-                        <p><c:out value=""/>${user.getName()}</p>
-                        <p><c:out value=""/>${user.getEmail()}</p>
-                    </div>
-                    <div class="menu">
-                        <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
-                        <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
-                        <button><a href="attended-course"><i class="fas fa-users"></i>Attended Courses</a></button>
-                        <button><a href="manage-course-user"><i class="fas fa-book-open"></i> My Test Courses </a></button>
-                        <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
-                        <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>
-                    </div>
-                </div>
                 <div class='content'>
                     <div class ="path_div">
                         <a href="manage-course-user">My Course></a>
                     </div>
 
                     <div class='content_wrap'>
-                        <a href = "create-course?start=1" id="link_create_course"><i id="icon_add" class="fa fa-plus-circle">New Course</i></a>
+                        <label id ='label_function_name'>My Courses</label>
                         <form id="form-search"  action="manage-course-user" method="GET">
                             <input type="text" id='search_input' name="nameForSearch" 
                                    <c:if test="${not empty nameForSearch}">value="<c:out value='${nameForSearch}'/>"</c:if>>
                                    <button type ="submit" id ="search_button"><i class="fa fa-search" >Search</i></button> 
-                            </form>             
+                            </form>
+                            <a href = "create-course?start=1" id="link_create_course"><i id="icon_add" class="fa fa-plus-circle">New Course</i></a>
                             <form id="formSubmit"  action="manage-course-user" method="GET">                      
-                                <table id="course" class="table table-bordered table table-hover" cellspacing="0" width="100%">
-                                    <thead>
-                                        <tr>
-                                            <th class ='table_name_header'>Name</th>
-                                            <th class ='table_public_header'>Public</th>
-                                            <th class ='table_edit_header'></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <c:if test="${not empty coursePagination}">
-                                        <c:forEach var='item' items='${coursePagination.getEntityList()}'>
-                                            <tr>
-                                                <td class="table_name">
-                                                    <c:choose>
-                                                        <c:when test="${item.getBlocked()}">
-                                                            <c:out value="${item.getName()}"/>
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <a class="course-name" href="detail-course?courseid=${item.getId()}"><c:out value="${item.getName()}"/></a>
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </td>
-                                                <!--check status, for public or private-->
-                                                <td class="table_check_icon">
-                                                    <c:if test="${item.getStatus()}">
-                                                        <i id="icon_check" class="fa fa-check-circle"></i>
-                                                    </c:if>
-                                                </td>
+                            <c:if test="${not empty coursePagination}">
+                                <c:forEach var='item' items='${coursePagination.getEntityList()}'>
+                                    <div class='div_course'>
+                                        <c:choose>
+                                            <c:when test="${item.getBlocked()}">
+                                                <label class='label_course_name'><c:out value="${item.getName()}"/></label>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <label class='label_course_name'><a class="course-name" href="detail-course?courseid=${item.getId()}"><c:out value="${item.getName()}"/></a></label>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        <!--check status, for public or private-->
+                                        <c:if test="${item.getStatus()}">
+                                            <label><i id="icon_public" class="fa fa-globe-americas"></i>Public</label>
+                                        </c:if>
 
-                                                <td class = "table_edit">
-                                                    <!--check whether the course is blocked or not-->
-                                                    <c:choose>
-                                                        <c:when test="${item.getBlocked()}">
-                                                            <label>Blocked</label>
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <a href="edit-course?start=1&courseid=<c:out value='${item.getId()}'/>" ><i class='fa fa-edit'></i></a>
-                                                            </c:otherwise>
-                                                        </c:choose>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
-                                    </c:if>
-                                </tbody>
-                            </table>
+                                        <!--check whether the course is blocked or not-->
+                                        <br>
+                                        <div class='div_update'>
+                                        <c:choose>
+                                            <c:when test="${item.getBlocked()}">                                              
+                                                <label class='label_update' style='background-color: #ECEAFE'>Update</label>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <a href="edit-course?start=1&courseid=<c:out value='${item.getId()}'/>"><label class='label_update'>Update</label></a>
+                                            </c:otherwise>
+                                        </c:choose>
+                                        </div>
 
-                            <ul class="pagination justify-content-center" id="pagination"></ul>
+                                    </div>
+                                </c:forEach>
+                            </c:if>     
                             <input type='hidden' value='1' id ='page' name='page'>
                             <input type='hidden' value='<c:out value="${maxPageItems}"/>' id ='maxPageItems' name='maxPageItems'>
                             <input type="hidden" id='search' value="" name="nameForSearch">
                         </form>
+                        <ul class="pagination justify-content-center" id="pagination"></ul>
                     </div>
                 </div>
             </div>
         </div>
-
-
         <script>
             //delete message
             var message = "${deleteMessage}";
@@ -133,7 +121,7 @@
         <script type="text/javascript">
             var totalPages = ${coursePagination.getTotalPage()};
             var currentPage = ${coursePagination.getPage()};
-            var maxPageItems = 5;
+            var maxPageItems = 6;
             var searchName = '${nameForSearch}';
             console.info("currentPage : " + currentPage);
 //            var limit = 5; //number of items on a page
