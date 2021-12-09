@@ -76,6 +76,14 @@ and open the template in the editor.
     border: 2px solid rgb(178, 178, 178);
     border-radius: 6px;
 }
+.cbb_listcourseresult{
+    width: 30%;
+    margin-left: 15px;
+    margin-top: 4px;
+    padding: 10px 5px 10px 25px;
+    border: 2px solid rgb(178, 178, 178);
+    border-radius: 6px;
+}
 .borderlist{
     width: auto;
     height: auto;
@@ -88,6 +96,12 @@ and open the template in the editor.
     background: -moz-linear-gradient(-45deg, #02021E 0%, #102954 61%, #4843FF 100%);
     background: -webkit-linear-gradient(-45deg, #02021E 0%, #102954 61%, #4843FF 100%);
     background: linear-gradient(135deg, #02021E 0%, #102954 61%, #4843FF 100%);
+}
+.borderlist #iconblock{
+    position: absolute;
+    right: 40px;
+    font-size: 40px;
+    cursor: pointer;
 }
 .introduce-listtest{
     margin-top: 30px;
@@ -335,4 +349,19 @@ and open the template in the editor.
     padding: 10px 5px 10px 25px;
     border: 2px solid rgb(178, 178, 178);
     border-radius: 6px;
+}
+.search_result{
+    color: #FFFFFF;
+    font-size: 16px;
+    line-height: 25px; 
+    padding: 13px 66px 13px 66px;
+    border-radius: 8px; 
+    font-weight: bold;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    background: #2E64FE;
+    width: 200px;
+    margin-left: 20px;
 }

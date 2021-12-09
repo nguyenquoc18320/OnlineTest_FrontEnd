@@ -49,7 +49,11 @@ public class FortgetPassword extends HttpServlet {
         //check confirm password
         if (!newPassword.equals(confirmPassword)) {
             request.setAttribute("confirmPasswordError", "*Confirmed password does NOT match!");
-        } else {
+            url = "/Views/Pages/User/Login.jsp";
+        }  else if (newPassword.length()<8){
+            request.setAttribute("passwordError", "Password must contain at least 8 characters!");
+            url = "/Views/Pages/User/Login.jsp";
+        }else {
             if(confirmCode!=null){
                 String result = APIUtils.sendGetRequest("http://localhost:8081/code/"+user.getEmail()+"/"+confirmCode, true);
 

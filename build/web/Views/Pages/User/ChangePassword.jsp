@@ -16,7 +16,7 @@
         <link rel="stylesheet" type="text/css" href="Views/CSS/su/updateinfor.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-        <title></title>
+        <title>Change Password</title>
     </head>
     <body>
         <div class="container">         			

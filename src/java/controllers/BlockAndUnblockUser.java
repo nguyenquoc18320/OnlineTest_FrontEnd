@@ -5,11 +5,12 @@
  */
 package controllers;
 
-import Object.Account;
+import Object.Course;
 import Object.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,8 +22,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author PhanSu
  */
-@WebServlet(name = "ChangePassword", urlPatterns = {"/change-pass"})
-public class ChangePassword extends HttpServlet {
+@WebServlet(name = "BlockAndUnblockUser", urlPatterns = {"/block-unblock-user"})
+public class BlockAndUnblockUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,34 +37,36 @@ public class ChangePassword extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = "/Views/Pages/User/ChangePassword.jsp";
+        String url = "";
 
         HttpSession session = request.getSession();
+
         User user = (User) session.getAttribute("user");
-         String checkSrart = request.getParameter("start");
-        if (checkSrart==null){
-            String oldPassword = (String) request.getParameter("passwordold");
-            request.setAttribute("passwordold", oldPassword);
-            String newPassword = (String) request.getParameter("passwordnew");
-            request.setAttribute("passwordnew", newPassword);
-            String confirmPassword = (String) request.getParameter("confirmPassword");
-            //check confirm password
-            if (!newPassword.equals(confirmPassword)) {
-                request.setAttribute("confirmPasswordError", "*Confirmed password does NOT match!");
-            } else if (newPassword.length()<8){
-                request.setAttribute("passwordError", "Password must contain at least 8 characters!");
+        String api_url = APIUtils.getBaseURLAPi();
+        ObjectMapper mapper = new ObjectMapper();
+        String userid = request.getParameter("userid");
+        try {
+            if (user == null) {
+                url = "/Views/Pages/User/Login.jsp";
             }
             else {
-                Account account = new Account(newPassword, oldPassword, user);
-                //send http request to create new user
-                ObjectMapper mapper = new ObjectMapper();
-                String jsonRequest = mapper.writeValueAsString(account);
-                String result = APIUtils.sendPutRequest("http://localhost:8081/account/"+user.getEmail(), jsonRequest);
-                url = "/Views/Pages/User/Login.jsp";
-                System.out.print("Ket qua:" +result);        
+                
+                String testid = request.getParameter("testid");
+                String result = APIUtils.sendPutRequest(APIUtils.getBaseURLAPi() + "change-status-user/" + userid ,"");
+                if (result != null) {
+                    request.setAttribute("alertMessage", "Changed the user status ");
+                    url = "/manage-user";
+                } else {
+                    request.setAttribute("alertMessage", "Can't not change the user status !");
+                }              
             }
+        } catch (Exception ex) {
+            System.out.println(ex.toString());
+            request.setAttribute("alertMessage", "Can't not change status user!");
         }
-        getServletContext().getRequestDispatcher(url).forward(request, response);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

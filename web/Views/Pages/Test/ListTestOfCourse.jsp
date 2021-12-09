@@ -32,6 +32,7 @@
 
 
 
+                  
     <div class="container-full">
         <div class="side-bar">
             <div class="logo">
@@ -39,7 +40,7 @@
             </div>
             <div class="profile">
                 <c:if test ="${not empty user.getImage()}">
-                    <img  class="imageuserinfor" alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                    <img class="imageuserinfor" alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
                 </c:if>
                 <c:if test ="${empty user.getImage()}">
                     <img src="Views/CSS/images/userinfor.png">
@@ -77,13 +78,14 @@
                         </script>
                         <c:forEach var = 'item' items='${testList}'>
                             <div class="borderlist" name="fEtestlist">
-                                <a href="show-result-author-test?testid=${item.getId()}"><p id="label_listtest"><c:out value="${item.getName()}"/></p></a>
+                                <!-- <a href="show-result-author-test?testid=${item.getId()}"><p id="label_listtest"><c:out value="${item.getName()}"/></p></a> -->
+                                <a id="label_listtest" href="test-result?courseid=<c:out value="${Course.getId()}"/>&testid=<c:out value="${item.getId()}&start=1"/>"><c:out value="${item.getName()}"/></a>
                                 <c:choose>
                                     <c:when test="${item.isStatus()}">
-                                        <i class="fa fa-unlock-alt" onclick="blockTest('${Course.getId()}','${item.getId()}')"></i>                                      
+                                        <i id="iconblock" style="position: absolute;right: 10%;font-size: 30px;cursor: pointer;" class="fa fa-unlock-alt" onclick="blockTest('${Course.getId()}','${item.getId()}')"></i>                                      
                                     </c:when>
                                     <c:otherwise >
-                                        <i class="fa fa-lock" onclick="blockTest('${Course.getId()}','${item.getId()}')"></i>                                        
+                                        <i style="position: absolute;right: 10%;font-size: 30px;cursor: pointer;" class="fa fa-lock" onclick="blockTest('${Course.getId()}','${item.getId()}')"></i>                                        
                                     </c:otherwise>
                                  </c:choose>
                                 <p id="list-descrip" >Duration: <c:out value="${item.getDuration()}"/> (minutes)</p>
@@ -118,8 +120,7 @@
                             alert(message);
                         }
                     </script>
-                </div>
-                    
+                </div>                  
             </div>
         </div>
 </body>

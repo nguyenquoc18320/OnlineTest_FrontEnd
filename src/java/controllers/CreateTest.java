@@ -45,9 +45,10 @@ public class CreateTest extends HttpServlet {
         String api_url = APIUtils.getBaseURLAPi();
         ObjectMapper mapper = new ObjectMapper();
         String checkSrart = request.getParameter("start");
+        String courseidupdate = request.getParameter("courseid");
         if (checkSrart!=null){
             try {
-                String courseidupdate = request.getParameter("courseid");
+                
                 String courseupdate = APIUtils.sendGetRequest(api_url + "course/"+ courseidupdate, true);
                 System.out.println("Result course: " + courseupdate);
                 Course course = mapper.readValue(courseupdate, Course.class);
@@ -59,7 +60,7 @@ public class CreateTest extends HttpServlet {
                     request.setAttribute("CourseCurrent", course);
                 }
             } catch (Exception ex) {
-                request.setAttribute("errorMessage", "Can't load Course!");
+                request.setAttribute("errorMessage", "Can't load Test!");
             }
         }
         if (checkSrart==null){
@@ -80,7 +81,7 @@ public class CreateTest extends HttpServlet {
                 Date datenow = new Date(millis);
                 boolean beforenow = datenow.before(dateStart);
                 System.out.println("Blean test: " + before + beforenow);
-                if(before == false || beforenow == false){                  
+                if(before == false){                  
                     request.setAttribute("errorMessage", "Invalid test time!!!");
                     url = "create-test?courseid="+couresid+"&start=1";
                 }else{
@@ -102,7 +103,10 @@ public class CreateTest extends HttpServlet {
                     } 
                 }
             } catch (Exception ex) {
-                request.setAttribute("errorMessage", "Sorry! Can't create your test");
+                request.setAttribute("alertMessage", "Sorry! Can't create your test");
+                System.out.println("Check: " + courseidupdate);
+                url = "list-test?courseid="+ courseidupdate;
+                
             }
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);

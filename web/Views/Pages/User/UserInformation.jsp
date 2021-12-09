@@ -27,10 +27,10 @@
                 <img src="Views/CSS/images/logo1.png">
             </div>
             <div class="profile">                
-                <c:if test ="${not empty user.getImage()}">
-                    <img  class="imageuserinfor" alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                <c:if test = "${not empty user.getImage()}">
+                    <img class="imageuserinfor" alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
                 </c:if>
-                <c:if test ="${empty user.getImage()}">
+                <c:if test = "${empty user.getImage()}">
                     <img src="Views/CSS/images/userinfor.png">
                 </c:if>
                 <p><c:out value=""/>${user.getName()}</p>
@@ -60,7 +60,7 @@
                         <p>User Information</p>
                         <div class="drop-down setting" id="drop-down-setting">
                             <button><a href="update-info">Change Personal Information</a></button>
-                            <button><a href="change-pass">Change Password</a></button>
+                            <button><a href="change-pass?start=1">Change Password</a></button>
                         </div>
                         <i class="fas fa-cog" id="setting" onclick="ToggleDropDown('drop-down-setting')"></i> 
                     </div>

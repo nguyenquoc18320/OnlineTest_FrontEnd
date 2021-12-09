@@ -61,7 +61,7 @@
             </div>
             <div class="content">
                 <div class="introduce-test">
-                    <form action="create-test" method="post" autocomplete="on">
+                    <form action="create-test?courseid=${CourseCurrent.getId()}" method="post" autocomplete="on">
                         <div class="introduce-profiletest">
                             <label for="listourse" class="label_test" data-icon="u" >Course: </label>                           
                             <select name="listourse" class="cbb_listcourse">                               
