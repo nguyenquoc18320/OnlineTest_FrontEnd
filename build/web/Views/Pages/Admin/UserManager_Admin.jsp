@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="Views/CSS/su/user.css" rel="stylesheet" type="text/css"/>
         <link href="Views/CSS/su/test.css" rel="stylesheet" type="text/css"/>
-
+        <link rel="stylesheet" type="text/css" href="Views/CSS/BaseFormat.css" />
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
         <script   type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -33,45 +33,42 @@
                 <div id='div_logo'>
                     <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
                 </div>
-                <div id='div_functionName'>
-                    <label id='functionName'>Manage Course</label>
-                </div>
-            </div>
-
-            <div class ='main'>
                 <div class ='navi'><!--navigation buttons-->
                     <div class ='profile'>
-                        <c:if test ="${not empty user.getImage()}">
-                            <img  class="imageuserinfor" alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
-                        </c:if>
-                        <c:if test ="${empty user.getImage()}">
-                            <img src="Views/CSS/images/userinfor.png">
-                        </c:if>
-                        <p><c:out value=""/>${user.getName()}</p>
-                        <p><c:out value=""/>${user.getEmail()}</p>
+                        <img alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                        <div class='info'>
+                            <p id='info_name'><c:out value=""/>${user.getName()}</p>
+                            <p id='info_email'><c:out value=""/>${user.getEmail()}</p>
+                        </div>
                     </div>
                     <div class="menu">
                         <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
                         <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
-                        <button><a href="#"><i class="fas fa-users"></i>Manage users</a></button>
+                        <button><a href="manage-user"><i class="fas fa-users"></i>Manage users</a></button>
                         <button><a href="manage-course-admin"><i class="fas fa-book-open"></i>Manage Courses </a></button>
                         <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
                         <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>
                     </div>
                 </div>
+            </div>
+
+            <div class ='main'>
                 <div class='content'>
+                    <div class ="path_div">
+                        <a href="manage-course-admin">Manage User></a>
+                    </div>
                     
                     <div class='content_wrap'>
 
-                        <form id="form-search"  action="#" method="POST">
+                        <form id="form-search"  action="manage-user?start=2" method="POST">
                             <input type='hidden' value="${userid}" id ='userid' name='userid'>
                             <div>
-                                <select id="typeuser" class="cbb_typeuser" onchange="ChangeList()">                               
+                                <select id="typeuser" name="typeuser" class="cbb_listcourseresult" onchange="ChangeList()">                               
                                     <option value='0' <c:if test="${type eq '0'}"> selected="selected"</c:if> >All</option>
                                     <option value='1' <c:if test="${type eq '1'}"> selected="selected"</c:if> >Admin</option>
                                     <option value='2'<c:if test="${type eq '2'}"> selected="selected"</c:if> >User</option>                                  
                                 </select>
-                                <select id="statususer" class="cbb_statususer" onchange="ChangeList()">                               
+                                <select id="statususer" name="statususer" class="cbb_listcourseresult" onchange="ChangeList()">                               
                                     <option value='0' <c:if test="${status eq '0'}"> selected="selected"</c:if>>All</option>
                                     <option value='1'<c:if test="${status eq '1'}"> selected="selected"</c:if>>Block</option>
                                     <option value='2'<c:if test="${status eq '2'}"> selected="selected"</c:if>>Unblock</option>                                  
@@ -79,7 +76,7 @@
                                 <a id="tempt"></a>
                             </div>
                             <div class ="div_3">
-                                <input type="text" id='course_name_search' name="nameForSearch" placeholder="Enter User Name">
+                                <input type="text" id='course_name_search' class="btn_search" name="nameForSearch" placeholder="Enter User Name">
                                 <button type ="submit" id ="search_button"><i class="fa fa-search" >Search</i></button> 
                                 <br/>
                             </div>

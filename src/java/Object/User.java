@@ -31,13 +31,14 @@ public class User extends BaseObject{
         this.dateOfBirth = dateOfBirth;
         this.email = email;
     }
-    public User(String name, String gender, Date dateOfBirth, String email, String image, Role role) {
+    public User(String name, String gender, Date dateOfBirth, String email, String image, Role role, boolean status) {
         this.name = name;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.image = image;
         this.role = role;
+        this.status = status;
     }
 
     public User(String name, String gender, Date dateOfBirth, String email, Long id, Long createdBy, Date createdDate, Long modifiedBy, Date modifiedDate, String image) {

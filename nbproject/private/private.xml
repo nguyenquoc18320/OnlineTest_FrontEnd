@@ -3,15 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/Pages/User/AttendTest.jsp</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/CSS/User/AttendTest.css</file>
-=======
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/Object/Role.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/UserCourse_Admin.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Course/test.jsp</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/AttendTest.java</file>
-            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/Object/Wrapper.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/Login.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/Object/Course.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/Object/TestResult.java</file>
@@ -25,9 +20,7 @@
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/User/NotDoneTestsOfAttendedCourse.jsp</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Course/CourseManager_User.jsp</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Course/EditCourse.jsp</file>
-            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/TestResults.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/User/AttendTest.jsp</file>
-            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Test/TestResult.jsp</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/AddQuestion.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/User/DoneTests.jsp</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/Object/User.java</file>
@@ -38,9 +31,11 @@
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Course/CreateNewCourse.jsp</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Course/AddParticipants.jsp</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/images/logo1.png</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/WEB-INF/web.xml</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/DeleteCourse.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/UpdateInfor.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/images/userinfor.png</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/nbproject/build-impl.xml</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Admin/CourseManager_Admin.jsp</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/Object/Account.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/Home.java</file>
@@ -50,7 +45,6 @@
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/UserInformation.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/login.css</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Course/ParticipantManager.jsp</file>
-            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/BlockandUnblockTest.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/ManageCourse_User.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/DeleteTest.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/BaseFormat.css</file>
@@ -69,13 +63,16 @@
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/ListTestOfCourse.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/NotDoneTestsOfAttendedCourse.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/TestDetail.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/conf/MANIFEST.MF</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/signup.css</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/CourseManager_user.css</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/MyTestResults.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/User/ConfirmSignUpCode.jsp</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/User/AttendedCourses.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/Admin/CourseManager_Admin.css</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/UpdateTest.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/Object/Test.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/META-INF/context.xml</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/ChangePassword.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/Object/Answer.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Test/AddQuestion.jsp</file>
@@ -93,8 +90,8 @@
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/DetailCourse.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/EditCourse.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/createNewCourse.css</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Admin/UserManager_Admin.jsp</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/CreateNewCourse.java</file>
->>>>>>> 074e05e (new)
         </group>
     </open-files>
 </project-private>

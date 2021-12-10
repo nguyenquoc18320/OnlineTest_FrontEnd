@@ -56,7 +56,7 @@ public class Login extends HttpServlet {
                         url = "/manage-course-user?page=1&maxPageItems=5";
                     } else if (user.getRole().getId() == 1 && user.isStatus()== true) {
                         url = "/manage-course-admin?start=1";
-                        url = "/manage-user";
+//                        url = "/manage-user";
 //                        url = "/Views/Pages/Test/CreateTest.jsp";
                     }
                 } else {

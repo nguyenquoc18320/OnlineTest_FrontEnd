@@ -110,7 +110,7 @@ public class UpdateInfor extends HttpServlet {
                     if (image == null) {
                         image = (String)user.getImage();
                     }
-                    User userupdate = new User(nameupdate, gender, birthEdit, user.getEmail(), image, user.getRole());
+                    User userupdate = new User(nameupdate, gender, birthEdit, user.getEmail(), image, user.getRole(), true);
                     //send http request to create new user
                     ObjectMapper mapper = new ObjectMapper();
                     String jsonRequest = mapper.writeValueAsString(userupdate);

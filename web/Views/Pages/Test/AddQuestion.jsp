@@ -19,6 +19,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" type="text/css" href="Views/CSS/BaseFormat.css" />
     <link href="Views/CSS/su/user.css" rel="stylesheet" type="text/css"/>
     <link href="Views/CSS/su/test.css" rel="stylesheet" type="text/css"/>
     <link href="Views/CSS/su/common.css" rel="stylesheet" type="text/css"/>
@@ -26,42 +27,47 @@
     <title>Question</title>
 </head>
 <body>
-    <div class="container-full">
-        <div class="side-bar">
-            <div class="logo">
-                <img src="Views/CSS/images/logo1.png">
-            </div>
-            <div class="profile">
-               <c:if test ="${not empty user.getImage()}">
-                    <img  class="imageuserinfor" alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
-                </c:if>
-                <c:if test ="${empty user.getImage()}">
-                    <img src="Views/CSS/images/userinfor.png">
-                </c:if>
-                <p><c:out value=""/>${user.getName()}</p>
-                <p><c:out value=""/>${user.getEmail()}</p>
+    <div class='wrap'>
 
-            </div>
-
-            <div class="menu">
-                <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
-                <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
-                <button><a href="attended-course"><i class="fas fa-users"></i>Attended Courses</a></button>
-                <button><a href="manage-course-user"><i class="fas fa-book-open"></i> My Test Courses </a></button>
-                <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
-                <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>
-            </div>
-        </div>
-        <div class="wrapped">
-            <div class="nav-bar">
-                <h1>Question</h1>
-                <div class="drop-down" id="drop-down-user">
-                    <a href=""><button>Log Out</button></a>
+            <div id = 'header'><!--Header includes the logo and name of function-->
+                <div id='div_logo'>
+                    <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
                 </div>
-                <i class="fas fa-user-circle"></i>
+                <div class ='navi'><!--navigation buttons-->
+                    <div class ='profile'>
+                        <c:if test ="${not empty user.getImage()}">
+                            <img class="imageuserinfor" alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                        </c:if>
+                        <c:if test ="${empty user.getImage()}">
+                            <img src="Views/CSS/images/userinfor.png">
+                        </c:if>
+                        <div class='info'>
+                            <p id='info_name'><c:out value=""/>${user.getName()}</p>
+                            <p id='info_email'><c:out value=""/>${user.getEmail()}</p>
+                        </div>
+                    </div>
+                    <div class="menu">
+                        <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
+                        <button><a href="user-info"><i class="fas fa-address-book" ></i> My Profile</a></button>
+                        <button><a href="attended-course"><i class="fas fa-users"></i>Attended Courses</a></button>
+                        <button><a href="manage-course-user" ><i class="fas fa-book-open" style='background-color: #5531FB; color:white'></i> My Courses </a></button>
+                        <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
+                        <button><a href="log-out"><i class="fas fa-sign-out-alt"></i> LogOut</a></button>
+                    </div>
+                </div>
             </div>
+            
+        <div class ='main'>
             <form  action="add-question?courseid=<c:out value="${Course.getId()}"/>&testid=<c:out value="${Test.getId()}"/>" method="POST"> 
-                <div id="content" class="content"> 
+                <div id='content' class='content'>
+                    <div class ="path_div">
+                        <a href="manage-course-user">My Courses></a>
+                        <a href="detail-course?courseid=${Course.getId()}">Detail></a>
+                        <a href="list-test?courseid=${Course.getId()}">List Tests</a>
+                        <a>Question></a>
+                    </div>
+
+
                     <h2 class="h2-aq"><a href="list-test?courseid=<c:out value="${Course.getId()}"/>&start=1">${Course.getName()}</a></h2>
                     <h3 class="he-aq">${Test.getName()}</h3>
                     <%--<c:forEach var = 'item' items='${listQuestion}'>--%>
@@ -206,7 +212,7 @@
                 </div>
                 <div class="buttton-new-question">
                     <input type="button" id="addquestion" class="newquestion" onclick="NewQuestion()"  value="New Question">
-                    <input type="button" id="removequestion" class="newquestion" style="background: red;" onclick="RemoveQuestion()" value="Remove Question">
+                    <input type="button" id="removequestion" class="newquestion" style="background: #aaa; color:white;" onclick="RemoveQuestion()" value="Remove Question">
                 </div>
 
                 <Button type="submit"  class="completequestion" value="Complete"> Complete</Button>
@@ -479,6 +485,7 @@
 
 
         </div>
+    </div>
     </div>
 </body>
 </html>

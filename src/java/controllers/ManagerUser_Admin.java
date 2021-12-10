@@ -51,50 +51,65 @@ public class ManagerUser_Admin extends HttpServlet {
         }
         else{
             String checkSrart = request.getParameter("start");
-            
-            if(checkSrart==null){
-                //list user
+            try{
+                if(checkSrart==null){
+                    //list user
 
-                String resultList = APIUtils.sendGetRequest(APIUtils.getBaseURLAPi() + "listuser", true);
-                List<User> userList = mapper.readValue(resultList, new TypeReference<List<User>>() {
-                });
-                System.out.println("List user result: " + userList);
-                if (userList != null) {
-                    request.setAttribute("userList", userList);
-                }
-            }
-            if(checkSrart!=null){
-                
-                boolean status2 = true;
-                String type = request.getParameter("type");
-                String status = request.getParameter("status");
-                if(status.equals("0")){
-                    if(type.equals("0")){
-                        String resultList = APIUtils.sendGetRequest(APIUtils.getBaseURLAPi() + "listuser", true);
-                        List<User> userList = mapper.readValue(resultList, new TypeReference<List<User>>() {
-                        });
-                        System.out.println("List user result: " + userList);
-                        if (userList != null) {
-                            request.setAttribute("userList", userList);
-                        }
-                    }else{
-                        String resultList = APIUtils.sendGetRequest(APIUtils.getBaseURLAPi() + "listuser/"+type, true);
-                        List<User> userList = mapper.readValue(resultList, new TypeReference<List<User>>() {
-                        });
-                        System.out.println("List user result2: " + userList);
-                        if (userList != null) {
-                            request.setAttribute("userList", userList);
-                            request.setAttribute("type", type);
-                            request.setAttribute("status", status);
-                        }
+                    String resultList = APIUtils.sendGetRequest(APIUtils.getBaseURLAPi() + "listuser", true);
+                    List<User> userList = mapper.readValue(resultList, new TypeReference<List<User>>() {
+                    });
+                    System.out.println("List user result: " + userList);
+                    if (userList != null) {
+                        request.setAttribute("userList", userList);
                     }
                 }else{
-                    if(status.equals("1"))
-                        status2 = false;
-                    if(status.equals("2")){
-                        status2 = true;
+                    if(checkSrart.equals("1")){
+
+                        boolean status2 = true;
+                        String type = request.getParameter("type");
+                        String status = request.getParameter("status");
+                        if(status.equals("0")){
+                            if(type.equals("0")){
+                                String resultList = APIUtils.sendGetRequest(APIUtils.getBaseURLAPi() + "listuser", true);
+                                List<User> userList = mapper.readValue(resultList, new TypeReference<List<User>>() {
+                                });
+                                System.out.println("List user result: " + userList);
+                                if (userList != null) {
+                                    request.setAttribute("userList", userList);
+                                }
+                            }else{
+                                String resultList = APIUtils.sendGetRequest(APIUtils.getBaseURLAPi() + "listuser/"+type, true);
+                                List<User> userList = mapper.readValue(resultList, new TypeReference<List<User>>() {
+                                });
+                                System.out.println("List user result2: " + userList);
+                                if (userList != null) {
+                                    request.setAttribute("userList", userList);
+                                    request.setAttribute("type", type);
+                                    request.setAttribute("status", status);
+                                }
+                            }
+                        }else{
+                            if(status.equals("1"))
+                                status2 = false;
+                            if(status.equals("2")){
+                                status2 = true;
+                            }
+                                String resultList = APIUtils.sendGetRequest(APIUtils.getBaseURLAPi() + "listuser/"+type+"/"+status2, true);
+                                List<User> userList = mapper.readValue(resultList, new TypeReference<List<User>>() {
+                                });
+                                System.out.println("List user result3: " + userList);
+                                if (userList != null) {
+                                    request.setAttribute("userList", userList);
+                                    request.setAttribute("type", type);
+                                    request.setAttribute("status", status);
+                                }
+                        }
                     }
-                        String resultList = APIUtils.sendGetRequest(APIUtils.getBaseURLAPi() + "listuser/"+type+"/"+status2, true);
+                    if(checkSrart.equals("2")){
+                        String type = request.getParameter("typeuser");
+                        String status = request.getParameter("statususer");
+                        String search = request.getParameter("nameForSearch");
+                        String resultList = APIUtils.sendGetRequest(APIUtils.getBaseURLAPi() + "listuser-search/"+search, true);
                         List<User> userList = mapper.readValue(resultList, new TypeReference<List<User>>() {
                         });
                         System.out.println("List user result3: " + userList);
@@ -103,7 +118,11 @@ public class ManagerUser_Admin extends HttpServlet {
                             request.setAttribute("type", type);
                             request.setAttribute("status", status);
                         }
+
+                    }
                 }
+            }catch (Exception ex) {
+
             }
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
