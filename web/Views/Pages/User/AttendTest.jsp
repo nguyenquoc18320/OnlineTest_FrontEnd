@@ -71,7 +71,8 @@
                                                     <label id='label_num_${i+1}' class='label_num' onclick='openQuestion(${i+1}, ${questionList.get(i).getId()})'><c:out value="${i+1}"/></label>
                                                 </c:forEach><br>
                                             </c:if>
-                                            End time: <label id='label_endTime'> <fmt:parseDate value="${result.get('endTime')}" var="date" pattern="yyyy-MM-dd'T'HH:mm:ss.SSSZ"/>
+                                            End at:<br>
+                                            <label id='label_endTime'> <fmt:parseDate value="${result.get('endTime')}" var="date" pattern="yyyy-MM-dd'T'HH:mm:ss.SSSZ"/>
                                                 <fmt:formatDate value="${date}" pattern="HH:mm dd-MM-yyy "/></label>
                                             <p id='note'>You must submit your answers before end time.</p>
                                             <label id='label_submit' onclick='finish(${test.getId()})'>Finish</label>
@@ -81,7 +82,8 @@
                                             <c:if test="${(questionList.size()-1) ge 0}">
                                                 <c:forEach var="i" begin="0" end="${questionList.size()-1}">
                                                     <div id='div_question_${i+1}'>
-                                                        <label class='label_question'><c:out value="Question ${questionList.get(i).getQuestionnumber()}: ${questionList.get(i). getContent()}"/></label>
+                                                        <label class='label_question_number'><c:out value="Question ${questionList.get(i).getQuestionnumber()}"/></label>
+                                                        <label class='label_question'> <c:out value="${questionList.get(i). getContent()}"/></label>
 
                                                         <c:forEach var='j' begin='0' end="${questionList.get(i).getAnswerList().size()-1}">
                                                             <c:if test="${not empty questionList.get(i).getAnswerList().get(j)}">
@@ -163,26 +165,26 @@
                 }
 
                 function finish(testid) {
-                    if (confirm("Are you sure you want to finish the test ?")) {
-                        var radios = document.getElementsByName('answer_' + currentQuestion);
-                        for (var radio of radios)
-                        {
-                            if (radio.checked) {
-                                var label = document.getElementById('label_num_' + currentQuestion);
-                                label.style.backgroundColor = '#B3D9FF';
+                    var radios = document.getElementsByName('answer_' + currentQuestion);
+                    for (var radio of radios)
+                    {
+                        if (radio.checked) {
+                            var label = document.getElementById('label_num_' + currentQuestion);
+                            label.style.backgroundColor = '#B3D9FF';
 
-                                console.info("ra: " + ansCharacters[radio.value]);
-                                fetch("http://localhost:8081/answer?questionid=" + questionList[currentQuestion - 1]
-                                        + "&userid=" + userid + "&selection=" + ansCharacters[radio.value], {
-                                    method: 'PUT',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify("")
-                                });
+                            console.info("ra: " + ansCharacters[radio.value]);
+                            fetch("http://localhost:8081/answer?questionid=" + questionList[currentQuestion - 1]
+                                    + "&userid=" + userid + "&selection=" + ansCharacters[radio.value], {
+                                method: 'PUT',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify("")
+                            });
 
-                            }
                         }
+                    }
+                    if (confirm("Are you sure you want to finish the test ?")) {
                         $('#formSubmit').submit();
                     } else {
 

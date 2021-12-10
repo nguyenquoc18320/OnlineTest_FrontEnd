@@ -5,23 +5,27 @@
  */
 package Object;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author PhanSu
  */
 public class Answer {
+
     private User user;
-    
+
     private Question question;
-    
+
     private int attemp;
 
     private String selection;
-    
+
     public Answer() {
 
     }
-   
+
     public Answer(User user, Question question, int attemp, String selection) {
         this.user = user;
         this.question = question;
@@ -35,6 +39,7 @@ public class Answer {
         this.selection = selection;
 
     }
+
     public User getUser() {
         return user;
     }
@@ -65,5 +70,10 @@ public class Answer {
 
     public void setSelection(String selection) {
         this.selection = selection;
+    }
+
+    public int convertAnwerToDigit() {
+        List<String> ansCharacters = Arrays.asList(new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"});
+        return ansCharacters.indexOf(this.selection);
     }
 }

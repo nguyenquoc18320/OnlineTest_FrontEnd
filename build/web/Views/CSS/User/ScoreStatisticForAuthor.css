@@ -1,0 +1,10 @@
+#div_{
+    display: flex;
+    justify-content: space-between;
+}
+
+#div_chart{
+    width: 40%;
+    height: 40%;
+}
+

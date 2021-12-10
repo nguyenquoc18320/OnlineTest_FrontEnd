@@ -114,3 +114,7 @@
     /*text-align: center;*/
     margin-top: 20px;
 }
+
+#formSubmit a{
+    color: black;
+}

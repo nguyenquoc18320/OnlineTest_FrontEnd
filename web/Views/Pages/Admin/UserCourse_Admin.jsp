@@ -40,7 +40,6 @@
                         <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
                         <button><a href="#"><i class="fas fa-users"></i>Manage users</a></button>
                         <button><a href="manage-course-admin"><i class="fas fa-book-open"></i>Manage Courses </a></button>
-                        <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
                         <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>
                     </div>
                 </div>
@@ -49,7 +48,7 @@
                 <div class='content'>
                     <div class ="path_div">
                         <a href="manage-course-admin">Manage Course></a>
-                        <a href="#"><c:out value='${user.getName()}'/>( <c:out value='${user.getEmail()}'/>)></a>
+                        <a href="user-course-admin?userid=${author.getId()}"><c:out value='${author.getName()}'/> (<c:out value='${author.getEmail()}'/>)></a>
                     </div>
 
                     <div class='content_wrap'>
@@ -118,7 +117,7 @@
                                     <c:if test="${not empty coursePagination}">
                                         <c:forEach var='item' items='${coursePagination.getEntityList()}'>
                                             <tr>
-                                                <td class="table_name"><c:out value="${item.getName()}"/></td>
+                                                <td class="table_name"><a href="detail-course-admin?courseid=${item.getId()}"><c:out value="${item.getName()}"/></a></td>
                                                 <!--check status, for public or private-->
                                                 <td class="table_check_icon">
                                                     <c:if test="${item.getStatus()}">

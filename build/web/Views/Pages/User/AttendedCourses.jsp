@@ -56,7 +56,7 @@
                     </div>
 
                     <div class='content_wrap'>
-                        <label id ='label_function_name'>My Courses</label>
+                        <label id ='label_function_name'>Attended Courses</label>
                         <form id='formSubmit'action="" method="POST">
                             <c:forEach var="course" items="${coursePagination.getEntityList()}">
                                 <div class='div_course'>

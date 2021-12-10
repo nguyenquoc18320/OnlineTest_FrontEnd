@@ -76,6 +76,10 @@
     height: 50px;
 }
 
+.link_to_test{
+    color: black;
+}
+
 /*for column public*/
 .table_public_header{
     text-align: center;

@@ -42,8 +42,8 @@
                     <div class="menu">
                         <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
                         <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
-                        <button><a href="manage-user"><i class="fas fa-users"></i>Manage users</a></button>
-                        <button><a href="manage-course-admin"><i class="fas fa-book-open"></i>Manage Courses </a></button>
+                        <button><a href="#"><i class="fas fa-users"></i>Manage users</a></button>
+                        <button><a href="manage-course-admin"><i class="fas fa-book-open"  style='background-color: #5531FB; color:white'></i>Manage Courses </a></button>
                         <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
                         <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>
                     </div>
@@ -126,7 +126,7 @@
                                     <c:if test="${not empty coursePagination}">
                                         <c:forEach var='item' items='${coursePagination.getEntityList()}'>
                                             <tr>
-                                                <td class="table_name"><c:out value="${item.getName()}"/></td>
+                                                <td class="table_name"><a class='link_to_test' href='detail-course-admin?courseid=${item.getId()}'><c:out value="${item.getName()}"/></a></td>
                                                 <td>
                                                     <a href="user-course-admin?userid=${item.getUser().getId()}" class="authorName"><c:out value="${item.getUser().getName()}"/></a>
                                                 </td>
