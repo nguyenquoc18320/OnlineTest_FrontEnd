@@ -28,7 +28,7 @@ public class TestResult {
         this.endTime = endTime;
     }
 
-    public TestResult() {
+    public TestResult() {      
     }
     
     

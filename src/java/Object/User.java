@@ -18,6 +18,7 @@ public class User extends BaseObject{
     private Date dateOfBirth;
     private String email;
     private String image;
+    private boolean status;
     private Role role;
     private List<Question> questions ;
     public User(){
@@ -30,13 +31,14 @@ public class User extends BaseObject{
         this.dateOfBirth = dateOfBirth;
         this.email = email;
     }
-    public User(String name, String gender, Date dateOfBirth, String email, String image, Role role) {
+    public User(String name, String gender, Date dateOfBirth, String email, String image, Role role, boolean status) {
         this.name = name;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
         this.image = image;
         this.role = role;
+        this.status = status;
     }
 
     public User(String name, String gender, Date dateOfBirth, String email, Long id, Long createdBy, Date createdDate, Long modifiedBy, Date modifiedDate, String image) {
@@ -48,7 +50,7 @@ public class User extends BaseObject{
         this.image = image;
     }
     
-        public User(String name, String gender, Date dateOfBirth, String email, Role role) {
+    public User(String name, String gender, Date dateOfBirth, String email, Role role) {
         this.name = name;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
@@ -56,6 +58,14 @@ public class User extends BaseObject{
         this.role = role;
     }
     
+    public User(String name, String gender, Date dateOfBirth, String email, Role role, boolean status) {
+        this.name = name;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this.email = email;
+        this.role = role;
+        this.status = status;
+    }
     
     public String getName() {
         return name;
@@ -114,5 +124,13 @@ public class User extends BaseObject{
 
     public void setQuestions(List<Question> questions) {
         this.questions = questions;
+    }
+    
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+            this.status = status;
     }
 }

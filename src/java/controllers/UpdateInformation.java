@@ -157,7 +157,7 @@ public class UpdateInformation extends HttpServlet {
                         if (true) {
 
                             Date birthEdit = Date.valueOf(birth);
-                            User userupdate = new User(name, gender, birthEdit, user.getEmail(), null,user.getRole());
+                            User userupdate = new User(name, gender, birthEdit, user.getEmail(), null,user.getRole(), true);
                             //send http request to create new user
                             ObjectMapper mapper = new ObjectMapper();
                             String jsonRequest = mapper.writeValueAsString(userupdate);

@@ -50,15 +50,18 @@ public class UpdateTest extends HttpServlet {
         ///tam
         String api_url = APIUtils.getBaseURLAPi();
         ObjectMapper mapper = new ObjectMapper();
+        String testidupdate = request.getParameter("testid");
         String checkSrart = request.getParameter("start");
+        String courseidupdate = request.getParameter("courseid");
         if (checkSrart!=null){
+            
             try {
-                String courseidupdate = request.getParameter("courseid");
+                
                  System.out.println("CourseID: " + courseidupdate);
                 String courseupdate = APIUtils.sendGetRequest(api_url + "course/"+ courseidupdate, true);
                 System.out.println("Result course: " + courseupdate);
                 Course course = mapper.readValue(courseupdate, Course.class);
-                String testidupdate = request.getParameter("testid");
+                
                 String resultTest = APIUtils.sendGetRequest(APIUtils.getBaseURLAPi()+ "test/" + testidupdate, true);
                 String resultListCourse = APIUtils.sendGetRequest( APIUtils.getBaseURLAPi() + "course-by-user/" + user.getId(), true);
                 Test test = mapper.readValue(resultTest, Test.class);
@@ -82,7 +85,10 @@ public class UpdateTest extends HttpServlet {
                     
                 }
             } catch (Exception ex) {
-                request.setAttribute("errorMessage", "Can't loat Test!");
+                //request.setAttribute("errorMessage", "Can't load Test!");
+                request.setAttribute("alertMessage", "Can't load your test");
+                        System.out.println("Check: " + courseidupdate);
+                        url = "list-test?courseid="+ courseidupdate;
             }
         }
         if (checkSrart==null){
@@ -106,7 +112,7 @@ public class UpdateTest extends HttpServlet {
                 Date datenow = new Date(millis);
                 boolean beforenow = datenow.before(dateStart);
                 System.out.println("Boolean test: " + before + beforenow);
-                if(before == true && beforenow == true){                                    
+                if(before == true ){                                    
                     Test testupdate = new Test(name, description, duration, dateStart, dateEnd, true, attempt, false, courseresult);
                     String jsonRequest = mapper.writeValueAsString(testupdate);
                     int testid = Integer.valueOf(request.getParameter("testid"));
@@ -119,12 +125,18 @@ public class UpdateTest extends HttpServlet {
                         request.setAttribute("alertMessage", "Can't update Test!!");
                     }
                 }else{
-                    request.setAttribute("errorMessage", "Invalid test time!!!");
-//                    url = "/Views/Pages/User/Login.jsp";
-                    url="update-test?courseid="+courseidCurrent+"&testid="+Integer.valueOf(request.getParameter("testid"))+"&start=1";
+//                    request.setAttribute("errorMessage", "Invalid test time!!!");
+////                    url = "/Views/Pages/User/Login.jsp";
+//                    url="update-test?courseid="+courseidCurrent+"&testid="+testidupdate+"&start=1";
+                        request.setAttribute("alertMessage", "Invalid test time!! Can't update your test");
+                        System.out.println("Check: " + couresid);
+                        url = "list-test?courseid="+ couresid;
                 }
             }catch (Exception ex) {
-                request.setAttribute("errorMessage", "Can't Update Test !");
+                //request.setAttribute("errorMessage", "Can't Update Test !");
+                 request.setAttribute("alertMessage", "Can't load your test");
+                System.out.println("Check: " + courseidupdate);
+                url = "list-test?courseid="+ courseidupdate;
             }
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);

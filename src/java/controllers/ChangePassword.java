@@ -40,23 +40,28 @@ public class ChangePassword extends HttpServlet {
 
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        
-        String oldPassword = (String) request.getParameter("passwordold");
-        request.setAttribute("passwordold", oldPassword);
-        String newPassword = (String) request.getParameter("passwordnew");
-        request.setAttribute("passwordnew", newPassword);
-        String confirmPassword = (String) request.getParameter("confirmPassword");
-        //check confirm password
-        if (!newPassword.equals(confirmPassword)) {
-            request.setAttribute("confirmPasswordError", "*Confirmed password does NOT match!");
-        } else {
-            Account account = new Account(newPassword, oldPassword, user);
-            //send http request to create new user
-            ObjectMapper mapper = new ObjectMapper();
-            String jsonRequest = mapper.writeValueAsString(account);
-            String result = APIUtils.sendPutRequest("http://localhost:8081/account/"+user.getEmail(), jsonRequest);
-            url = "/Views/Pages/User/Login.jsp";
-            System.out.print("Ket qua:" +result);        
+         String checkSrart = request.getParameter("start");
+        if (checkSrart==null){
+            String oldPassword = (String) request.getParameter("passwordold");
+            request.setAttribute("passwordold", oldPassword);
+            String newPassword = (String) request.getParameter("passwordnew");
+            request.setAttribute("passwordnew", newPassword);
+            String confirmPassword = (String) request.getParameter("confirmPassword");
+            //check confirm password
+            if (!newPassword.equals(confirmPassword)) {
+                request.setAttribute("confirmPasswordError", "*Confirmed password does NOT match!");
+            } else if (newPassword.length()<8){
+                request.setAttribute("passwordError", "Password must contain at least 8 characters!");
+            }
+            else {
+                Account account = new Account(newPassword, oldPassword, user);
+                //send http request to create new user
+                ObjectMapper mapper = new ObjectMapper();
+                String jsonRequest = mapper.writeValueAsString(account);
+                String result = APIUtils.sendPutRequest("http://localhost:8081/account/"+user.getEmail(), jsonRequest);
+                url = "/Views/Pages/User/Login.jsp";
+                System.out.print("Ket qua:" +result);        
+            }
         }
         getServletContext().getRequestDispatcher(url).forward(request, response);
     }

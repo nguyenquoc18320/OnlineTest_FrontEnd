@@ -48,7 +48,7 @@ public class ConfirmSignUpCode extends HttpServlet {
                     + (String) request.getParameter("number6");
 
             Role role = new Role(2L, "User");
-            User user = new User(name, null, null, email, role);
+            User user = new User(name, null, null, email, role, true);
             Account account = new Account(password, "1", user);
 
             //send http request to create new user

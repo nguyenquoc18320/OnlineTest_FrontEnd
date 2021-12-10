@@ -554,7 +554,7 @@ and open the template in the editor.
 
 
 .content{
-    width: 70%;
+    
     margin: 0 auto;
 }
 
@@ -604,14 +604,15 @@ and open the template in the editor.
 
 .introduce-profile{
     border-radius: 10px;
-    border: 1px solid #000;
+    border: 1px solid #ddd;
     margin-top: 30px;
     margin-bottom: 25px;
+    margin-left: 15%;
     
 }
 
 .introduce-profile.lagre{
-    width: 80%;
+    width: 60%;
     
 }
 
@@ -627,7 +628,7 @@ and open the template in the editor.
     text-transform: uppercase;
     font-size: 10px;
     font-weight: bold;
-    background-color: #E65100;
+    background-color: #ccc;
     border-radius: 10px 10px 0 0;
     color: #fff;
     padding: 20px 60px;
@@ -939,7 +940,7 @@ a{
     background-color: #FFE0B2;
 }
 
-.logo{
+/*.logo{
 }
     .logo img{
         width: 100%;
@@ -964,10 +965,10 @@ a{
     .profile :nth-child(3){
         font-size: 16px;
         font-weight: bold;
-/*        color: #fff;*/
-    }
+        color: #fff;
+    }*/
 
-.menu{
+/*.menu{
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -991,7 +992,7 @@ a{
 
 .menu i{
     font-size: 20px;
-}
+}*/
 
 .nav-bar{
     position: relative;

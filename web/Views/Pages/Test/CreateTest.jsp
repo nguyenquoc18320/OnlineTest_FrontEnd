@@ -17,6 +17,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" type="text/css" href="Views/CSS/BaseFormat.css" />
     <link href="Views/CSS/su/user.css" rel="stylesheet" type="text/css"/>
     <link href="Views/CSS/su/test.css" rel="stylesheet" type="text/css"/>
     <link href="Views/CSS/su/common.css" rel="stylesheet" type="text/css"/>
@@ -26,43 +27,48 @@
     <title>Create Test</title>
 </head>
 <body>
-    <div class="container-full">
-        <div class="side-bar">
-            <div class="logo">
-                <img src="Views/CSS/images/logo1.png">
-            </div>
-            <div class="profile">
-                <c:if test ="${not empty user.getImage()}">
-                    <img  class="imageuserinfor" alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
-                </c:if>
-                <c:if test ="${empty user.getImage()}">
-                    <img src="Views/CSS/images/userinfor.png">
-                </c:if>
-                <p><c:out value=""/>${user.getName()}</p>
-                <p><c:out value=""/>${user.getEmail()}</p>
+    <div class='wrap'>
 
-            </div>
-            <div class="menu">
-                <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
-                <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
-                <button><a href="attended-course"><i class="fas fa-users"></i>Attended Courses</a></button>
-                <button><a href="manage-course-user"><i class="fas fa-book-open"></i> My Test Courses </a></button>
-                <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
-                <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>
-            </div>
-        </div>
-        <div class="wrapped">
-            <div class="nav-bar">
-                <h1>Create Test</h1>
-                <div class="drop-down" id="drop-down-user">
-                    <a href="log-in"><button>Log Out</button></a>
+            <div id = 'header'><!--Header includes the logo and name of function-->
+                <div id='div_logo'>
+                    <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
                 </div>
-                <i class="fas fa-user-circle" onclick="ToggleDropDown('drop-down-user')"></i>
+                <div class ='navi'><!--navigation buttons-->
+                    <div class ='profile'>
+                        <c:if test ="${not empty user.getImage()}">
+                            <img class="imageuserinfor" alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                        </c:if>
+                        <c:if test ="${empty user.getImage()}">
+                            <img src="Views/CSS/images/userinfor.png">
+                        </c:if>
+                        <div class='info'>
+                            <p id='info_name'><c:out value=""/>${user.getName()}</p>
+                            <p id='info_email'><c:out value=""/>${user.getEmail()}</p>
+                        </div>
+                    </div>
+                    <div class="menu">
+                        <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
+                        <button><a href="user-info"><i class="fas fa-address-book" ></i> My Profile</a></button>
+                        <button><a href="attended-course"><i class="fas fa-users"></i>Attended Courses</a></button>
+                        <button><a href="manage-course-user" ><i class="fas fa-book-open" style='background-color: #5531FB; color:white'></i> My Courses </a></button>
+                        <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
+                        <button><a href="log-out"><i class="fas fa-sign-out-alt"></i> LogOut</a></button>
+                    </div>
+                </div>
             </div>
-            <div class="content">
+            
+        <div class ='main'>
+                <div class='content'>
+                    <div class ="path_div">
+                        <a href="manage-course-user">My Courses></a>
+                        <a href="detail-course?courseid=${CourseCurrent.getId()}">Detail></a>
+                        <a href="list-test?courseid=${CourseCurrent.getId()}">List Tests</a>
+                        <a>Create Test></a>
+                    </div>
                 <div class="introduce-test">
-                    <form action="create-test" method="post" autocomplete="on">
+                    <form action="create-test?courseid=${CourseCurrent.getId()}" method="post" autocomplete="on">
                         <div class="introduce-profiletest">
+                            <label id ='label_function_name'>New Test</label>
                             <label for="listourse" class="label_test" data-icon="u" >Course: </label>                           
                             <select name="listourse" class="cbb_listcourse">                               
                                 <c:forEach items="${courseList}" var="Course">
@@ -119,6 +125,7 @@
 
             </div>
         </div>
+    </div>
 </body>
 </html>
 
