@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/Object/Role.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/UserCourse_Admin.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Course/test.jsp</file>
@@ -92,6 +93,21 @@
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/createNewCourse.css</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Admin/UserManager_Admin.jsp</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/CreateNewCourse.java</file>
+=======
+            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/src/java/Object/Answer.java</file>
+            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/Pages/User/MyResulTest.jsp</file>
+            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/src/java/controllers/MyAnswerOfTest.java</file>
+            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/CSS/User/MyResultTest.css</file>
+            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/Pages/User/MyAnswerOfTest.jsp</file>
+            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/src/java/Object/Question.java</file>
+            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/CSS/User/DoneTests.css</file>
+            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/CSS/User/MyAnswerOfTest.css</file>
+            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/Pages/Test/ListTestOfCourse.jsp</file>
+            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/CSS/Admin/CourseManager_Admin.css</file>
+            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/CSS/BaseFormat.css</file>
+            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/Pages/Admin/CourseManager_Admin.jsp</file>
+            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/CSS/CourseManager_user.css</file>
+>>>>>>> 5d80fa8 (update GUI for admin)
         </group>
     </open-files>
 </project-private>

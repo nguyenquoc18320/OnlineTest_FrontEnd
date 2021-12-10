@@ -43,7 +43,6 @@
                         <button><a href="user-info"><i class="fas fa-address-book"></i> My Profile</a></button>
                         <button><a href="attended-course"><i class="fas fa-users" style='background-color: #5531FB; color:white'></i>Attended Courses</a></button>
                         <button><a href="manage-course-user" ><i class="fas fa-book-open"></i> My Courses </a></button>
-                        <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
                         <button><a href="log-out"><i class="fas fa-sign-out-alt"></i> LogOut</a></button>
                     </div>
                 </div>
@@ -53,14 +52,7 @@
                     <div class ="path_div">
                         <a href="attended-course">Attended Courses></a>
                         <a href="not-done-tests-attended-course?courseid=${test.getCourse().getId()}"><c:out value="${test.getCourse().getName()}"/>></a>
-                        <c:choose>
-                            <c:when test="${not empty result.get('score')}">
-                                <a href="done-tests?courseid=${test.getCourse().getId()}">Done></a>
-                            </c:when>
-                            <c:otherwise>
-                                <a href="not-done-tests-attended-course?courseid=${test.getCourse().getId()}">Not Done></a>
-                            </c:otherwise>
-                        </c:choose>
+                        <a href="done-tests?courseid=${test.getCourse().getId()}">Done></a>
                         <a href="test-detail?testid=${test.getId()}"><c:out value="${test.getName()}"/>></a>
                     </div>
 
@@ -70,11 +62,13 @@
                             <h3 id='testName'><c:out value="${test.getName()}"/></h3>
 
                             <c:forEach var="result" items="${resultPagination.getEntityList()}">
+                                <a href="my-answer-test?testid=${test.getId()}&attempt=${result.getAttempt()}" style='color: black'>
                                 <div class="div_result">
                                     <label class='label_score'>Score: <c:out value="${result.getScore()}"/></label><br>
                                     <label class='label_attempt'>Attempt: <c:out value="${result.getAttempt()}"/></label>
                                     <label class='label_end_time'>End Time:  <fmt:formatDate pattern = "HH:mm dd-MM-yyyy" value = "${result.getEndTime()}" /></label>
                                 </div>
+                                </a>
                             </c:forEach>
 
                             <ul class="pagination justify-content-center" id="pagination"></ul>

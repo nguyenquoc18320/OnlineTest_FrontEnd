@@ -6,8 +6,8 @@
 package Object;
 
 import java.sql.Date;
-import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -232,5 +232,10 @@ public class Question extends BaseObject {
         ansList.add(this.optionJ);
 
         return ansList;
+    }
+    
+    public int convertCorrectAnwerToDigit(){
+        List<String> ansCharacters = Arrays.asList(new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"});
+        return ansCharacters.indexOf(this.correctanswer);
     }
 }

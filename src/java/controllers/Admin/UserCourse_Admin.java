@@ -1,10 +1,11 @@
-package controllers;
+package controllers.Admin;
 
 import Object.Course;
 import Object.EntityPagination;
 import Object.User;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import controllers.APIUtils;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,6 +36,16 @@ public class UserCourse_Admin extends HttpServlet {
                 String userid = (String) request.getParameter("userid");
                 request.setAttribute("userid", userid);
 
+                //get author
+                String api_url = APIUtils.getBaseURLAPi() + "user?userid=" + userid;
+                
+                String author = APIUtils.sendGetRequest(api_url, true);
+                 ObjectMapper mapper = new ObjectMapper();
+                if(author!=null){
+                    User authorE = mapper.readValue(author, User.class);
+                    request.setAttribute("author", authorE);
+                }
+                
                 //get page and limit
                 String page = (String) request.getParameter("page");
                 String maxPageItems = (String) request.getParameter("maxPageItems");
@@ -48,7 +59,7 @@ public class UserCourse_Admin extends HttpServlet {
                 }
 
                 //api url
-                String api_url = APIUtils.getBaseURLAPi() + "course/search?userid=" + userid
+                api_url = APIUtils.getBaseURLAPi() + "course/search?userid=" + userid
                         + "&page=" + page + "&limit=" + maxPageItems;
 
                 //name for searching
@@ -78,12 +89,11 @@ public class UserCourse_Admin extends HttpServlet {
                     api_url = api_url + "&blocked=" + "False";
                 }
 
-                System.out.println(api_url);
                 //send to api and get result
                 String result = APIUtils.sendGetRequest(api_url, true);
 
                 if (result != null) {
-                    ObjectMapper mapper = new ObjectMapper();
+                   
                     EntityPagination<Course> coursePagination = mapper.readValue(result, new TypeReference<EntityPagination<Course>>() {
                     });
                     request.setAttribute("coursePagination", coursePagination);

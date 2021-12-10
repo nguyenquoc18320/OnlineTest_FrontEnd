@@ -27,6 +27,11 @@
     margin-left: 200px;
     margin-right: 200px;
     padding-left: 30px;
+    cursor: pointer;
+}
+
+.div_result:hover{
+    border: 5px inset #79D287;
 }
 
 .label_end_time{

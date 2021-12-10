@@ -1,0 +1,90 @@
+#header{
+    position: fixed;
+}
+
+.path_div{
+    position: fixed;
+    margin-left: 280px;
+}
+
+#formSubmit{
+    /*text-align: center;*/
+    margin-top: 10px;
+    font-size: 15pt;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.div_answer{
+    /*background-color: red;*/
+    width: 300px;
+    /*height: 100px;*/
+    float: left;
+    margin-left: 20px;
+}
+
+#label_endTime{
+    background: #F8E651;
+    border-radius: 22px;
+    color: black;
+    font-weight: bold;
+    padding: 0px 5px;
+}
+
+.div_question{
+    /*background-color: blue;*/
+    width: 700px;
+    /*height: 100px;*/
+    margin-left: 50px;
+    /*float:right;*/
+}
+
+.div_each_question{
+    margin-bottom: 30px;
+}
+
+.label_question_number{
+    background: #FF6B6B;
+    border-radius: 8px;
+    padding: 0px 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.label_num{
+    padding: 5px 5px;
+    width: 40px;
+    text-align: center;
+    border: 2px solid #0B53A4;
+    border-radius: 10px;
+    font-size: 12pt;
+    cursor: pointer;
+}
+
+
+#note{
+    color: black;
+    font-style: italic;
+}
+
+.label_question{
+    border: 5px groove #094FDB;
+    border-radius: 10px 10px 10px 10px;
+    padding: 5px 5px;
+    width: 700px;
+    font-weight: bold;
+}
+
+#label_submit{
+    border: 5px groove #E60000;
+    border-radius: 11px;
+    background-color: #FF4D4D;
+    color: white;
+    padding: 5px 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
