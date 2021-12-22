@@ -18,6 +18,7 @@
         <link href="Views/CSS/su/user.css" rel="stylesheet" type="text/css"/>
         <link href="Views/CSS/su/test.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="Views/CSS/BaseFormat.css" />
+        <link rel="stylesheet" type="text/css" href="Views/CSS/su/login.css" />
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
         <script   type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -81,23 +82,47 @@
                                 <br/>
                             </div>
                         </form>             
-                        <form id="formSubmit"  action="user-course-admin" method="POST">                      
+<!--                        <form id="formSubmit"  action="user-course-admin" method="POST">                      -->
                             <table id="course" class="table table-bordered table table-hover" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
-                                        <th> ID </th>
-                                        <th >Name</th>
+                                        <th style="text-align: center;"> ID </th>
+                                        <th style="text-align: center;">Name</th>
                                         <th class ='table_public_header'>Email</th>
-                                        <th class ='table_blocked_header'>Status</th>
-                                        <th> Role </th>
+                                        <th class ='table_blocked_header' style="text-align: center;">Status</th>
+                                        <th style="text-align: center;"> Role </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 <c:if test="${not empty userList}">
                                     <c:forEach var='item' items='${userList}'>
                                         <tr>
-                                            <td> <c:out value="${item.getId()}"/></td>
-                                            <td class="table_name"><c:out value="${item.getName()}"/></td>
+                                            <td style="text-align: center;"><button onclick="togglePopup()"> <c:out value="${item.getId()}"/></button></td>
+
+                                            <div class="popup" id="popup-1">
+                                                <div class="overlay"></div>
+                                                <div class="contentpopup">
+                                                    <div class="close-btn" onclick="togglePopup()">&times;</div>
+                                                    <h4>Profile</h4>
+                                                    <div class="squareFrame">
+                                                        <img src="uploads/<c:out value="${item.getImage()}"/>" />
+                                                    </div>
+                                                    <div>
+                                                        <p>Name: <c:out value="${item.getName()}"/></p>
+                                                        <p>Date of Birth: <c:out value="${item.getDateOfBirth()}"/></p>
+                                                        <p>Gender: <c:out value="${item.getGender()}"/><p>
+                                                        <p>Email: <c:out value="${item.getEmail()}"/></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <td class="table_name">
+                                                <c:if test="${item.getRole().getId() eq '2'}">
+                                                     <a href="user-attend-course-Admin?userid=${item.getId()}" ><c:out value="${item.getName()}"/></a>
+                                                </c:if>
+                                               <c:if test="${item.getRole().getId() eq '1'}">
+                                                     <a href="#" ><c:out value="${item.getName()}"/></a>
+                                                </c:if>
+                                            </td>
                                             <td class="table_name"><c:out value="${item.getEmail()}"/></td>
                                         
 <!--                                        <td class="table_check_icon">
@@ -123,8 +148,8 @@
                                     </c:forEach>
                                 </c:if>
                                 </tbody>
-                            </table>
-                        </form>
+                            </table>                          
+                        <!--</form>-->
                     </div>
                 </div>
             </div>
@@ -144,6 +169,11 @@
                 var value2 = select2.options[select2.selectedIndex].value;
                 document.getElementById("tempt").href = 'manage-user?type='+value1+'&status='+value2+'&start=1';
                 document.getElementById("tempt").click();
+            }
+        </script>
+        <script>
+            function togglePopup(){
+                document.getElementById("popup-1").classList.toggle("active")
             }
         </script>
         

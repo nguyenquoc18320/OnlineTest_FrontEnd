@@ -50,6 +50,14 @@ public class ManagerUser_Admin extends HttpServlet {
             url = "/log-in?start=1";
         }
         else{
+//            int page = 1;
+//            int maxPageItems = 5;
+//            try {
+//                page = Integer.parseInt(request.getParameter("page"));
+//                maxPageItems = Integer.parseInt(request.getParameter("maxPageItems")); //number of items per a page
+//                request.setAttribute("maxPageItems", maxPageItems);
+//            } catch (Exception ex) {
+//            }
             String checkSrart = request.getParameter("start");
             try{
                 if(checkSrart==null){

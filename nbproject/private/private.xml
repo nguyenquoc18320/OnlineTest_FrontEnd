@@ -13,6 +13,7 @@
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/UpdateInformation.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/LogOut.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Course/DetailCourse.jsp</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/AttendedCourses.css</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/AddParticipants.css</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/User/SignUp.jsp</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/BlockAndUnblockCourse.java</file>
@@ -47,6 +48,7 @@
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Course/ParticipantManager.jsp</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/ManageCourse_User.java</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/src/java/controllers/DeleteTest.java</file>
+            <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Admin/UserAttendCourse_Admin.jsp</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/CSS/BaseFormat.css</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/User/ForgetPassword.jsp</file>
             <file>file:/D:/IV_Ky1/Project/OnlineTest_FrontEnd-master/web/Views/Pages/Test/ListTestOfCourse.jsp</file>

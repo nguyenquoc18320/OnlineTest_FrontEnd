@@ -71,7 +71,7 @@ public class CreateTest extends HttpServlet {
                 String name = request.getParameter("testname");
                 String description = request.getParameter("description");
                 int duration = Integer.valueOf(request.getParameter("duration"));
-                int attempt = Integer.valueOf(request.getParameter("attempt"));
+                int attempt = Integer.valueOf(request.getParameter("attempt"));                
                 String startS = request.getParameter("starttest");
                 String endS = request.getParameter("endtest");
                 Date dateStart = (Date) new SimpleDateFormat("yyyy-MM-dd HH:mm").parse(startS.replace("T"," ").substring(0,16));
@@ -81,9 +81,9 @@ public class CreateTest extends HttpServlet {
                 Date datenow = new Date(millis);
                 boolean beforenow = datenow.before(dateStart);
                 System.out.println("Blean test: " + before + beforenow);
-                if(before == false){                  
-                    request.setAttribute("errorMessage", "Invalid test time!!!");
-                    url = "create-test?courseid="+couresid+"&start=1";
+                if(before == false && duration < 0 && attempt<=-1){                  
+                    request.setAttribute("errorMessage", "Invalid test time or value!!!");
+                    url = "create-test?courseid="+couresid+"&start=1";                  
                 }else{
                    //get course                
                     String result = APIUtils.sendGetRequest(api_url + "course/"+couresid, true);

@@ -374,3 +374,12 @@ and open the template in the editor.
     border: 2px solid rgb(178, 178, 178);
     border-radius: 6px;
 }
+.cbb_listuser_attend{
+    width: 30%;
+    margin-left: 12%;
+    margin-top: 4px;
+    margin-bottom: 5px;
+    padding: 10px 5px 10px 25px;
+    border: 2px solid rgb(178, 178, 178);
+    border-radius: 6px;
+}

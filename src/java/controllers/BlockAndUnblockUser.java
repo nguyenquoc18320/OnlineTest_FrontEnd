@@ -50,19 +50,23 @@ public class BlockAndUnblockUser extends HttpServlet {
                 url = "/Views/Pages/User/Login.jsp";
             }
             else {
-                
-                String testid = request.getParameter("testid");
-                String result = APIUtils.sendPutRequest(APIUtils.getBaseURLAPi() + "change-status-user/" + userid ,"");
-                if (result != null) {
-                    request.setAttribute("alertMessage", "Changed the user status ");
+                if(userid.equals(""+user.getId())){
+                    request.setAttribute("alertMessage", "Can't change status user!");
                     url = "/manage-user";
-                } else {
-                    request.setAttribute("alertMessage", "Can't not change the user status !");
-                }              
+                }else{
+                    String result = APIUtils.sendPutRequest(APIUtils.getBaseURLAPi() + "change-status-user/" + userid ,"");
+                    if (result != null) {
+                        request.setAttribute("alertMessage", "Changed the user status ");
+                        url = "/manage-user";
+                    } else {
+                        request.setAttribute("alertMessage", "Can' change the user status !");
+                    } 
+                }             
             }
         } catch (Exception ex) {
             System.out.println(ex.toString());
-            request.setAttribute("alertMessage", "Can't not change status user!");
+            request.setAttribute("alertMessage", "Can't change status user!");
+            url = "/manage-user";
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
