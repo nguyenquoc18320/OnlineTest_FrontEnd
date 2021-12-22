@@ -7,6 +7,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <link rel="stylesheet" type="text/css" href="Views/CSS/BaseFormat.css" />
         <link rel="stylesheet" type="text/css" href="Views/CSS/User/MyAnswerOfTest.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -28,6 +29,7 @@
                 <div id = 'header'><!--Header includes the logo and name of function-->
                     <div id='div_logo'>
                         <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
+                        <label id="label_close_menu" onclick="closeMenu()">X</label>
                     </div>
                     <div class ='navi'><!--navigation buttons-->
                         <div class ='profile'>
@@ -51,9 +53,10 @@
                 <div class ='main'>
                     <div class='content'>
                         <div class ="path_div">
+                            <i class="fa fa-bars" onclick="changeMenuDisplay()"></i>
                             <a href="attended-course">Attended Courses></a>
                             <a href="not-done-tests-attended-course?courseid=${test.getCourse().getId()}"><c:out value="${test.getCourse().getName()}"/>></a>
-                           <a href="done-tests?courseid=${test.getCourse().getId()}">Done></a>
+                            <a href="done-tests?courseid=${test.getCourse().getId()}">Done></a>
                             <a href="test-detail?testid=${test.getId()}"><c:out value="${test.getName()}"/>></a>
                         </div>
 
@@ -66,16 +69,16 @@
                                     <c:if test="${(questionList.size()-1) ge 0}">
                                         <c:forEach var="i" begin="0" end="${questionList.size()-1}">
                                             <div class="div_each_question" id='div_question_${i+1}'>
-                                                 <c:forEach var='ans' items='${answerList}'>
-                                                           <c:if test="${ans.getQuestion().getId() eq questionList.get(i).getId()}">
-                                                               <c:set var="myans" scope="page" value="${ans}"></c:set>
-                                                           </c:if>
-                                                       </c:forEach>
+                                                <c:forEach var='ans' items='${answerList}'>
+                                                    <c:if test="${ans.getQuestion().getId() eq questionList.get(i).getId()}">
+                                                        <c:set var="myans" scope="page" value="${ans}"></c:set>
+                                                    </c:if>
+                                                </c:forEach>
                                                 <!--check whether answer is correct or not-->
                                                 <label class='label_question_number'                                                      
-                                                           <c:if test="${(myans.getSelection() eq questionList.get(i).getCorrectanswer())}">
-                                                               style="background-color: #79D287;"
-                                                           </c:if>
+                                                       <c:if test="${(myans.getSelection() eq questionList.get(i).getCorrectanswer())}">
+                                                           style="background-color: #79D287;"
+                                                       </c:if>
                                                        ><c:out value="Question ${questionList.get(i).getQuestionnumber()}"/></label>
 
 
@@ -84,13 +87,13 @@
                                                 <c:forEach var='j' begin='0' end="${questionList.get(i).getAnswerList().size()-1}">
                                                     <c:if test="${not empty questionList.get(i).getAnswerList().get(j)}">
                                                         <label 
-                                                             <c:if test="${questionList.get(i).convertCorrectAnwerToDigit() eq j}">
+                                                            <c:if test="${questionList.get(i).convertCorrectAnwerToDigit() eq j}">
                                                                 style="color: #79D287"
                                                             </c:if>
                                                             <c:if test="${myans.convertAnwerToDigit() eq j}">
                                                                 style="color: #F56748"
                                                             </c:if>
-                                                           ><c:out value="${questionList.get(i).getAnswerList().get(j)}"/></label><br>
+                                                            ><c:out value="${questionList.get(i).getAnswerList().get(j)}"/></label><br>
                                                     </c:if>
                                                 </c:forEach>
 
@@ -182,5 +185,6 @@
                 //start
 
             </script>
+            <script src="Views/JS/base.js"></script>
     </body>
 </html>

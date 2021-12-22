@@ -12,6 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="Views/CSS/BaseFormat.css" />
         <!--<link rel="stylesheet" type="text/css" href="Views/CSS/createNewCourse.css" />-->
         <link rel="stylesheet" type="text/css" href="Views/CSS/Admin/CourseManager_Admin.css" />
@@ -30,6 +31,7 @@
             <div id = 'header'><!--Header includes the logo and name of function-->
                 <div id='div_logo'>
                     <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
+                      <label id="label_close_menu" onclick="closeMenu()">X</label>
                 </div>
                 <div class ='navi'><!--navigation buttons-->
                     <div class ='profile'>
@@ -42,7 +44,7 @@
                     <div class="menu">
                         <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
                         <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
-                        <button><a href="#"><i class="fas fa-users"></i>Manage users</a></button>
+                        <button><a href="manage-user"><i class="fas fa-users"></i>Manage users</a></button>
                         <button><a href="manage-course-admin"><i class="fas fa-book-open"  style='background-color: #5531FB; color:white'></i>Manage Courses </a></button>
                         <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
                         <button><a href="log-out"><i class="fas fa-user"></i> LogOut</a></button>
@@ -53,6 +55,7 @@
             <div class ='main'>
                 <div class='content'>
                     <div class ="path_div">
+                          <i class="fa fa-bars" onclick="changeMenuDisplay()"></i>
                         <a href="manage-course-admin">Manage Course></a>
                     </div>
 
@@ -205,5 +208,6 @@
 //            });
             });
         </script>
+        <script src="Views/JS/base.js"></script>
     </body>
 </html>

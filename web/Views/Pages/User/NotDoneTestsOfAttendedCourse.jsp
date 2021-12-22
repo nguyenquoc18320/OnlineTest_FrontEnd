@@ -6,15 +6,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <link rel="stylesheet" type="text/css" href="Views/CSS/BaseFormat.css" />
-        <!--<link rel="stylesheet" type="text/css" href="Views/CSS/createNewCourse.css" />-->
         <link rel="stylesheet" type="text/css" href="Views/CSS/User/NotDoneTestsOfAttendedCourse.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
-        
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
         <script   type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
@@ -28,6 +28,7 @@
             <div id = 'header'><!--Header includes the logo and name of function-->
                 <div id='div_logo'>
                     <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
+                    <label id="label_close_menu" onclick="closeMenu()">X</label>
                 </div>
                 <div class ='navi'><!--navigation buttons-->
                     <div class ='profile'>
@@ -51,6 +52,7 @@
             <div class ='main'>
                 <div class='content'>
                     <div class ="path_div">
+                        <i class="fa fa-bars" onclick="changeMenuDisplay()"></i>
                         <a href="attended-course">Attended Courses></a>
                         <a href="not-done-tests-attended-course?courseid=${course.getId()}"><c:out value="${course.getName()}"/>></a>
                         <a href="not-done-tests-attended-course?courseid=${course.getId()}">Not Done></a>
@@ -122,5 +124,6 @@
                 });
             });
         </script>  
+        <script src="Views/JS/base.js"></script>
     </body>
 </html>

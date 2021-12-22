@@ -1,7 +1,9 @@
 #formSubmit{
-    /*text-align: center;*/
     margin-top: 10px;
     font-size: 15pt;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #description{
@@ -19,7 +21,6 @@
 }
 
 #div_info{
-    margin-left: 30%;
 }
 
 #formSubmit label{

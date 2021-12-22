@@ -1,8 +1,39 @@
-#div_top{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-right: 50px;
+@media screen and (min-width: 601px){
+    #div_top{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-right: 50px;
+    }
+
+
+    .div_test{
+        margin: 20px;
+        padding: 10px;
+        width: 45%;
+    }
+}
+
+@media screen and (max-width:600px){
+    #div_top{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .div_test{
+        margin: 5px;
+        padding: 10px;
+        width: 95%;
+    }
+}
+
+
+
+.div_test{
+    background: #FFFFFF;
+    box-shadow: 0px 2px 4px rgba(0, 117, 141, 0.2);
+    border-radius: 8px;
 }
 
 /*for course name*/
@@ -44,14 +75,6 @@
     justify-content: space-between;
 }
 
-.div_test{
-    background: #FFFFFF;
-    box-shadow: 0px 2px 4px rgba(0, 117, 141, 0.2);
-    border-radius: 8px;
-    margin: 20px;
-    padding: 10px;
-    width: 45%;
-}
 
 #pagination{
     margin-top: 10px;
@@ -59,9 +82,9 @@
 
 .div_status{
     display: flex;
-flex-direction: row;
-justify-content: flex-end;
-align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 

@@ -32,41 +32,43 @@
 <body>                  
     <div class='wrap'>
 
-            <div id = 'header'><!--Header includes the logo and name of function-->
-                <div id='div_logo'>
-                    <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
+        <div id = 'header'><!--Header includes the logo and name of function-->
+            <div id='div_logo'>
+                <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
+                <label id="label_close_menu" onclick="closeMenu()">X</label>
+            </div>
+            <div class ='navi'><!--navigation buttons-->
+                <div class ='profile'>
+                    <c:if test ="${not empty user.getImage()}">
+                        <img class="imageuserinfor" alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
+                    </c:if>
+                    <c:if test ="${empty user.getImage()}">
+                        <img src="Views/CSS/images/userinfor.png">
+                    </c:if>
+                    <div class='info'>
+                        <p id='info_name'><c:out value=""/>${user.getName()}</p>
+                        <p id='info_email'><c:out value=""/>${user.getEmail()}</p>
+                    </div>
                 </div>
-                <div class ='navi'><!--navigation buttons-->
-                    <div class ='profile'>
-                        <c:if test ="${not empty user.getImage()}">
-                            <img class="imageuserinfor" alt="No Image" src="uploads/<c:out value="${user.getImage()}"/>">
-                        </c:if>
-                        <c:if test ="${empty user.getImage()}">
-                            <img src="Views/CSS/images/userinfor.png">
-                        </c:if>
-                        <div class='info'>
-                            <p id='info_name'><c:out value=""/>${user.getName()}</p>
-                            <p id='info_email'><c:out value=""/>${user.getEmail()}</p>
-                        </div>
-                    </div>
-                    <div class="menu">
-                        <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
-                        <button><a href="user-info"><i class="fas fa-address-book" ></i> My Profile</a></button>
-                        <button><a href="attended-course"><i class="fas fa-users"></i>Attended Courses</a></button>
-                        <button><a href="manage-course-user" ><i class="fas fa-book-open" style='background-color: #5531FB; color:white'></i> My Courses </a></button>
-                        <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
-                        <button><a href="log-out"><i class="fas fa-sign-out-alt"></i> LogOut</a></button>
-                    </div>
+                <div class="menu">
+                    <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
+                    <button><a href="user-info"><i class="fas fa-address-book" ></i> My Profile</a></button>
+                    <button><a href="attended-course"><i class="fas fa-users"></i>Attended Courses</a></button>
+                    <button><a href="manage-course-user" ><i class="fas fa-book-open" style='background-color: #5531FB; color:white'></i> My Courses </a></button>
+                    <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
+                    <button><a href="log-out"><i class="fas fa-sign-out-alt"></i> LogOut</a></button>
                 </div>
             </div>
-            
+        </div>
+
         <div class ='main'>
-                <div class='content'>
-                    <div class ="path_div">
-                        <a href="manage-course-user">My Courses></a>
-                        <a href="detail-course?courseid=${Course.getId()}">Detail></a>
-                        <a href="list-test?courseid=${Course.getId()}">List Tests</a>
-                    </div>
+            <div class='content'>
+                <div class ="path_div">
+                    <i class="fa fa-bars" onclick="changeMenuDisplay()"></i>
+                    <a href="manage-course-user">My Courses></a>
+                    <a href="detail-course?courseid=${Course.getId()}">Detail></a>
+                    <a href="list-test?courseid=${Course.getId()}">List Tests</a>
+                </div>
                 <div class="introduce-listtest">
                     <div >
                         <script>
@@ -81,17 +83,17 @@
                         </div>
                         <c:forEach var = 'item' items='${testList}'>
                             <div class="borderlist" name="fEtestlist">
-                                 <a href="show-result-author-test?testid=${item.getId()}"><p id="label_listtest"><c:out value="${item.getName()}"/></p></a> 
-                                <!--<a id="label_listtest" href="test-result?courseid=<c:out value="${Course.getId()}"/>&testid=<c:out value="${item.getId()}&start=1"/>"><c:out value="${item.getName()}"/></a>-->
+                                <a href="show-result-author-test?testid=${item.getId()}"><p id="label_listtest"><c:out value="${item.getName()}"/></p></a> 
+                               <!--<a id="label_listtest" href="test-result?courseid=<c:out value="${Course.getId()}"/>&testid=<c:out value="${item.getId()}&start=1"/>"><c:out value="${item.getName()}"/></a>-->
                                 <c:choose>
                                     <c:when test="${item.isStatus()}">
-                                        <i id="iconblock" style="position: absolute; left: 80%;font-size: 30px;cursor: pointer;color:#1FD818;" class="fa fa-unlock-alt" onclick="blockTest('${Course.getId()}','${item.getId()}')"></i>                                      
+                                        <i id="iconblock" style="position: absolute; left: 80%;font-size: 30px;cursor: pointer;color:#1FD818;" class="fa fa-unlock-alt" onclick="blockTest('${Course.getId()}', '${item.getId()}')"></i>                                      
                                     </c:when>
                                     <c:otherwise >
-                                        <i style="position: absolute;left: 80%;font-size: 30px;cursor: pointer;color:#000;" class="fa fa-lock" onclick="blockTest('${Course.getId()}','${item.getId()}')"></i>                                        
+                                        <i style="position: absolute;left: 80%;font-size: 30px;cursor: pointer;color:#000;" class="fa fa-lock" onclick="blockTest('${Course.getId()}', '${item.getId()}')"></i>                                        
                                     </c:otherwise>
-                                 </c:choose>
-                                        <div style="display: inline;">
+                                </c:choose>
+                                <div style="display: inline;">
                                     <p id="list-descrip" >Duration: <c:out value="${item.getDuration()}"/> (minutes)</p>
                                     <p id="list-descrip"> Attempt number: <c:out value="${item.getAttemptnumber()}"/> </p> 
                                 </div>        
@@ -104,16 +106,16 @@
                             </div>
                         </c:forEach>                        
                     </div>
-                    
+
                     <script>
                         function deleteTest(courseid, testid) {
                             if (confirm("Are you sure you want to delete the Test ?")) {
                                 document.location.href = "delete-test?courseid=" + courseid + "&testid=" + testid;
-                            } 
+                            }
                         }
                         function blockTest(courseid, testid) {
                             if (confirm("Are you sure you want to change the test status?")) {
-                                document.location.href = "block-unblock-test?courseid="+courseid+"&testid=" + testid;
+                                document.location.href = "block-unblock-test?courseid=" + courseid + "&testid=" + testid;
                             }
                         }
                     </script>
@@ -128,5 +130,6 @@
             </div>
         </div>
     </div>
+    <script src="Views/JS/base.js"></script>
 </body>
 </html>

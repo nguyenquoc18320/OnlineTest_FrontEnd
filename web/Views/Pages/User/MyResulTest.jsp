@@ -7,6 +7,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <link rel="stylesheet" type="text/css" href="Views/CSS/BaseFormat.css" />
         <!--<link rel="stylesheet" type="text/css" href="Views/CSS/createNewCourse.css" />-->
         <link rel="stylesheet" type="text/css" href="Views/CSS/User/MyResultTest.css" />
@@ -29,6 +30,7 @@
             <div id = 'header'><!--Header includes the logo and name of function-->
                 <div id='div_logo'>
                     <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
+                    <label id="label_close_menu" onclick="closeMenu()">X</label>
                 </div>
                 <div class ='navi'><!--navigation buttons-->
                     <div class ='profile'>
@@ -50,6 +52,7 @@
             <div class ='main'>
                 <div class='content'>
                     <div class ="path_div">
+                        <i class="fa fa-bars" onclick="changeMenuDisplay()"></i>
                         <a href="attended-course">Attended Courses></a>
                         <a href="not-done-tests-attended-course?courseid=${test.getCourse().getId()}"><c:out value="${test.getCourse().getName()}"/>></a>
                         <a href="done-tests?courseid=${test.getCourse().getId()}">Done></a>
@@ -62,12 +65,12 @@
                             <h3 id='testName'><c:out value="${test.getName()}"/></h3>
 
                             <c:forEach var="result" items="${resultPagination.getEntityList()}">
-                                <a href="my-answer-test?testid=${test.getId()}&attempt=${result.getAttempt()}" style='color: black'>
-                                <div class="div_result">
-                                    <label class='label_score'>Score: <c:out value="${result.getScore()}"/></label><br>
-                                    <label class='label_attempt'>Attempt: <c:out value="${result.getAttempt()}"/></label>
-                                    <label class='label_end_time'>End Time:  <fmt:formatDate pattern = "HH:mm dd-MM-yyyy" value = "${result.getEndTime()}" /></label>
-                                </div>
+                                <a class='a_result' href="my-answer-test?testid=${test.getId()}&attempt=${result.getAttempt()}" style='color: black'>
+                                    <div class="div_result">
+                                        <label class='label_score'>Score: <c:out value="${result.getScore()}"/></label><br>
+                                        <label class='label_attempt'>Attempt: <c:out value="${result.getAttempt()}"/></label>
+                                        <label class='label_end_time'>End Time:  <fmt:formatDate pattern = "HH:mm dd-MM-yyyy" value = "${result.getEndTime()}" /></label>
+                                    </div>
                                 </a>
                             </c:forEach>
 
@@ -99,5 +102,6 @@
                 });
             });
         </script>
+        <script src="Views/JS/base.js"></script>
     </body>
 </html>

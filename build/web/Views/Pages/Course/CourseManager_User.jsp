@@ -12,6 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">      
         <link rel="stylesheet" type="text/css" href="Views/CSS/BaseFormat.css" />
         <!--<link rel="stylesheet" type="text/css" href="Views/CSS/createNewCourse.css" />-->
         <link rel="stylesheet" type="text/css" href="Views/CSS/CourseManager_user.css" />
@@ -32,6 +33,7 @@
             <div id = 'header'><!--Header includes the logo and name of function-->
                 <div id='div_logo'>
                     <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
+                    <label id="label_close_menu" onclick="closeMenu()">X</label>
                 </div>
                 <div class ='navi'><!--navigation buttons-->
                     <div class ='profile'>
@@ -55,6 +57,7 @@
             <div class ='main'>
                 <div class='content'>
                     <div class ="path_div">
+                        <i class="fa fa-bars" onclick="changeMenuDisplay()"></i>
                         <a href="manage-course-user">My Course></a>
                     </div>
 
@@ -86,14 +89,14 @@
                                         <!--check whether the course is blocked or not-->
                                         <br>
                                         <div class='div_update'>
-                                        <c:choose>
-                                            <c:when test="${item.getBlocked()}">                                              
-                                                <label class='label_update' style='background-color: #ECEAFE'>Update</label>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <a href="edit-course?start=1&courseid=<c:out value='${item.getId()}'/>"><label class='label_update'>Update</label></a>
-                                            </c:otherwise>
-                                        </c:choose>
+                                            <c:choose>
+                                                <c:when test="${item.getBlocked()}">                                              
+                                                    <label class='label_update' style='background-color: #ECEAFE'>Update</label>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <a href="edit-course?start=1&courseid=<c:out value='${item.getId()}'/>"><label class='label_update'>Update</label></a>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </div>
 
                                     </div>
@@ -146,6 +149,9 @@
 //            console.info(page + ' (from event listening)');
 //            });
             });
+            
+            
         </script>
+        <script src="Views/JS/base.js"></script>
     </body>
 </html>
