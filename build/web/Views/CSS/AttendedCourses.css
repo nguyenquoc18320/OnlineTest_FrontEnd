@@ -1,4 +1,4 @@
-/*search*/
+
 #search_button{
     /*border-radius: 5px;*/
     /*color: #0000FF;*/
@@ -19,10 +19,8 @@
     color: black;
     /*font-size:*/ 
     width: 100%;
-text-align: right;
+    text-align: right;
 }
-
-
 
 #formSubmit{
     /*text-align: center;*/
@@ -30,7 +28,6 @@ text-align: right;
     background-color: #F6F7FC;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
 }
 
 .div_course{
@@ -40,5 +37,32 @@ text-align: right;
     margin: 20px;
     padding: 10px;
     width: 45%;
+}
+
+@media screen and (min-width: 601px){
+    #formSubmit{
+        justify-content: space-between;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .div_course{
+        margin: 20px;
+        padding: 10px;
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .div_course{
+        margin: 5px;
+        padding: 10px;
+        width: 95%;
+    }
+
+    #formSubmit{
+        align-content: center;
+        flex-direction: column;
+    }
 }
 

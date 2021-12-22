@@ -1,9 +1,21 @@
-#div_top{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-right: 50px;
+@media screen and (min-width: 601px){
+    #div_top{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-right: 50px;
+    }
 }
+
+@media screen and (max-width: 600px) {
+    #div_top{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-right: 50px;
+    }
+}
+
 
 /*for course name*/
 .testName{
@@ -59,9 +71,9 @@
 
 .div_status{
     display: flex;
-flex-direction: row;
-justify-content: flex-end;
-align-items: center;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .label_close{

@@ -12,6 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">     
         <link rel="stylesheet" type="text/css" href="Views/CSS/BaseFormat.css" />
         <link rel="stylesheet" type="text/css" href="Views/CSS/ParticipantManager.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -19,7 +20,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap" rel="stylesheet">
-        
+
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
         <script   type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>-->
@@ -36,6 +37,7 @@
             <div id = 'header'><!--Header includes the logo and name of function-->
                 <div id='div_logo'>
                     <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
+                    <label id="label_close_menu" onclick="closeMenu()">X</label>
                 </div>
                 <div class ='navi'><!--navigation buttons-->
                     <div class ='profile'>
@@ -58,6 +60,7 @@
             <div class ='main'>
                 <div class='content'>
                     <div class ="path_div">
+                        <i class="fa fa-bars" onclick="changeMenuDisplay()"></i>
                         <a href="manage-course-user">My Course></a>
                         <a href="detail-course?courseid=${course.getId()}"><c:out value="${course.getName()}"/>></a>
                         <a href="manage-participants?courseid=${course.getId()}">Participants></a>        
@@ -66,7 +69,7 @@
                     <div class='content_wrap'>
                         <div id='div_top'>
                             <label id ='label_function_name'><c:out value="${course.getName()}"/></label>
-                            <div> 
+                            <div class="div_button"> 
                                 <button id="btn_participants"><a href = "manage-participants?courseid=${course.getId()}" id="link_show_participants"><i class="fa fa-users">Participants</i></a></button>
                                 <button id='btn_tests'> <a href="list-test?courseid=${course.getId()}" id="link_show_tests"><i class="fa fa-tasks">Test</i></a></button>
                                 <button id='btn_add_participants'><a href = "add-participants?start=1&courseid=${course.getId()}" id="link_add_participant"><i id="icon_add" class="fa fa-plus-circle">Add participants</i></a></button>
@@ -158,5 +161,6 @@
             //delete a user in the course
 
         </script>
+        <script src="Views/JS/base.js"></script>
     </body>
 </html>

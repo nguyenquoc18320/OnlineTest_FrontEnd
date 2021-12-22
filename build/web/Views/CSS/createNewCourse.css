@@ -1,5 +1,26 @@
-#div_create_course{
-    padding: 0px 200px;
+.content_wrap{
+    display: flex;
+    justify-content: space-around;
+}
+
+@media screen and (min-width:601px){
+    #div_create_course{
+        width: 70%;
+    }
+
+    .text_input{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width:600px){
+    #div_create_course{
+        width: 90%;
+    }
+
+    .text_input{
+        width: 100%;
+    }
 }
 
 #course_name{
@@ -17,7 +38,7 @@
 }
 
 .text_input{
-    width: 600px;
+    max-width: 600px;
     font-size: 15pt;
     margin-top:20px;
     vertical-align: top;

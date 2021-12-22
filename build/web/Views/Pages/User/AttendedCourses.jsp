@@ -6,6 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <link rel="stylesheet" type="text/css" href="Views/CSS/BaseFormat.css" />
         <link rel="stylesheet" type="text/css" href="Views/CSS/AttendedCourses.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -13,7 +14,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-        
+
         <link href="Views/CSS/su/user.css" rel="stylesheet" type="text/css"/>
         <link href="Views/CSS/su/common.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
@@ -26,9 +27,10 @@
     </head>
     <body>
         <div class='wrap'>
-             <div id = 'header'><!--Header includes the logo and name of function-->
+            <div id = 'header'><!--Header includes the logo and name of function-->
                 <div id='div_logo'>
                     <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
+                    <label id="label_close_menu" onclick="closeMenu()">X</label>
                 </div>
                 <div class ='navi'><!--navigation buttons-->
                     <div class ='profile'>
@@ -52,6 +54,7 @@
             <div class ='main'>
                 <div class='content'>
                     <div class ="path_div">
+                        <i class="fa fa-bars" onclick="changeMenuDisplay()"></i>
                         <a href="attended-course">Attended Courses></a>                     
                     </div>
 
@@ -65,18 +68,18 @@
                                 </div>
                             </c:forEach>
                         </form>
-                         <ul class="pagination justify-content-center" id="pagination"></ul>
-                            <input type='hidden' value='1' id ='page' name='page'>
-                            <input type='hidden' value='<c:out value="${maxPageItems}"/>' id ='maxPageItems' name='maxPageItems'>
-                            <input type="hidden" id='searchName' value="" name="nameForSearch">
-                            <input type="hidden" id='courseFor' value="" name="courseFor">
-                            <input type="hidden" id='blockedStatus' value="" name="blockedStatus">
-                            <input type='hidden' value="${userid}" id ='userid' name='userid'>
+                        <ul class="pagination justify-content-center" id="pagination"></ul>
+                        <input type='hidden' value='1' id ='page' name='page'>
+                        <input type='hidden' value='<c:out value="${maxPageItems}"/>' id ='maxPageItems' name='maxPageItems'>
+                        <input type="hidden" id='searchName' value="" name="nameForSearch">
+                        <input type="hidden" id='courseFor' value="" name="courseFor">
+                        <input type="hidden" id='blockedStatus' value="" name="blockedStatus">
+                        <input type='hidden' value="${userid}" id ='userid' name='userid'>
                     </div>
                 </div>
             </div>
         </div>
-                    
+
         <script type="text/javascript">
             var totalPages = ${coursePagination.getTotalPage()};
             var currentPage = ${coursePagination.getPage()};
@@ -84,7 +87,7 @@
             var searchName = '${nameForSearch}';
             console.info("currentPage : " + currentPage);
 //            var limit = 5; //number of items on a page
-//            var currentPage = 1;
+            //            var currentPage = 1;
             $(function () {
                 window.pagObj = $('#pagination').twbsPagination({
                     totalPages: totalPages,
@@ -103,7 +106,7 @@
                         }
                     }
                 });
-            });
-        </script>
+            });</script>
+        <script src="Views/JS/base.js"></script>
     </body>
 </html>

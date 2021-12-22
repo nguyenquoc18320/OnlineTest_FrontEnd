@@ -7,6 +7,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <link rel="stylesheet" type="text/css" href="Views/CSS/BaseFormat.css" />
         <!--<link rel="stylesheet" type="text/css" href="Views/CSS/createNewCourse.css" />-->
         <link rel="stylesheet" type="text/css" href="Views/CSS/User/CourseDetailForOther.css" />
@@ -29,6 +30,7 @@
             <div id = 'header'><!--Header includes the logo and name of function-->
                 <div id='div_logo'>
                     <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
+                      <label id="label_close_menu" onclick="closeMenu()">X</label>
                 </div>
                 <div class ='navi'><!--navigation buttons-->
                     <div class ='profile'>
@@ -52,6 +54,7 @@
             <div class ='main'>
                 <div class='content'>
                     <div class ="path_div">
+                          <i class="fa fa-bars" onclick="changeMenuDisplay()"></i>
                         <a href="Home">Home></a>
                         <a href="course-detail-for-others?courseid=${course.getName()}"><c:out value="${course.getName()}"/>></a>
                     </div>
@@ -87,5 +90,6 @@
                 alert(message);
             }
         </script>
+         <script src="Views/JS/base.js"></script>
     </body>
 </html>

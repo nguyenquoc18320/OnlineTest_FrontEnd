@@ -11,6 +11,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">     
         <link rel="stylesheet" type="text/css" href="Views/CSS/BaseFormat.css" />
         <link rel="stylesheet" type="text/css" href="Views/CSS/createNewCourse.css" />
 
@@ -26,6 +27,7 @@
             <div id = 'header'><!--Header includes the logo and name of function-->
                 <div id='div_logo'>
                     <img id='logo' src="Views/CSS/images/logo1.png" alt="logo">
+                    <label id="label_close_menu" onclick="closeMenu()">X</label>
                 </div>
                 <div class ='navi'><!--navigation buttons-->
                     <div class ='profile'>
@@ -49,12 +51,13 @@
             <div class ='main'>
                 <div class='content'>
                     <div class ="path_div">
+                        <i class="fa fa-bars" onclick="changeMenuDisplay()"></i>
                         <a href="manage-course-user?page=1&maxPageItems=5">My Course></a>
                         <a href="create-course?start=1">Create Course></a>
                     </div>
                     <div class='content_wrap'>
                         <form id='div_create_course' action="create-course" method="POST">
-                             <h1 id='course_name'>Create Course</h1> 
+                            <h1 id='course_name'>Create Course</h1> 
                             <label class='label_title'>Course name:</label>
                             <input type="text" class="text_input" name="courseName" required><br>
 
@@ -76,6 +79,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
+        <script src="Views/JS/base.js"></script>
     </body>
 </html>

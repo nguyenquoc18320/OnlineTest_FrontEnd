@@ -1,8 +1,22 @@
 
+@media screen and (min-width: 601px){
+    #div_top{
+        flex-direction: row;
+        justify-content: space-between;
+        padding-right: 50px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    #div_top{
+        flex-direction: column;
+        justify-content: space-between;
+        padding-right: 50px;
+    }
+}
+
 #div_top{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     padding-right: 50px;
 }
 
@@ -17,6 +31,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .div_course{
@@ -26,9 +41,10 @@
     margin-top: 20px;
     margin-left: 20px;
     padding: 10px 10px 0px 10px;
-    width: 45%;
+    width: 95%;
     margin-right: 30px;
     justify-content: space-between;
+    max-width: 500px;
 }
 
 .label_courseName{
@@ -39,14 +55,14 @@
 }
 
 .label_courseName:hover {
-  color: red;
-  background-color: transparent;
-  text-decoration: underline;
+    color: red;
+    background-color: transparent;
+    text-decoration: underline;
 }
 
 p{
     margin: 0px;
-    
+
 }
 
 
