@@ -51,7 +51,6 @@ public class DetailCourse extends HttpServlet {
                 String jsonRequest = mapper.writeValueAsString(course);
 
                 String result = APIUtils.sendGetRequest(api_url, true);
-                System.out.println("Create course: " + result);
 
                 if (result != null) {
                     course = mapper.readValue(result, Course.class);
@@ -59,9 +58,22 @@ public class DetailCourse extends HttpServlet {
                 } else {
                     request.setAttribute("errorMessage", "Don't find the course!");
                 }
+                
+                api_url = APIUtils.getBaseURLAPi()  + "course/num-users?courseid=" + courseid;
+                
+                result = APIUtils.sendGetRequest(api_url, true);
+                int numParticipants = Integer.parseInt(result);
+                request.setAttribute("numberParticipants", numParticipants);
+                
+                //get number tests
+                api_url = APIUtils.getBaseURLAPi()  + "test/num-tests?courseid=" + courseid;
+                
+                result = APIUtils.sendGetRequest(api_url, true);
+                int numTests = Integer.parseInt(result);
+                request.setAttribute("numberTests", numTests);
+                
 
             } catch (Exception ex) {
-                url = "/manager-course-user";
             }
         }
         getServletContext().getRequestDispatcher(url).forward(request, response);

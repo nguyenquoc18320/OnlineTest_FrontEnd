@@ -1,0 +1,144 @@
+.div_all{
+    margin-top: 30px;
+    padding:0px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#label_dashboard{
+    font-size: 25pt;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.div_detail{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 330px;
+}
+
+.div_course{
+    background-color: #5531FB;
+    width: 250px;
+
+
+}
+
+.div_course_detail{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.div_status{
+    margin-left: 20px;
+}
+
+.div_total{
+    padding: 10px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.div_status_detail{
+    background-color: rgba(41, 45, 50, 0.5);
+    /*width: 80px;*/
+    height: 80px;
+    margin-bottom: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#label_course{
+    width: 100%;
+    color: white;
+    padding: 5px 10px;
+    background-color: #292D32;
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+
+.div_2{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.div_test{
+    background-color: #F56748;
+}
+
+.div_test_detail{
+    display: flex;
+    flex-direction: row;
+    padding: 0px 10px 10px 10px;
+    font-weight: bold;
+}
+
+.div_test_total{
+    min-width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+}
+
+.div_test_status{
+    display: flex;
+    flex-direction: row;
+}
+
+.div_test_status_detail{
+    background-color: #E50000;
+    height: 80px;
+    min-width: 80px;
+    margin-left: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.div_user{
+    background-color: #FFB800;
+}
+
+.div_user_detail{
+    display: flex;
+    flex-direction: row;
+    padding: 0px 10px 10px 10px;
+    font-weight: bold;
+}
+
+.div_user_status{
+    display: flex;
+    flex-direction: row;
+}
+
+.div_user_status_detail{
+    background-color: #FF8A00;
+    height: 80px;
+    min-width: 80px;
+    margin-left: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.label_info{
+    font-size: 25pt;
+}

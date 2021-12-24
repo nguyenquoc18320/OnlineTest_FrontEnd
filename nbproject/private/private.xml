@@ -3,15 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/Pages/Course/ParticipantManager.jsp</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/CSS/createNewCourse.css</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/Pages/Course/CourseManager_User.jsp</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/CSS/BaseFormat.css</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/JS/base.js</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/Pages/Course/CreateNewCourse.jsp</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/Pages/User/UpdateInformation.jsp</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/CSS/CourseManager_user.css</file>
-            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/CSS/ParticipantManager.css</file>
+            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/CSS/Admin/Dashboard.css</file>
+            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/src/java/controllers/Admin/Dashboard.java</file>
+            <file>file:/C:/AQ/Nam_tu/CNPMM/project/TestOnline/web/Views/Pages/Admin/Dashboard.jsp</file>
         </group>
     </open-files>
 </project-private>

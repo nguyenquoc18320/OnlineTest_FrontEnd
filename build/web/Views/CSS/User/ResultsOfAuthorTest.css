@@ -7,6 +7,13 @@
     flex-direction: column;
 }
 
+#btn_download_result{
+    background-color: #5531FB;
+    font-weight: bold;
+    color: white;
+    margin-left: 10px;
+}
+
 #description{
     text-align: center;
     color: #009900;

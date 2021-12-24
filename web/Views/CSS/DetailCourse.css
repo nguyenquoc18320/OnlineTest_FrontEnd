@@ -1,10 +1,42 @@
+.content_wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.div_participants{
+    margin-bottom: 20px;
+    border: 5px outset #25A412;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px 10px;
+    width: 30%;
+    min-width: 400px;
+    max-width: 500px;
+}
+
 #link_show_participants{
-    color: black;
+    font-size: 16pt;
 }
 
 #btn_participants{
-    border: 5px outset #25A412;
+    background-color: transparent;
+    border:none;
+}
+
+.div_tests{
+    border: 5px inset #C81942;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px 10px;
+    width: 30%;
+    min-width: 400px;
+    max-width: 500px;
 }
 
 .fa-users{
@@ -12,8 +44,12 @@
 }
 
 #btn_tests{
-    border: 5px inset #C81942;
-border-radius: 10px;
+    background-color: transparent;
+    border: none;
+}
+
+#btn_test {
+    /*font-size: 16pt;*/
 }
 
 .fa-tasks{
@@ -23,6 +59,10 @@ border-radius: 10px;
 
 #link_show_tests{
     color: black;
+    font-size: 16pt;
+}
+#link_show_tests :hover{
+    color: blue;
 }
 
 .button{
@@ -53,12 +93,12 @@ border-radius: 10px;
 /*for column public*/
 .table_public_header{
     text-align: center;
-    
+
 }
 
 .fa-check-circle{
-     color: #01DF01;
-         
+    color: #01DF01;
+
 }
 
 .table_check_icon{

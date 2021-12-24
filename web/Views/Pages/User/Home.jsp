@@ -74,7 +74,7 @@
                             <c:forEach var="course" items="${coursePagination.getEntityList()}">
                                 <div class='div_course'>
                                     <a href='course-detail-for-others?courseid=${course.getId()}'><label class='label_courseName'><c:out value='${course.getName()}'/></label></a><br>
-                                    <label class='label_author'>Author: <c:out value='${course.getUser().getName()}'/></label><br>
+                                    <label class='label_author'>Author: <a href="Home?authorid=${course.getUser().getId()}"><c:out value='${course.getUser().getName()}'/></label><br></a>
                                     <p class ='description'><c:out value="${course.getDescription()}"/></p>
                                 </div>
                             </c:forEach>                          

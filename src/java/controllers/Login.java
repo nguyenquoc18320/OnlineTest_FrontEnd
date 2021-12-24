@@ -53,7 +53,7 @@ public class Login extends HttpServlet {
                     session.setAttribute("user", user);
                     System.out.println("Login successfully");
                     if (user.getRole().getId() == 2 && user.isStatus()== true) {
-                        url = "/manage-course-user?page=1&maxPageItems=5";
+                        url = "/manage-course-user";
                     } else if (user.getRole().getId() == 1 && user.isStatus()== true) {
                         url = "/manage-course-admin?start=1";
 //                        url = "/manage-user";

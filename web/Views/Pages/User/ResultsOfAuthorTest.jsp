@@ -66,6 +66,7 @@
                             <h3 id='testName'><c:out value="${test.getName()}"/></h3>
                             <div id='div_link_statistic'>
                                 <a href="score-statistic?testid=${test.getId()}"><input id='btn_statistic' type='button' value='Statistic'></a>
+                                <a href="#"><input id='btn_download_result' type='button' value='Download result' onclick="downloadResult(${user.getId()}, ${test.getId()})"></a>
                             </div>
                             <c:forEach var="result" items="${resultPagination.getEntityList()}">
                                 <div class="div_result">
@@ -102,6 +103,10 @@
                     }
                 });
             });
+            
+            function downloadResult(userid, testid){
+                 document.location.href = "http://localhost:8081/test-result/export?authorid=" + userid + "&testid=" + testid;
+            }
         </script>
         <script src="Views/JS/base.js"></script>
     </body>

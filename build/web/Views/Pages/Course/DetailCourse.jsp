@@ -45,9 +45,8 @@
                     <div class="menu">
                         <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
                         <button><a href="user-info"><i class="fas fa-address-book"></i> My Profile</a></button>
-                        <button><a href="attended-course"><i class="fas fa-users" style='background-color: #5531FB; color:white'></i>Attended Courses</a></button>
-                        <button><a href="manage-course-user" ><i class="fas fa-book-open"></i> My Courses </a></button>
-                        <!--<button><a href=""><i class="fas fa-splotch"></i> My Test Results </a></button>-->
+                        <button><a href="attended-course"><i class="fas fa-users" ></i>Attended Courses</a></button>
+                        <button><a href="manage-course-user" ><i class="fas fa-book-open" style='background-color: #5531FB; color:white'></i> My Courses </a></button>
                         <button><a href="log-out"><i class="fas fa-sign-out-alt"></i> LogOut</a></button>
                     </div>
                 </div>
@@ -61,11 +60,17 @@
                     </div>
 
                     <div class='content_wrap'>
-                        <button id="btn_participants"><a href = "manage-participants?courseid=${course.getId()}" id="link_show_participants"><i class="fa fa-users">Participants</i></a></button>
-                        <button id='btn_tests'> <a href="list-test?courseid=${course.getId()}" id="link_show_tests"><i class="fa fa-tasks">Test</i></a></button>
-
+                        <div class ="div_participants">
+                            <button id="btn_participants"><a href = "manage-participants?courseid=${course.getId()}" id="link_show_participants"><i class="fa fa-users">Participants:  <c:out value="${numberParticipants}"/></i></a></button>
+                            <!--<label id="num_participants">Number of registers: </label>-->
+                        </div>
+                        <div class="div_tests">
+                            <button id='btn_tests'> <a href="list-test?courseid=${course.getId()}" id="link_show_tests"><i class="fa fa-tasks">Test</i></a></button>
+                            <label class="num_tests">Total Tests: <c:out value="${numberTests}"/></label>
+                        </div>
                         <c:if test="${not empty errorMessage}">
                             <br><label id="errorMessage"><c:out value="${errorMessage}"/></label> 
+
                         </c:if>
                     </div>
                 </div>
