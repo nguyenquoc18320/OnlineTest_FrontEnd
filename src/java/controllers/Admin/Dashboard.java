@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers;
+package controllers.Admin;
 
-import Object.Test;
 import Object.User;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import controllers.APIUtils;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,50 +14,44 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
-
-@WebServlet(name = "AttendTest", urlPatterns = {"/start-test"})
-public class AttendTest extends HttpServlet {
+/**
+ *
+ * @author nguye
+ */
+@WebServlet(name = "Dashboard", urlPatterns = {"/dashboard"})
+public class Dashboard extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String url = "/Views/Pages/User/AttendTest.jsp";
+        String url = "/Views/Pages/Admin/Dashboard.jsp";
 
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
 
-        if (user == null) {
+        if (user == null || user.getRole().getId() != 1) {
             url = "/log-in?start=1";
-        } else if (user.getRole().getId() != 2) {//not user role
-            url = "/manager-course-admin";
         } else {
             try {
-                //get test
-                Long testid = Long.parseLong(request.getParameter("testid"));
-
-                String api_url = APIUtils.getBaseURLAPi() + "/test/starting?testid=" + testid
-                        + "&userid=" + user.getId();
-
-                ObjectMapper mapper = new ObjectMapper();
+                String api_url = APIUtils.getBaseURLAPi() + "dashboard";
 
                 String result = APIUtils.sendGetRequest(api_url, true);
-
                 if (result != null) {
-                    Test test = mapper.readValue(result, Test.class);
-                    request.setAttribute("test", test);
-                    
-                    url = "/continue-test?testid="+ testid;
+                    JSONParser parser = new JSONParser();
+                    JSONObject object = (JSONObject) parser.parse(result);
+                    request.setAttribute("json", object);
+                    System.out.println("dd:" + object);
                 }
-
             } catch (Exception ex) {
 
             }
         }
 
         getServletContext().getRequestDispatcher(url).forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

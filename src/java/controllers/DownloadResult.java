@@ -5,60 +5,33 @@
  */
 package controllers;
 
-import Object.Test;
-import Object.User;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 
-@WebServlet(name = "AttendTest", urlPatterns = {"/start-test"})
-public class AttendTest extends HttpServlet {
-
+@WebServlet(name = "DownloadResult", urlPatterns = {"/download-result"})
+public class DownloadResult extends HttpServlet {
+  
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
-        String url = "/Views/Pages/User/AttendTest.jsp";
-
-        HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-
-        if (user == null) {
-            url = "/log-in?start=1";
-        } else if (user.getRole().getId() != 2) {//not user role
-            url = "/manager-course-admin";
-        } else {
-            try {
-                //get test
-                Long testid = Long.parseLong(request.getParameter("testid"));
-
-                String api_url = APIUtils.getBaseURLAPi() + "/test/starting?testid=" + testid
-                        + "&userid=" + user.getId();
-
-                ObjectMapper mapper = new ObjectMapper();
-
-                String result = APIUtils.sendGetRequest(api_url, true);
-
-                if (result != null) {
-                    Test test = mapper.readValue(result, Test.class);
-                    request.setAttribute("test", test);
-                    
-                    url = "/continue-test?testid="+ testid;
-                }
-
-            } catch (Exception ex) {
-
-            }
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet DownloadResult</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet DownloadResult at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-
-        getServletContext().getRequestDispatcher(url).forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

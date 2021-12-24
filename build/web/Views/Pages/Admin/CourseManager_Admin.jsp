@@ -42,7 +42,7 @@
                         </div>
                     </div>
                     <div class="menu">
-                        <button><a href="Home"><i class="fas fa-home"></i>Home</a></button>
+                        <button><a href="dashboard"><i class="fas fa-home"></i>Home</a></button>
                         <button><a href="user-info"><i class="fas fa-address-book"></i> My Information</a></button>
                         <button><a href="manage-user"><i class="fas fa-users"></i>Manage users</a></button>
                         <button><a href="manage-course-admin"><i class="fas fa-book-open"  style='background-color: #5531FB; color:white'></i>Manage Courses </a></button>

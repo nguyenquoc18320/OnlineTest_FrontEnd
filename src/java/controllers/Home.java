@@ -57,6 +57,12 @@ public class Home extends HttpServlet {
                     api_url += "&courseName=" + searchName;
                     request.setAttribute("nameForSearch", searchName);
                 }
+                
+                //get author id
+                String authorid = request.getParameter("authorid");
+                if(authorid != null){
+                    api_url += "&authorid=" + authorid;
+                }
 
                 String result = APIUtils.sendGetRequest(api_url, true);
                 ObjectMapper mapper = new ObjectMapper();
